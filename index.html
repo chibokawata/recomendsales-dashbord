@@ -10,22 +10,22 @@
 /* ── RESET & BASE ── */
 *{box-sizing:border-box;margin:0;padding:0;}
 :root{
-  --c1:#1a2433;--c2:#e8845a;--c3:#fdf6ec;--c4:#f9c9a0;--c5:#fef3e8;
-  --g1:#00a870;--g2:#e6f7f0;--g3:#b3e8d4;
-  --r1:#e04040;--r2:#fdeaea;--r3:#f4b4b4;
-  --b1:#0073c4;--b2:#eef4fb;
-  --n1:#dde2ea;--n2:#8a9ab0;--n3:#b0bbc8;
-  --radius:10px;--shadow:0 2px 12px rgba(0,0,0,.08);
-  --hh:56px;--sb:230px;
+  --c1:#1e2d45;--c2:#2563eb;--c3:#f8fafc;--c4:#e2e8f0;--c5:#f1f5f9;
+  --g1:#059669;--g2:#d1fae5;--g3:#6ee7b7;
+  --r1:#dc2626;--r2:#fee2e2;--r3:#fca5a5;
+  --b1:#2563eb;--b2:#dbeafe;
+  --n1:#e2e8f0;--n2:#64748b;--n3:#94a3b8;
+  --radius:8px;--shadow:0 1px 8px rgba(0,0,0,.07);
+  --hh:52px;--sb:220px;
 }
 html{font-size:14px;-webkit-text-size-adjust:100%;}
 body{font-family:'Meiryo UI','メイリオ','Helvetica Neue',sans-serif;background:var(--c3);color:var(--c1);min-height:100vh;}
 
 /* ── HEADER ── */
-.hdr{height:var(--hh);background:var(--c1);display:flex;align-items:center;padding:0 16px;gap:10px;position:sticky;top:0;z-index:200;box-shadow:0 2px 8px rgba(0,0,0,.25);}
+.hdr{height:var(--hh);background:var(--c1);display:flex;align-items:center;padding:0 18px;gap:12px;position:sticky;top:0;z-index:200;box-shadow:0 2px 10px rgba(0,0,0,.2);border-bottom:2px solid rgba(255,255,255,.08);}
 .hdr-icon{font-size:24px;flex-shrink:0;}
 .hdr-info{flex:1;min-width:0;}
-.hdr-title{font-size:15px;font-weight:700;color:#fff;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.hdr-title{font-size:14px;font-weight:700;color:#fff;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;letter-spacing:.02em;}
 .hdr-sub{font-size:10px;color:var(--n3);}
 .hdr-badge{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);color:var(--n3);font-size:9px;padding:2px 8px;border-radius:20px;white-space:nowrap;flex-shrink:0;}
 
@@ -56,7 +56,7 @@ body{font-family:'Meiryo UI','メイリオ','Helvetica Neue',sans-serif;backgrou
 @keyframes spin{to{transform:rotate(360deg);}}
 .ld-txt{font-size:12px;color:var(--n2);}
 #nodata{display:none;align-items:center;justify-content:center;min-height:60vh;padding:24px;}
-.nodata-box{border:2px dashed var(--c4);border-radius:var(--radius);background:var(--c5);padding:36px 28px;text-align:center;max-width:480px;}
+.nodata-box{border:2px dashed var(--n1);border-radius:var(--radius);background:#fff;padding:36px 28px;text-align:center;max-width:480px;box-shadow:var(--shadow);}
 .nodata-box h2{font-size:16px;margin-bottom:10px;}
 .nodata-box p{font-size:12px;color:var(--n2);line-height:1.8;}
 .nodata-code{background:#f0f0f0;border-radius:6px;padding:10px 14px;font-family:monospace;font-size:11px;text-align:left;margin-top:12px;line-height:1.7;}
@@ -69,19 +69,19 @@ body{font-family:'Meiryo UI','メイリオ','Helvetica Neue',sans-serif;backgrou
 .alert-txt{font-size:11px;font-weight:700;color:var(--r1);}
 
 /* ── FILTER TAG ── */
-.filter-tag{background:var(--c5);border:1px solid var(--c4);border-radius:4px;padding:4px 10px;font-size:10px;font-weight:700;color:#c85a30;display:none;align-items:center;gap:6px;margin-bottom:10px;}
+.filter-tag{background:var(--b2);border:1px solid #bfdbfe;border-radius:4px;padding:4px 10px;font-size:10px;font-weight:700;color:var(--b1);display:none;align-items:center;gap:6px;margin-bottom:10px;}
 .filter-tag.on{display:flex;}
 .filter-clr{cursor:pointer;text-decoration:underline;margin-left:auto;font-size:9px;}
 
 /* ── KPI GRID ── */
 .kpi-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:14px;}
 .kpi-card{background:#fff;border:1px solid var(--n1);border-radius:var(--radius);box-shadow:var(--shadow);padding:14px 14px 12px;display:flex;flex-direction:column;gap:4px;}
-.kpi-card.main{border-top:5px solid var(--c2);background:linear-gradient(135deg,#fff 55%,var(--c5));}
+.kpi-card.main{border-top:4px solid var(--c2);background:#fff;}
 .kpi-card.green{border-top:4px solid var(--g1);}
 .kpi-card.blue{border-top:4px solid var(--b1);}
 .kpi-card.gray{border-top:4px solid var(--n2);}
 .kpi-label{font-size:10px;font-weight:700;color:var(--n2);}
-.kpi-value{font-size:36px;font-weight:900;line-height:1;color:var(--c2);}
+.kpi-value{font-size:34px;font-weight:800;line-height:1;color:var(--c2);}
 .kpi-value .unit{font-size:14px;font-weight:400;color:var(--n2);}
 .kpi-value2{font-size:22px;font-weight:900;line-height:1.1;}
 .kpi-sub{font-size:10px;color:var(--n3);}
@@ -106,15 +106,15 @@ body{font-family:'Meiryo UI','メイリオ','Helvetica Neue',sans-serif;backgrou
 /* ── SECTION ── */
 .sec-label{font-size:9px;font-weight:700;color:var(--n2);letter-spacing:.08em;text-transform:uppercase;margin-bottom:7px;}
 .card{background:#fff;border:1px solid var(--n1);border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden;}
-.card-hint{font-size:9px;color:#c85a30;padding:4px 10px;background:var(--c5);border-bottom:1px solid var(--c4);}
+.card-hint{font-size:9px;color:var(--b1);padding:4px 10px;background:var(--b2);border-bottom:1px solid #bfdbfe;}
 
 /* ── CHART ── */
-.chart-wrap{padding:14px 14px 10px;}
+.chart-wrap{padding:12px 14px 10px;}
 .chart-title{font-size:11px;font-weight:700;color:var(--c1);margin-bottom:10px;}
 .chart-toggle{display:flex;gap:4px;margin-bottom:10px;}
 .chart-toggle-btn{font-size:10px;font-weight:700;padding:3px 10px;border-radius:20px;border:1px solid var(--n1);background:#fff;cursor:pointer;color:var(--n2);}
 .chart-toggle-btn.on{background:var(--c1);color:#fff;border-color:var(--c1);}
-.chart-area{position:relative;height:160px;display:flex;align-items:flex-end;}
+.chart-area{position:relative;}
 .chart-y-axis{display:flex;flex-direction:column;justify-content:space-between;font-size:8px;color:var(--n3);text-align:right;padding-right:6px;height:100%;min-width:36px;flex-shrink:0;}
 .chart-body{flex:1;height:100%;position:relative;display:flex;align-items:flex-end;}
 .chart-gridlines{position:absolute;inset:0;pointer-events:none;}
@@ -175,7 +175,7 @@ body{font-family:'Meiryo UI','メイリオ','Helvetica Neue',sans-serif;backgrou
 
 /* ── SUMMARY BARS ── */
 .sum-section{padding:10px 12px;}
-.sum-title{font-size:10px;font-weight:700;color:var(--c1);margin-bottom:7px;padding-bottom:4px;border-bottom:2px solid var(--c3);}
+.sum-title{font-size:10px;font-weight:700;color:var(--c1);margin-bottom:7px;padding-bottom:4px;border-bottom:2px solid var(--n1);}
 .sum-title.mt{margin-top:10px;padding-top:8px;border-top:1px solid var(--n1);}
 .sum-row{margin-bottom:7px;}
 .sum-row:last-child{margin-bottom:0;}
@@ -189,7 +189,7 @@ body{font-family:'Meiryo UI','メイリオ','Helvetica Neue',sans-serif;backgrou
 
 /* ── COMMENT ── */
 .comment-box{padding:12px;}
-.comment-hdr{font-size:10px;font-weight:700;color:#fff;background:var(--c1);margin:-12px -12px 10px;padding:8px 12px;}
+.comment-hdr{font-size:10px;font-weight:700;color:#fff;background:var(--c1);margin:-12px -12px 10px;padding:8px 12px;letter-spacing:.02em;}
 .comment-row{display:flex;gap:8px;margin-bottom:10px;}
 .comment-row:last-child{margin-bottom:0;}
 .comment-icon{width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:700;flex-shrink:0;}
@@ -197,15 +197,7 @@ body{font-family:'Meiryo UI','メイリオ','Helvetica Neue',sans-serif;backgrou
 .comment-label{font-size:9px;font-weight:700;margin-bottom:2px;}
 .comment-text{font-size:10px;line-height:1.6;}
 
-/* ── YOUBI ── */
-.youbi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:12px;}
-.youbi-card{background:#fff;border:1px solid var(--n1);border-radius:8px;padding:10px 12px;text-align:center;box-shadow:var(--shadow);}
-.youbi-label{font-size:9px;font-weight:700;margin-bottom:4px;}
-.youbi-val{font-size:24px;font-weight:900;color:var(--c2);}
-.youbi-unit{font-size:9px;color:var(--n2);}
-.youbi-share{font-size:9px;color:var(--n3);margin-top:2px;}
-.youbi-bar-bg{height:5px;background:var(--n1);border-radius:3px;margin-top:5px;}
-.youbi-bar-fill{height:5px;border-radius:3px;}
+
 
 /* ── TREND TREND ── */
 .trend-table{width:100%;border-collapse:collapse;}
@@ -221,9 +213,9 @@ body{font-family:'Meiryo UI','メイリオ','Helvetica Neue',sans-serif;backgrou
 /* ── MONTHLY ── */
 .month-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px;}
 .month-card{padding:12px;}
-.month-title{font-size:13px;font-weight:700;color:var(--c2);margin-bottom:8px;padding-bottom:5px;border-bottom:2px solid var(--c3);}
+.month-title{font-size:13px;font-weight:700;color:var(--c1);margin-bottom:8px;padding-bottom:5px;border-bottom:2px solid var(--n1);}
 .month-kpis{display:grid;grid-template-columns:1fr 1fr 1fr;gap:5px;margin-bottom:10px;}
-.month-kpi{background:var(--c3);border-radius:5px;padding:6px;text-align:center;}
+.month-kpi{background:var(--c3);border-radius:5px;padding:6px;text-align:center;border:1px solid var(--n1);}
 .month-kpi-label{font-size:8px;color:var(--n2);font-weight:700;margin-bottom:2px;}
 .month-kpi-val{font-size:16px;font-weight:900;}
 .month-kpi-unit{font-size:8px;color:var(--n2);}
@@ -233,7 +225,7 @@ body{font-family:'Meiryo UI','メイリオ','Helvetica Neue',sans-serif;backgrou
 .mo-card{padding:12px;}
 .mo-title{font-size:13px;font-weight:700;margin-bottom:8px;padding-bottom:5px;border-bottom:2px solid var(--c3);}
 .mo-title.mob{color:var(--b1);}
-.mo-title.pop{color:var(--c2);}
+.mo-title.pop{color:var(--c1);}
 
 /* ── DRILL DOWN MODAL ── */
 .modal-ov{display:none;position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:1000;align-items:center;justify-content:center;}
@@ -268,6 +260,8 @@ body{font-family:'Meiryo UI','メイリオ','Helvetica Neue',sans-serif;backgrou
   .month-grid{grid-template-columns:1fr;}
 }
 @media(max-width:700px){
+  .chart-2col{grid-template-columns:1fr!important;}
+
   :root{--sb:0px;--hh:52px;}
   .sidebar{display:none;}
   .main{padding:10px 10px;}
@@ -281,10 +275,10 @@ body{font-family:'Meiryo UI','メイリオ','Helvetica Neue',sans-serif;backgrou
 <body>
 <!-- HEADER -->
 <div class="hdr">
-  <div class="hdr-icon">&#x1F338;</div>
+  
   <div class="hdr-info">
-    <div class="hdr-title">春メニュー販売数レポート</div>
-    <div class="hdr-sub">千房グループ</div>
+    <div class="hdr-title">季節メニューおすすめ販売数速報</div>
+    <div class="hdr-sub">千房グループ　季節メニュー管理本部</div>
   </div>
   <div class="hdr-badge" id="hdr-period">読み込み中...</div>
 </div>
@@ -356,7 +350,7 @@ body{font-family:'Meiryo UI','メイリオ','Helvetica Neue',sans-serif;backgrou
   <!-- NO DATA -->
   <div id="nodata">
     <div class="nodata-box">
-      <div style="font-size:36px;margin-bottom:10px">&#x1F338;</div>
+      
       <h2>データがありません</h2>
       <p>GitHubの <strong>data/</strong> フォルダにCSVを追加し、<br><strong>data/index.json</strong> を更新してください。</p>
       <div class="nodata-code">{"sales":["202603.csv","20260412.csv"],<br>"customers":["202603.csv","20260418.csv"]}</div>
@@ -599,213 +593,72 @@ function wkFilterSummary(wd){
 // CHART HELPERS
 // ============================================================
 function makeLineChart(wkSeries, metric, kpiLine){
-  // wkSeries: [{lbl, val}, ...]
-  if(wkSeries.length < 2) return '<div style="text-align:center;padding:40px;color:var(--n3)">2週以上のデータで表示されます</div>';
+  if(!wkSeries || wkSeries.length < 2)
+    return '<div style="text-align:center;padding:48px 16px;color:var(--n3);font-size:12px">2週以上のデータで表示されます</div>';
   var vals = wkSeries.map(function(w){ return w.val; });
-  var max = Math.max.apply(null,vals), min = Math.min.apply(null,vals);
-  var base = Math.min(min*0.85, kpiLine ? kpiLine*0.6 : min*0.85);
-  var range = max - base || 0.01;
-  var W=100, H=120, padL=38, padB=20, innerW=W-padL, innerH=H-padB;
-  // points
-  var pts = wkSeries.map(function(w,i){
-    var x = padL + (wkSeries.length===1?innerW/2:i/(wkSeries.length-1)*innerW);
-    var y = H-padB - Math.max(0,Math.min(1,(w.val-base)/range))*innerH;
-    return {x:x,y:y,val:w.val,lbl:w.lbl};
-  });
+  var maxV = Math.max.apply(null,vals), minV = Math.min.apply(null,vals);
+  // Y軸レンジ：差を強調しつつKPI線も見せる
+  var yMin, yMax;
+  if(kpiLine){
+    var dataMin = Math.min(minV, kpiLine);
+    var dataMax = Math.max(maxV, kpiLine);
+    var pad = (dataMax - dataMin) * 0.25 || dataMax * 0.1 || 0.5;
+    yMin = Math.max(0, dataMin - pad);
+    yMax = dataMax + pad;
+  } else {
+    var pad = (maxV - minV) * 0.3 || maxV * 0.1 || 1;
+    yMin = Math.max(0, minV - pad);
+    yMax = maxV + pad;
+  }
+  var range = yMax - yMin || 0.01;
+  // SVG寸法
+  var VW=400, VH=180, pL=44, pR=12, pT=28, pB=32;
+  var cW=VW-pL-pR, cH=VH-pT-pB;
+  var n = wkSeries.length;
+  function xp(i){ return pL + (n===1 ? cW/2 : i/(n-1)*cW); }
+  function yp(v){ return pT + cH - (v-yMin)/range*cH; }
+  var pts = wkSeries.map(function(w,i){ return {x:xp(i),y:yp(w.val),val:w.val,lbl:w.lbl}; });
+  // path
   var pathD = pts.map(function(p,i){ return (i===0?'M':'L')+p.x.toFixed(1)+','+p.y.toFixed(1); }).join(' ');
-  // KPI line y
-  var kpiY = kpiLine ? H-padB - Math.max(0,Math.min(1,(kpiLine-base)/range))*innerH : null;
-  // y-axis labels
-  var yLabels = [max, base+range/2, base].map(function(v){ return metric==='rate'?v.toFixed(1)+'%':Math.round(v)+''; });
-  var yPositions = [H-padB-innerH, H-padB-innerH/2, H-padB];
-
-  var svg = '<svg viewBox="0 0 '+W+' '+H+'" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:'+H+'px">';
-  // grid lines
-  svg += '<line x1="'+padL+'" y1="'+(H-padB-innerH)+'" x2="'+W+'" y2="'+(H-padB-innerH)+'" stroke="#f0f2f5" stroke-width="1"/>';
-  svg += '<line x1="'+padL+'" y1="'+(H-padB-innerH/2)+'" x2="'+W+'" y2="'+(H-padB-innerH/2)+'" stroke="#f0f2f5" stroke-width="1"/>';
-  // KPI dashed line
-  if(kpiY) svg += '<line x1="'+padL+'" y1="'+kpiY.toFixed(1)+'" x2="'+W+'" y2="'+kpiY.toFixed(1)+'" stroke="#e04040" stroke-width="1.5" stroke-dasharray="4,3"/>';
-  // area
-  var areaD = pathD + ' L'+pts[pts.length-1].x.toFixed(1)+','+(H-padB)+' L'+pts[0].x.toFixed(1)+','+(H-padB)+' Z';
-  svg += '<path d="'+areaD+'" fill="rgba(232,132,90,.12)"/>';
-  // line
-  svg += '<path d="'+pathD+'" fill="none" stroke="#e8845a" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>';
-  // dots + values
-  pts.forEach(function(p){
+  var areaD = pathD+' L'+pts[pts.length-1].x.toFixed(1)+','+(pT+cH)+' L'+pts[0].x.toFixed(1)+','+(pT+cH)+' Z';
+  // グリッド（3本）
+  var grids = [0.25,0.5,0.75].map(function(r){
+    var gy=(pT+cH-r*cH).toFixed(1);
+    var gv = yMin + r*range;
+    var glbl = metric==='rate' ? gv.toFixed(1)+'%' : Math.round(gv).toLocaleString();
+    return '<line x1="'+pL+'" y1="'+gy+'" x2="'+(pL+cW)+'" y2="'+gy+'" stroke="#e2e8f0" stroke-width="1"/>'+
+           '<text x="'+(pL-4)+'" y="'+(parseFloat(gy)+3.5)+'" text-anchor="end" font-size="9" fill="#94a3b8">'+glbl+'</text>';
+  }).join('');
+  // KPI破線
+  var kpiSvg = '';
+  if(kpiLine){
+    var ky=yp(kpiLine).toFixed(1);
+    kpiSvg='<line x1="'+pL+'" y1="'+ky+'" x2="'+(pL+cW)+'" y2="'+ky+'" stroke="#dc2626" stroke-width="1.5" stroke-dasharray="5,4"/>'+
+            '<text x="'+(pL+cW+2)+'" y="'+(parseFloat(ky)+3.5)+'" font-size="8" fill="#dc2626">KPI</text>';
+  }
+  // エリア・ライン
+  var areaSvg='<path d="'+areaD+'" fill="rgba(37,99,235,.08)"/>';
+  var lineSvg='<path d="'+pathD+'" fill="none" stroke="#2563eb" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>';
+  // ドット + ラベル
+  var dotsSvg = pts.map(function(p,i){
     var ok = kpiLine ? p.val>=kpiLine : true;
-    var col = ok ? '#00a870' : '#e04040';
-    svg += '<circle cx="'+p.x.toFixed(1)+'" cy="'+p.y.toFixed(1)+'" r="4" fill="'+col+'" stroke="#fff" stroke-width="1.5"/>';
-    var valStr = metric==='rate'?p.val.toFixed(2)+'%':p.val.toLocaleString();
-    svg += '<text x="'+p.x.toFixed(1)+'" y="'+(p.y-8).toFixed(1)+'" text-anchor="middle" font-size="8" font-weight="700" fill="'+col+'">'+valStr+'</text>';
-    svg += '<text x="'+p.x.toFixed(1)+'" y="'+(H-4)+'" text-anchor="middle" font-size="8" fill="#8a9ab0">'+p.lbl+'</text>';
-  });
-  // y-axis
-  yPositions.forEach(function(y,i){
-    svg += '<text x="'+(padL-3)+'" y="'+(y+3).toFixed(1)+'" text-anchor="end" font-size="7" fill="#b0bbc8">'+yLabels[i]+'</text>';
-  });
-  svg += '</svg>';
+    var col = ok ? '#059669' : '#dc2626';
+    var valStr = metric==='rate' ? p.val.toFixed(2)+'%' : p.val.toLocaleString();
+    // ラベル位置：最初は右、最後は左、他は上
+    var anchor = i===0?'start':i===n-1?'end':'middle';
+    var lx = p.x.toFixed(1);
+    var ly = (p.y - 10).toFixed(1);
+    return '<circle cx="'+p.x.toFixed(1)+'" cy="'+p.y.toFixed(1)+'" r="5" fill="'+col+'" stroke="#fff" stroke-width="2"/>'+
+           '<text x="'+lx+'" y="'+ly+'" text-anchor="'+anchor+'" font-size="10" font-weight="700" fill="'+col+'">'+valStr+'</text>'+
+           '<text x="'+p.x.toFixed(1)+'" y="'+(pT+cH+14)+'" text-anchor="middle" font-size="9" fill="#64748b">'+p.lbl+'</text>';
+  }).join('');
+  // 枠線（左・下）
+  var axesSvg='<line x1="'+pL+'" y1="'+pT+'" x2="'+pL+'" y2="'+(pT+cH)+'" stroke="#e2e8f0" stroke-width="1"/>'+
+              '<line x1="'+pL+'" y1="'+(pT+cH)+'" x2="'+(pL+cW)+'" y2="'+(pT+cH)+'" stroke="#e2e8f0" stroke-width="1"/>';
+  var svg='<svg viewBox="0 0 '+VW+' '+VH+'" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:100%;height:auto;display:block">'+
+    grids+axesSvg+kpiSvg+areaSvg+lineSvg+dotsSvg+'</svg>';
   return svg;
 }
-
-// ============================================================
-// COMPONENTS
-// ============================================================
-function htmlKPI(fs, ts, tc, prevTs, prevOvr){
-  var ovr=tc>0?ts/tc*100:0, ok=ovr>=KPI_RATE;
-  var n=fs.length, okN=0; fs.forEach(function(s){if(s.rate>=KPI_RATE)okN++;});
-  var ng=n-okN, avg=n>0?ts/n:0;
-  var salesChg = prevTs>0?(ts-prevTs)/prevTs*100:null;
-  var rateChg  = prevOvr!==null?(ovr-prevOvr):null;
-  function chgTag(v, isRate){
-    if(v===null) return '';
-    var sign=v>0?'&#x25B2; +':'&#x25BC; ';
-    var cls=v>0?'tag-up':'tag-dn';
-    var str=isRate?Math.abs(v).toFixed(2)+'pt':Math.abs(v).toFixed(1)+'%';
-    return '<span class="tag '+cls+'">'+sign+str+' 前週比</span>';
-  }
-  return '<div class="kpi-grid">'+
-    '<div class="kpi-card main">'+
-      '<div class="kpi-label">注文率</div>'+
-      '<div class="kpi-value">'+ovr.toFixed(2)+'<span class="unit"> %</span></div>'+
-      '<div class="kpi-tags"><span class="tag '+(ok?'tag-ok':'tag-ng')+'">'+(ok?'&#x25B2; KPI達成':'&#x25BC; KPI未達')+'</span><span class="tag tag-inf">KPI '+KPI_RATE+'%</span>'+chgTag(rateChg,true)+'</div>'+
-    '</div>'+
-    '<div class="kpi-card green">'+
-      '<div class="kpi-label">春メニュー販売数</div>'+
-      '<div class="kpi-value2" style="color:var(--g1)">'+ts.toLocaleString()+'<span style="font-size:13px;color:var(--n2)"> 食</span></div>'+
-      '<div class="kpi-sub">総客数: '+tc.toLocaleString()+'名</div>'+
-      '<div class="kpi-tags">'+chgTag(salesChg,false)+'</div>'+
-    '</div>'+
-    '<div class="kpi-card blue">'+
-      '<div class="kpi-label">KPI達成状況 ('+n+'店)</div>'+
-      '<div class="kpi-achieve">'+
-        '<div class="ach-box ach-ok"><div class="ach-num">'+okN+'</div><div class="ach-lbl">店 達成</div></div>'+
-        '<div class="ach-box ach-ng"><div class="ach-num">'+ng+'</div><div class="ach-lbl">店 未達</div></div>'+
-      '</div>'+
-    '</div>'+
-    '<div class="kpi-card gray">'+
-      '<div class="kpi-label">店舗平均 販売数</div>'+
-      '<div class="kpi-value2" style="color:var(--n2)">'+avg.toFixed(1)+'<span style="font-size:13px;color:var(--n3)"> 食</span></div>'+
-      '<div class="kpi-sub">'+n+'店の平均</div>'+
-    '</div>'+
-  '</div>';
-}
-
-function htmlRankTable(fs, prevStores){
-  DST = [];
-  var prevMap={};
-  if(prevStores) prevStores.forEach(function(s){ prevMap[s.name]=s.sales; });
-  var rows = fs.map(function(s,i){
-    var ok=s.rate>=KPI_RATE, fc=ok?'var(--g1)':'var(--r1)';
-    var bp=Math.min(s.rate/10*100,100), kp=KPI_RATE/10*100;
-    var lc=s.loc==='SC'?'var(--b1)':s.loc==='路面'?'var(--c2)':'var(--g1)';
-    var rnCls=i===0?'rn-1':i===1?'rn-2':i===2?'rn-3':'rn-n';
-    var idx=DST.length; DST.push(s.name);
-    var prev=prevMap[s.name];
-    var chgHtml='<span class="chg-eq">-</span>';
-    if(prev!==undefined){
-      var d=s.sales-prev;
-      chgHtml='<span class="'+(d>0?'chg-up':d<0?'chg-dn':'chg-eq')+'">'+(d>0?'+':'')+d.toFixed(0)+'食</span>';
-    }
-    return '<tr>'+
-      '<td><div class="rank-num '+rnCls+'">'+(i+1)+'</div></td>'+
-      '<td><div class="store-name" data-si="'+idx+'">'+s.name+'</div></td>'+
-      '<td style="text-align:center;font-size:9px;color:'+lc+'">'+s.loc+'</td>'+
-      '<td style="text-align:center;font-size:9px;color:var(--n2)">'+s.rgn+'</td>'+
-      '<td class="bar-cell"><div class="bar-mini"><div class="bar-mini-fill" style="width:'+bp+'%;background:'+fc+'"></div><div class="bar-mini-kpi" style="left:'+kp+'%"></div></div></td>'+
-      '<td class="rate-val '+(ok?'rate-ok':'rate-ng')+'">'+s.rate.toFixed(2)+'%</td>'+
-      '<td style="text-align:right;font-size:10px;color:var(--c2)">'+s.sales.toFixed(0)+'食</td>'+
-      '<td>'+chgHtml+'</td>'+
-      '<td><span class="'+(ok?'badge-ok':s.rate>=KPI_RATE*0.8?'badge-warn':'badge-ng')+'">'+(ok?'達成':s.rate>=KPI_RATE*0.8?'注意':'未達')+'</span></td>'+
-    '</tr>';
-  }).join('');
-  return '<div class="card" style="margin-bottom:12px;overflow-x:auto">'+
-    '<div class="card-hint">&#x1F4CC; 店舗名をクリック → メニュー別注文率</div>'+
-    '<table class="rank-table"><thead><tr>'+
-    '<th></th><th class="left">店舗名</th><th>立地</th><th>地域</th><th>注文率グラフ</th><th>注文率</th><th>販売数</th><th>前週比</th><th>判定</th>'+
-    '</tr></thead><tbody>'+rows+'</tbody></table></div>';
-}
-
-function htmlMenuTable(ml, ts){
-  DMN = [];
-  var mx = ml.length ? ml[0].sales : 1;
-  var rows = ml.map(function(m,i){
-    var pct=ts>0?m.sales/ts*100:0, mw=mx>0?m.sales/mx*100:0;
-    var bc=i===0?'var(--c2)':i===1?'#e8a070':'var(--n2)';
-    var rnCls=i===0?'rn-1':i===1?'rn-2':i===2?'rn-3':'rn-n';
-    var idx=DMN.length; DMN.push(m.name);
-    return '<tr>'+
-      '<td><div class="rank-num '+rnCls+'">'+(i+1)+'</div></td>'+
-      '<td><div class="menu-name" data-mi="'+idx+'">'+m.name+'</div></td>'+
-      '<td style="text-align:right;font-weight:700">'+m.sales.toLocaleString()+'食</td>'+
-      '<td><div class="menu-bar-wrap"><div class="menu-bar-bg"><div class="menu-bar-fill" style="width:'+mw+'%;background:'+bc+'"></div></div><div class="menu-pct" style="color:'+bc+'">'+pct.toFixed(1)+'%</div></div></td>'+
-    '</tr>';
-  }).join('');
-  return '<div class="card" style="margin-bottom:12px">'+
-    '<div class="card-hint">&#x1F4CC; メニュー名をクリック → 店舗別注文率（累積）</div>'+
-    '<table class="menu-table"><thead><tr>'+
-    '<th></th><th class="left">メニュー名（販売数降順）</th><th>販売数</th><th>構成比</th>'+
-    '</tr></thead><tbody>'+rows+'</tbody></table></div>';
-}
-
-function htmlSummaryBars(fs){
-  var bl=aggByKey(fs,'biz'), ll=aggByKey(fs,'loc'), rl=aggByKey(fs,'rgn');
-  function rows(list){
-    return list.map(function(b){
-      var ok=b.rate>=KPI_RATE, fc=ok?'var(--g1)':'var(--r1)';
-      var bw=Math.min(b.rate/10*100,100), kw=KPI_RATE/10*100;
-      return '<div class="sum-row">'+
-        '<div class="sum-top"><span class="sum-name">'+b.name+'</span><span class="sum-rate" style="color:'+fc+'">'+b.rate.toFixed(2)+'%</span></div>'+
-        '<div class="sum-bar-bg"><div class="sum-bar-fill" style="width:'+bw+'%;background:'+fc+'"></div><div class="sum-bar-kpi" style="left:'+kw+'%"></div></div>'+
-        '<div class="sum-sub">'+b.sales.toLocaleString()+'食 / '+b.cnt+'店</div></div>';
-    }).join('');
-  }
-  return '<div class="sum-section">'+
-    '<div class="sum-title">事業部別　注文率（高順）</div>'+rows(bl)+
-    '<div class="sum-title mt">立地別　注文率（高順）</div>'+rows(ll)+
-    '<div class="sum-title mt">地域別　注文率（高順）</div>'+rows(rl)+
-  '</div>';
-}
-
-function htmlComment(fs, ml, ts, tc){
-  var ovr=tc>0?ts/tc*100:0, ok=ovr>=KPI_RATE, n=fs.length, okN=0;
-  fs.forEach(function(s){if(s.rate>=KPI_RATE)okN++;});
-  var t1=ml[0],t2=ml[1];
-  var t2s=(t1?t1.sales:0)+(t2?t2.sales:0), t2p=ts>0?Math.round(t2s/ts*100):0;
-  var top=fs[0], bot=fs[n-1];
-  var c1ok=ok?'var(--g1)':'var(--r1)', c1bg=ok?'var(--g2)':'var(--r2)', c1bd=ok?'var(--g3)':'var(--r3)';
-  return '<div class="comment-box">'+
-    '<div class="comment-hdr">&#x1F4A1; 自動分析コメント</div>'+
-    '<div class="comment-row">'+
-      '<div class="comment-icon" style="background:'+c1bg+';border:1px solid '+c1bd+'"><span style="color:'+c1ok+'">①</span></div>'+
-      '<div><div class="comment-label" style="color:'+c1ok+'">【週次評価】</div>'+
-      '<div class="comment-text">'+(ok?'注文率'+ovr.toFixed(2)+'%でKPI達成。':'注文率'+ovr.toFixed(2)+'%でKPI未達。')+n+'店中'+okN+'店達成、'+(n-okN)+'店未達。</div></div></div>'+
-    '<div class="comment-row">'+
-      '<div class="comment-icon" style="background:var(--b2);border:1px solid #c8d8f0"><span style="color:var(--b1)">②</span></div>'+
-      '<div><div class="comment-label" style="color:var(--b1)">【店舗差】</div>'+
-      '<div class="comment-text">最高: '+(top?top.name+' '+top.rate.toFixed(2)+'%':'-')+'、最低: '+(bot?bot.name+' '+bot.rate.toFixed(2)+'%':'-')+'。</div></div></div>'+
-    '<div class="comment-row">'+
-      '<div class="comment-icon" style="background:var(--c5);border:1px solid var(--c4)"><span style="color:var(--c2)">③</span></div>'+
-      '<div><div class="comment-label" style="color:var(--c2)">【メニュー示唆】</div>'+
-      '<div class="comment-text">主力品「'+(t1?t1.name:'-')+'」が全体'+(t1&&ts>0?Math.round(t1.sales/ts*100):0)+'%。上位2品で'+t2p+'%（'+t2s.toLocaleString()+'食）に集中。</div></div></div>'+
-  '</div>';
-}
-
-function htmlYoubi(ym){
-  var order=['平','土','日祝'], labels={'平':'平日','土':'土曜','日祝':'日祝'};
-  var colors={'平':'var(--b1)','土':'var(--c2)','日祝':'var(--g1)'};
-  var total=order.reduce(function(s,y){return s+(ym[y]||0);},0)||1;
-  var maxV=Math.max.apply(null,order.map(function(y){return ym[y]||0;}));
-  return '<div class="youbi-grid">'+order.map(function(y){
-    var v=ym[y]||0, pct=maxV>0?v/maxV*100:0, share=Math.round(v/total*100);
-    return '<div class="youbi-card">'+
-      '<div class="youbi-label" style="color:'+colors[y]+'">'+labels[y]+'</div>'+
-      '<div class="youbi-val">'+v.toFixed(0)+'<span class="youbi-unit">食</span></div>'+
-      '<div class="youbi-share">全体の '+share+'%</div>'+
-      '<div class="youbi-bar-bg"><div class="youbi-bar-fill" style="width:'+pct+'%;background:'+colors[y]+'"></div></div>'+
-    '</div>';
-  }).join('')+'</div>';
-}
-
 function htmlAlert(fs){
   var bad=fs.filter(function(s){return s.rate<KPI_RATE;});
   if(!bad.length) return '';
@@ -893,10 +746,6 @@ function renderWeek(){
         makeLineChart(salesSeries,'sales',null)+
         '<div class="chart-note">※ベースライン切り捨て表示</div></div></div>'+
     '</div>'+
-    // Youbi
-    '<div class="sec-label">曜日別 春メニュー販売数</div>'+
-    htmlYoubi(ym)+
-    // Rank + menu + summary 2col
     '<div class="sec-label">店舗別 注文率ランキング</div>'+
     htmlRankTable(fs, prevD?applyFilter(prevD.stores):null)+
     '<div style="display:grid;grid-template-columns:1fr 300px;gap:12px;margin-bottom:12px;">'+
