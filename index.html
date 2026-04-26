@@ -486,20 +486,34 @@ function weekInfo(ds){
 
 function buildWeeks(salesMap, custMap){
   var wkMap = {};
+  // Step1: 販売実績をweek×storeに集計
   Object.keys(salesMap).forEach(function(key){
     var sd=salesMap[key], wi=weekInfo(sd.date);
-    var cust = custMap[key] || 0;
     if(!wkMap[wi.wk]) wkMap[wi.wk]={wk:wi.wk,wl:wi.wl,mon:wi.mon,storeMap:{}};
     var wd=wkMap[wi.wk];
     if(!wd.storeMap[sd.store])
       wd.storeMap[sd.store]={biz:sd.biz,loc:gL(sd.store),rgn:gR(sd.store),mo:gMO(sd.store),
         sales:0,cust:0,menus:{},youbi:{}};
     var st=wd.storeMap[sd.store];
-    st.cust += cust;
     Object.keys(sd.menus).forEach(function(mn){
       st.sales += sd.menus[mn];
       st.menus[mn] = (st.menus[mn]||0) + sd.menus[mn];
       st.youbi[sd.youbi] = (st.youbi[sd.youbi]||0) + sd.menus[mn];
+    });
+  });
+  // Step2: 週の全日(月〜日)の客数を合算
+  Object.keys(wkMap).forEach(function(wk){
+    var wd=wkMap[wk];
+    var p=wk.split('/');
+    var monDt=new Date(+p[0],+p[1]-1,+p[2]);
+    Object.keys(wd.storeMap).forEach(function(store){
+      var totalCust=0;
+      for(var d=0;d<7;d++){
+        var day=new Date(monDt); day.setDate(monDt.getDate()+d);
+        var ds=day.getFullYear()+'/'+(day.getMonth()<9?'0':'')+(day.getMonth()+1)+'/'+(day.getDate()<10?'0':'')+day.getDate();
+        totalCust += custMap[store+'|'+ds] || 0;
+      }
+      wd.storeMap[store].cust = totalCust;
     });
   });
   return Object.keys(wkMap).sort().map(function(wk){
