@@ -665,7 +665,7 @@ function htmlRankTable(fs, prevStores){
     var chgHtml='<span class="chg-eq">-</span>';
     if(prev!==undefined){var d=s.sales-prev;chgHtml='<span class="'+(d>0?'chg-up':d<0?'chg-dn':'chg-eq')+'">'+(d>0?'+':'')+d.toFixed(0)+'食</span>';}
     var jdgCls=ok?'badge-ok':s.rate>=KPI_RATE*0.8?'badge-warn':'badge-ng';
-    var jdgTxt=ok?'達成':s.rate>=KPI_RATE*0.8?'注意':'未達';
+    var jdgTxt=ok?'達成':s.rate>=KPI_RATE*0.8?'あと少し！':'未達';
     return '<tr>'+
       '<td><div class="rank-num '+rnCls+'">'+(i+1)+'</div></td>'+
       '<td><div class="store-name" data-si="'+idx+'">'+s.name+'</div></td>'+
