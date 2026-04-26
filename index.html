@@ -817,7 +817,7 @@ function htmlAlert(fs, ml, prevFs, prevMl){
     var top3 = okStores.slice(0,3).map(function(s){
       return s.name + '（' + s.rate.toFixed(2) + '%）';
     }).join('　');
-    var suffix = okStores.length > 3 ? ' 他16' + (okStores.length-3) + '店' : '';
+    var suffix = okStores.length > 3 ? ' 他' + (okStores.length-3) + '店' : '';
     topics.push('&#x1F3C6; KPI達成 ' + okStores.length + '店: ' + top3 + suffix);
   }
 
