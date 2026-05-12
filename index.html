@@ -270,6 +270,37 @@ body{font-family:'Meiryo UI','メイリオ','Helvetica Neue',sans-serif;backgrou
   .month-grid{grid-template-columns:1fr;}
   .mo-grid{grid-template-columns:1fr;}
 }
+
+/* ===== SEASON TABS ===== */
+.season-bar{display:flex;align-items:center;background:var(--c1);padding:0 16px;gap:8px;border-top:1px solid rgba(255,255,255,.1);}
+.season-tab{font-size:11px;font-weight:700;padding:6px 16px;cursor:pointer;color:rgba(255,255,255,.5);border-bottom:3px solid transparent;transition:.15s;white-space:nowrap;}
+.season-tab:hover{color:#fff;}
+.season-tab.on{color:#fff;border-bottom-color:#fff;}
+.upd-btn{margin-left:auto;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);color:#fff;font-family:inherit;font-size:10px;font-weight:700;padding:4px 12px;border-radius:4px;cursor:pointer;transition:.12s;}
+.upd-btn:hover{background:rgba(255,255,255,.22);}
+/* ===== UPDATE MODAL ===== */
+.upd-ov{display:none;position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:600;align-items:center;justify-content:center;}
+.upd-ov.on{display:flex;}
+.upd-modal{background:#fff;border-radius:10px;width:92%;max-width:600px;max-height:90vh;overflow-y:auto;box-shadow:0 8px 32px rgba(0,0,0,.3);}
+.upd-hdr{background:var(--c1);color:#fff;padding:13px 16px;display:flex;align-items:center;gap:10px;border-radius:10px 10px 0 0;}
+.upd-hdr-title{font-size:13px;font-weight:700;flex:1;}
+.upd-x{background:none;border:none;color:#fff;font-size:22px;cursor:pointer;}
+.upd-body{padding:20px;}
+.upd-pw{display:flex;flex-direction:column;align-items:center;gap:12px;padding:30px 20px;}
+.upd-pw input{width:100%;max-width:240px;padding:10px 14px;border:2px solid var(--n1);border-radius:6px;font-size:18px;text-align:center;letter-spacing:6px;font-family:inherit;}
+.upd-pw input:focus{outline:none;border-color:var(--b1);}
+.upd-pw-btn{background:var(--c1);color:#fff;border:none;padding:10px 28px;border-radius:6px;font-family:inherit;font-size:13px;font-weight:700;cursor:pointer;}
+.upd-pw-err{color:var(--r1);font-size:11px;font-weight:700;}
+.upd-step{margin-bottom:18px;}
+.upd-step-title{font-size:12px;font-weight:700;color:var(--c1);background:var(--b2);border-left:4px solid var(--b1);padding:6px 10px;border-radius:0 4px 4px 0;margin-bottom:8px;}
+.upd-step-body{font-size:11px;line-height:1.9;color:#334155;padding-left:4px;}
+.upd-step-body b{color:var(--c1);}
+.upd-code{background:#f1f5f9;border-radius:4px;padding:8px 12px;font-family:monospace;font-size:11px;line-height:1.7;margin:6px 0;}
+.upd-links{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px;}
+.upd-link-btn{display:inline-flex;align-items:center;gap:5px;background:var(--c1);color:#fff;border:none;padding:8px 14px;border-radius:6px;font-family:inherit;font-size:11px;font-weight:700;cursor:pointer;text-decoration:none;transition:.12s;}
+.upd-link-btn:hover{opacity:.85;}
+.upd-link-btn.green{background:var(--g1);}
+.upd-divider{border:none;border-top:1px solid var(--n1);margin:16px 0;}
 </style>
 </head>
 <body>
@@ -283,6 +314,13 @@ body{font-family:'Meiryo UI','メイリオ','Helvetica Neue',sans-serif;backgrou
   <div class="hdr-badge" id="hdr-period">読み込み中...</div>
 </div>
 
+<!-- SEASON TAB BAR -->
+<div class="season-bar">
+  <div class="season-tab on" data-season="spring">&#x1F338; 春メニュー</div>
+  <div class="season-tab" data-season="summer">&#x1F333; 夏季メニュー</div>
+  <button class="upd-btn" id="upd-btn">&#x1F4DD; データ更新</button>
+</div>
+
 <!-- DRILL DOWN MODAL -->
 <div class="modal-ov" id="modal">
   <div class="modal">
@@ -292,6 +330,76 @@ body{font-family:'Meiryo UI','メイリオ','Helvetica Neue',sans-serif;backgrou
       <button class="modal-close" id="m-close">&#x2715;</button>
     </div>
     <div class="modal-body" id="m-body"></div>
+  </div>
+</div>
+
+
+<!-- UPDATE MODAL -->
+<div class="upd-ov" id="upd-ov">
+  <div class="upd-modal">
+    <div class="upd-hdr">
+      <span style="font-size:18px">&#x1F4DD;</span>
+      <span class="upd-hdr-title">データ更新手順</span>
+      <button class="upd-x" id="upd-x">&#x2715;</button>
+    </div>
+    <div class="upd-body" id="upd-body">
+      <!-- パスワード画面 -->
+      <div class="upd-pw" id="upd-pw-screen">
+        <div style="font-size:13px;font-weight:700;color:var(--c1)">&#x1F512; パスワードを入力してください</div>
+        <input type="password" id="upd-pw-input" maxlength="10" placeholder="····">
+        <button class="upd-pw-btn" id="upd-pw-ok">ログイン</button>
+        <div class="upd-pw-err" id="upd-pw-err" style="display:none">パスワードが違います</div>
+      </div>
+      <!-- 更新手順画面 -->
+      <div id="upd-guide" style="display:none">
+        <div class="upd-step">
+          <div class="upd-step-title">STEP 1｜CSVファイルをリネーム</div>
+          <div class="upd-step-body">
+            ダウンロードしたCSVをアップロード前にリネームしてください。<br>
+            <b>日別販売実績表</b> → <b>YYYYMMDD.csv</b>（例: 20260519.csv）<br>
+            <b>日別売上実績表</b> → <b>YYYYMMDDc.csv</b>（例: 20260519c.csv）
+          </div>
+        </div>
+        <div class="upd-step">
+          <div class="upd-step-title">STEP 2｜春メニュー CSVをアップロード（3月〜4月分）</div>
+          <div class="upd-step-body">
+            <b>data/sales/</b> に販売実績CSVをアップロード<br>
+            <b>data/customers/</b> に売上実績CSVをアップロード
+          </div>
+          <div class="upd-links">
+            <a class="upd-link-btn" href="https://github.com/Chibo-MarketingDepartment/recomendsales-dashbord/tree/main/data/sales" target="_blank">&#x1F4C2; data/sales/ を開く</a>
+            <a class="upd-link-btn" href="https://github.com/Chibo-MarketingDepartment/recomendsales-dashbord/tree/main/data/customers" target="_blank">&#x1F4C2; data/customers/ を開く</a>
+          </div>
+        </div>
+        <div class="upd-step">
+          <div class="upd-step-title">STEP 3｜夏季メニュー CSVをアップロード（5月〜6月分）</div>
+          <div class="upd-step-body">
+            <b>data/summer/sales/</b> に販売実績CSVをアップロード<br>
+            <b>data/summer/customers/</b> に売上実績CSVをアップロード
+          </div>
+          <div class="upd-links">
+            <a class="upd-link-btn green" href="https://github.com/Chibo-MarketingDepartment/recomendsales-dashbord/tree/main/data/summer/sales" target="_blank">&#x1F4C2; data/summer/sales/ を開く</a>
+            <a class="upd-link-btn green" href="https://github.com/Chibo-MarketingDepartment/recomendsales-dashbord/tree/main/data/summer/customers" target="_blank">&#x1F4C2; data/summer/customers/ を開く</a>
+          </div>
+        </div>
+        <div class="upd-step">
+          <div class="upd-step-title">STEP 4｜index.jsonを更新</div>
+          <div class="upd-step-body">
+            各フォルダのindex.jsonにファイル名を追記してください。<br><br>
+            <b>春メニュー（data/index.json）：</b>
+            <div class="upd-code">{"sales":["202603.csv","20260426.csv","追加ファイル名.csv"],<br>"customers":["202603.csv","20260426c.csv","追加ファイル名c.csv"]}</div>
+            <b>夏季メニュー（data/summer/index.json）：</b>
+            <div class="upd-code">{"sales":["20260511.csv","追加ファイル名.csv"],<br>"customers":["20260511c.csv","追加ファイル名c.csv"]}</div>
+          </div>
+          <div class="upd-links">
+            <a class="upd-link-btn" href="https://github.com/Chibo-MarketingDepartment/recomendsales-dashbord/blob/main/data/index.json" target="_blank">&#x270F; 春 index.json を編集</a>
+            <a class="upd-link-btn green" href="https://github.com/Chibo-MarketingDepartment/recomendsales-dashbord/blob/main/data/summer/index.json" target="_blank">&#x270F; 夏 index.json を編集</a>
+          </div>
+        </div>
+        <hr class="upd-divider">
+        <div style="font-size:10px;color:var(--n2);text-align:center">Commit後、1〜2分でダッシュボードに反映されます。</div>
+      </div>
+    </div>
   </div>
 </div>
 
@@ -357,7 +465,7 @@ body{font-family:'Meiryo UI','メイリオ','Helvetica Neue',sans-serif;backgrou
     </div>
   </div>
   <!-- DASHBOARD -->
-  <div id="db">
+  <div id="db-spring"><div id="db">
     <!-- TABS -->
     <div class="tabs">
       <div class="tab on" data-tab="week">&#x1F4C5; 週次</div>
@@ -982,6 +1090,527 @@ function renderWeek(){
 // MONTHLY TAB
 // ============================================================
 
+
+/* ================================================================
+   SUMMER MENU DASHBOARD
+   ================================================================ */
+var S_KPI = 3.0;
+var S_ALL_WK = [], S_CW = null, S_CUR_MON = null;
+var SF = {biz:'all', mn:'all', rgn:'all', mo:'all'};
+
+var S_MENUS = [
+  {raw:'台湾風まぜ焼そば',     disp:'台湾風まぜ焼そば'},
+  {raw:'旨辛角煮のお好み焼',   disp:'旨辛角煮のお好み焼'},
+  {raw:'鶏もも肉のｶｼｭｰﾅｯﾂ', disp:'鶏もも肉のカシューナッツ'},
+  {raw:'マンゴー杏仁アイス',   disp:'マンゴー杏仁アイス'},
+  {raw:'豚角煮の台湾風たこ焼', disp:'豚角煮の台湾風たこ焼（甲子園限定）'},
+  {raw:'プロモ)台湾ﾌｪｱお好み',disp:'スクラッチ)台湾フェアお好み'},
+  {raw:'プロモ)台湾ﾌｪｱ一品',  disp:'スクラッチ)台湾フェア一品'},
+  {raw:'プロモ)台湾ﾌｪｱ焼そば',disp:'スクラッチ)台湾フェア焼そば'}
+];
+
+function sIsSp(nm){
+  if(nm.indexOf('\uff0a')>=0||nm.indexOf('\u203b')>=0) return false;
+  return S_MENUS.some(function(m){ return nm.indexOf(m.raw)>=0; });
+}
+function sNormMenu(nm){
+  nm=nm.trim();
+  var found=S_MENUS.filter(function(m){ return nm.indexOf(m.raw)>=0; });
+  return found.length ? found[0].disp : null;
+}
+
+/* --- parse --- */
+function sParseSales(text){
+  var rows=parseCSV(text), map={};
+  for(var i=1;i<rows.length;i++){
+    var c=rows[i];
+    if(c.length<21||!c[0].trim()) continue;
+    var mn=c[17].trim();
+    if(!sIsSp(mn)) continue;
+    var nm=sNormMenu(mn);
+    if(!nm) continue;
+    var date=c[0].trim(), store=c[10].trim(), biz=c[8].trim(), youbi=c[2].trim();
+    var sales=parseFloat(c[20])||0;
+    var key=store+'|'+date;
+    if(!map[key]) map[key]={store:store,biz:gBiz(biz),date:date,youbi:youbi,menus:{}};
+    map[key].menus[nm]=(map[key].menus[nm]||0)+sales;
+  }
+  return map;
+}
+function sParseCust(text){
+  var rows=parseCSV(text), map={};
+  for(var i=1;i<rows.length;i++){
+    var c=rows[i];
+    if(c.length<21||!c[6].trim()) continue;
+    if(c[13].trim()!=='\u8a08') continue;
+    map[c[5].trim()+'|'+c[6].trim()]=parseInt(c[20])||0;
+  }
+  return map;
+}
+
+/* --- buildWeeks (summer) --- */
+function sBuildWeeks(salesMap, custMap){
+  var wkMap={};
+  Object.keys(salesMap).forEach(function(key){
+    var sd=salesMap[key], wi=weekInfo(sd.date);
+    if(!wkMap[wi.wk]) wkMap[wi.wk]={wk:wi.wk,wl:wi.wl,mon:wi.mon,storeMap:{}};
+    var wd=wkMap[wi.wk];
+    if(!wd.storeMap[sd.store])
+      wd.storeMap[sd.store]={biz:sd.biz,loc:gL(sd.store),rgn:gR(sd.store),mo:gMO(sd.store),
+        sales:0,cust:0,menus:{},youbi:{}};
+    var st=wd.storeMap[sd.store];
+    Object.keys(sd.menus).forEach(function(mn){
+      st.sales+=sd.menus[mn];
+      st.menus[mn]=(st.menus[mn]||0)+sd.menus[mn];
+      st.youbi[sd.youbi]=(st.youbi[sd.youbi]||0)+sd.menus[mn];
+    });
+  });
+  Object.keys(wkMap).forEach(function(wk){
+    var wd=wkMap[wk];
+    var p=wk.split('/');
+    var monDt=new Date(+p[0],+p[1]-1,+p[2]);
+    Object.keys(wd.storeMap).forEach(function(store){
+      var total=0;
+      for(var d=0;d<7;d++){
+        var day=new Date(monDt); day.setDate(monDt.getDate()+d);
+        var ds=day.getFullYear()+'/'+(day.getMonth()<9?'0':'')+(day.getMonth()+1)+'/'+(day.getDate()<10?'0':'')+day.getDate();
+        total+=custMap[store+'|'+ds]||0;
+      }
+      wd.storeMap[store].cust=total;
+    });
+  });
+  return Object.keys(wkMap).sort().map(function(wk){
+    var wd=wkMap[wk];
+    var stores=Object.keys(wd.storeMap).map(function(sn){
+      var s=wd.storeMap[sn];
+      return{name:sn,biz:s.biz,loc:s.loc,rgn:s.rgn,mo:s.mo,
+        sales:s.sales,cust:s.cust,rate:s.cust>0?s.sales/s.cust*100:0,
+        menus:s.menus,youbi:s.youbi};
+    }).sort(function(a,b){return b.rate-a.rate;});
+    var ts=0,tc=0,mn_total={},youbi={};
+    stores.forEach(function(s){
+      ts+=s.sales; tc+=s.cust;
+      Object.keys(s.menus).forEach(function(m){mn_total[m]=(mn_total[m]||0)+s.menus[m];});
+      Object.keys(s.youbi).forEach(function(y){youbi[y]=(youbi[y]||0)+s.youbi[y];});
+    });
+    var ml=Object.keys(mn_total).map(function(m){return{name:m,sales:mn_total[m]};})
+             .sort(function(a,b){return b.sales-a.sales;});
+    var smMap={};
+    stores.forEach(function(s){smMap[s.name]=s.menus;});
+    return{wk:wk,wl:wd.wl,mon:wd.mon,stores:stores,ml:ml,ts:ts,tc:tc,
+      ovr:tc>0?ts/tc*100:0,youbi:youbi,smMap:smMap};
+  });
+}
+
+/* --- filter --- */
+function sApplyFilter(stores){
+  return stores.filter(function(s){
+    if(SF.biz!=='all'&&s.biz!==SF.biz) return false;
+    if(SF.rgn!=='all'&&s.rgn!==SF.rgn) return false;
+    if(SF.mo !=='all'&&s.mo !==SF.mo ) return false;
+    return true;
+  });
+}
+function sFilterLabel(){
+  var p=[];
+  if(SF.biz!=='all') p.push('事業部:'+SF.biz);
+  if(SF.mn !=='all') p.push('メニュー:'+SF.mn);
+  if(SF.rgn!=='all') p.push('地域:'+SF.rgn);
+  if(SF.mo !=='all') p.push(SF.mo==='MO'?'MO':'POP');
+  return p.join(' / ');
+}
+function sWkSummary(wd){
+  var fs=sApplyFilter(wd.stores);
+  var ml=aggMenu(fs,wd.smMap);
+  if(SF.mn!=='all') ml=ml.filter(function(m){return m.name===SF.mn;});
+  var ts=0,tc=0; fs.forEach(function(s){ts+=s.sales;tc+=s.cust;});
+  return{fs:fs,ml:ml,ts:ts,tc:tc,ovr:tc>0?ts/tc*100:0,youbi:aggYoubi(fs)};
+}
+
+/* --- KPI HTML (summer) --- */
+function sHtmlKPI(fs,ts,tc,prevTs,prevOvr){
+  var ovr=tc>0?ts/tc*100:0, ok=ovr>=S_KPI;
+  var n=fs.length, okN=0; fs.forEach(function(s){if(s.rate>=S_KPI)okN++;});
+  var ng=n-okN, avg=n>0?ts/n:0;
+  var salesChg=(prevTs!==null&&prevTs>0)?(ts-prevTs)/prevTs*100:null;
+  var rateChg=(prevOvr!==null)?(ovr-prevOvr):null;
+  function chgTag(v,isRate){
+    if(v===null) return '';
+    var up=v>0, cls=up?'tag-up':'tag-dn';
+    var arrow=up?'&#x25B2; +':'&#x25BC; ';
+    var str=isRate?Math.abs(v).toFixed(2)+'pt':Math.abs(v).toFixed(1)+'%';
+    return '<span class="tag '+cls+'">'+arrow+str+' 前週比</span>';
+  }
+  return '<div class="kpi-grid">'+
+    '<div class="kpi-card main">'+
+      '<div class="kpi-label">注文率</div>'+
+      '<div class="kpi-value">'+ovr.toFixed(2)+'<span class="unit"> %</span></div>'+
+      '<div class="kpi-tags"><span class="tag '+(ok?'tag-ok':'tag-ng')+'">'+(ok?'&#x25B2; KPI達成':'&#x25BC; KPI未達')+'</span><span class="tag tag-inf">KPI '+S_KPI+'%</span>'+chgTag(rateChg,true)+'</div>'+
+    '</div>'+
+    '<div class="kpi-card green">'+
+      '<div class="kpi-label">夏季メニュー販売数</div>'+
+      '<div class="kpi-value2" style="color:var(--g1)">'+ts.toLocaleString()+'<span style="font-size:13px;color:var(--n2)"> 食</span></div>'+
+      '<div class="kpi-sub">総客数: '+tc.toLocaleString()+'名</div>'+
+      '<div class="kpi-tags">'+chgTag(salesChg,false)+'</div>'+
+    '</div>'+
+    '<div class="kpi-card blue">'+
+      '<div class="kpi-label">KPI達成状況 ('+n+'店)</div>'+
+      '<div class="kpi-achieve">'+
+        '<div class="ach-box ach-ok"><div class="ach-num">'+okN+'</div><div class="ach-lbl">店 達成</div></div>'+
+        '<div class="ach-box ach-ng"><div class="ach-num">'+ng+'</div><div class="ach-lbl">店 未達</div></div>'+
+      '</div>'+
+    '</div>'+
+    '<div class="kpi-card gray">'+
+      '<div class="kpi-label">店舗平均 販売数</div>'+
+      '<div class="kpi-value2" style="color:var(--n2)">'+avg.toFixed(1)+'<span style="font-size:13px;color:var(--n3)"> 食</span></div>'+
+      '<div class="kpi-sub">'+n+'店の平均</div>'+
+    '</div>'+
+  '</div>';
+}
+
+/* --- alert (summer) --- */
+function sHtmlAlert(fs,ml,prevFs){
+  var topics=[];
+  var okStores=fs.filter(function(s){return s.rate>=S_KPI;}).sort(function(a,b){return b.rate-a.rate;});
+  if(okStores.length){
+    var top3=okStores.slice(0,3).map(function(s){return s.name+'\uff08'+s.rate.toFixed(2)+'%\uff09';}).join('\u3000');
+    var suffix=okStores.length>3?' 他'+(okStores.length-3)+'店':'';
+    topics.push('&#x1F3C6; KPI達成 '+okStores.length+'店: '+top3+suffix);
+  }
+  if(prevFs&&prevFs.length){
+    var prevMap={}; prevFs.forEach(function(s){prevMap[s.name]=s.rate;});
+    var gainers=fs.filter(function(s){return prevMap[s.name]!==undefined;})
+      .map(function(s){return{name:s.name,diff:s.rate-prevMap[s.name]};})
+      .filter(function(s){return s.diff>0;}).sort(function(a,b){return b.diff-a.diff;}).slice(0,3);
+    if(gainers.length){
+      var gtxt=gainers.map(function(g){return g.name+'\uff08+'+g.diff.toFixed(2)+'pt\uff09';}).join('\u3000');
+      topics.push('&#x1F4C8; 注文率UP: '+gtxt);
+    }
+  }
+  if(ml&&ml.length){
+    var top1=ml[0];
+    var ts2=ml.reduce(function(a,m){return a+m.sales;},0);
+    var pct=ts2>0?Math.round(top1.sales/ts2*100):0;
+    topics.push('&#x1F37D; 人気No.1: \u300c'+top1.name+'\u300d 全体の'+pct+'% ('+top1.sales.toLocaleString()+'\u98df)');
+  }
+  if(!topics.length) return '';
+  return '<div class="alert-bar on" style="background:#eff6ff;border-color:#bfdbfe;border-left-color:var(--b1)">'+
+    '<div class="alert-icon">&#x1F4CA;</div>'+
+    '<div class="alert-txt" style="color:#1e40af">'+topics.join('&nbsp;&nbsp;|&nbsp;&nbsp;')+'</div>'+
+  '</div>';
+}
+
+/* --- rank / menu / summary / comment は春と共通関数を流用 (S_KPI差し替えのみ) --- */
+function sHtmlRankTable(fs,prevStores){
+  var DST2=[];
+  var prevMap={}; if(prevStores) prevStores.forEach(function(s){prevMap[s.name]=s.sales;});
+  var rows=fs.map(function(s,i){
+    var ok=s.rate>=S_KPI, fc=ok?'var(--g1)':'var(--r1)';
+    var bp=Math.min(s.rate/10*100,100), kp=S_KPI/10*100;
+    var lc=s.loc==='SC'?'var(--b1)':s.loc==='路面'?'var(--c2)':'var(--g1)';
+    var rnCls=i===0?'rn-1':i===1?'rn-2':i===2?'rn-3':'rn-n';
+    var idx2=DST2.length; DST2.push(s.name);
+    var prev=prevMap[s.name];
+    var chgHtml='<span class="chg-eq">-</span>';
+    if(prev!==undefined){var d=s.sales-prev;chgHtml='<span class="'+(d>0?'chg-up':d<0?'chg-dn':'chg-eq')+'">'+(d>0?'+':'')+d.toFixed(0)+'食</span>';}
+    var jdgCls=ok?'badge-ok':s.rate>=S_KPI*0.8?'badge-warn':'badge-ng';
+    var jdgTxt=ok?'達成':s.rate>=S_KPI*0.8?'あと少し！':'未達';
+    return '<tr>'+
+      '<td><div class="rank-num '+rnCls+'">'+(i+1)+'</div></td>'+
+      '<td><div class="store-name" data-ssi="'+idx2+'">'+s.name+'</div></td>'+
+      '<td style="text-align:center;font-size:9px;color:'+lc+'">'+s.loc+'</td>'+
+      '<td style="text-align:center;font-size:9px;color:var(--n2)">'+s.rgn+'</td>'+
+      '<td class="bar-cell"><div class="bar-mini"><div class="bar-mini-fill" style="width:'+bp+'%;background:'+fc+'"></div><div class="bar-mini-kpi" style="left:'+kp+'%"></div></div></td>'+
+      '<td class="rate-val '+(ok?'rate-ok':'rate-ng')+'">'+s.rate.toFixed(2)+'%</td>'+
+      '<td style="text-align:right;font-size:10px">'+s.sales.toFixed(0)+'食</td>'+
+      '<td>'+chgHtml+'</td>'+
+      '<td><span class="'+jdgCls+'">'+jdgTxt+'</span></td>'+
+    '</tr>';
+  }).join('');
+  return '<div class="card" style="margin-bottom:12px;overflow-x:auto">'+
+    '<div class="card-hint">&#x1F4CC; 店舗名をクリック → メニュー別注文率</div>'+
+    '<table class="rank-table"><thead><tr>'+
+    '<th></th><th class="left">店舗名</th><th>立地</th><th>地域</th><th>注文率グラフ</th><th>注文率</th><th>販売数</th><th>前週比</th><th>判定</th>'+
+    '</tr></thead><tbody>'+rows+'</tbody></table></div>';
+}
+
+function sHtmlMenuTable(ml,ts){
+  var DMN2=[];
+  var mx=ml.length?ml[0].sales:1;
+  var rows=ml.map(function(m,i){
+    var pct=ts>0?m.sales/ts*100:0, mw=mx>0?m.sales/mx*100:0;
+    var bc=i===0?'var(--c2)':i===1?'#3b82f6':'var(--n2)';
+    var rnCls=i===0?'rn-1':i===1?'rn-2':i===2?'rn-3':'rn-n';
+    var idx2=DMN2.length; DMN2.push(m.name);
+    return '<tr>'+
+      '<td><div class="rank-num '+rnCls+'">'+(i+1)+'</div></td>'+
+      '<td style="font-weight:700;font-size:10px">'+m.name+'</td>'+
+      '<td style="text-align:right;font-weight:700">'+m.sales.toLocaleString()+'食</td>'+
+      '<td><div class="menu-bar-wrap"><div class="menu-bar-bg"><div class="menu-bar-fill" style="width:'+mw+'%;background:'+bc+'"></div></div><div class="menu-pct" style="color:'+bc+'">'+pct.toFixed(1)+'%</div></div></td>'+
+    '</tr>';
+  }).join('');
+  return '<div class="card" style="margin-bottom:12px">'+
+    '<table class="menu-table"><thead><tr>'+
+    '<th></th><th class="left">メニュー名（販売数降順）</th><th>販売数</th><th>構成比</th>'+
+    '</tr></thead><tbody>'+rows+'</tbody></table></div>';
+}
+
+/* --- renderSummerWeek --- */
+function renderSummerWeek(){
+  var isCum=S_CW==='__cum';
+  var d=isCum?null:S_ALL_WK.filter(function(w){return w.wk===S_CW;})[0]||S_ALL_WK[S_ALL_WK.length-1];
+  var prevD=d?(S_ALL_WK[S_ALL_WK.indexOf(d)-1]||null):null;
+  var fs,ml,ts,tc,prevTs=null,prevOvr=null;
+  if(isCum){
+    var sM={},smC={};
+    S_ALL_WK.forEach(function(wd){
+      sApplyFilter(wd.stores).forEach(function(s){
+        if(!sM[s.name])sM[s.name]={biz:s.biz,loc:s.loc,rgn:s.rgn,mo:s.mo,sales:0,cust:0,menus:{},youbi:{}};
+        sM[s.name].sales+=s.sales;sM[s.name].cust+=s.cust;
+        Object.keys(s.menus).forEach(function(m){sM[s.name].menus[m]=(sM[s.name].menus[m]||0)+s.menus[m];});
+        if(!smC[s.name])smC[s.name]={};
+        Object.keys(s.menus).forEach(function(m){smC[s.name][m]=(smC[s.name][m]||0)+s.menus[m];});
+      });
+    });
+    var cumStores=Object.keys(sM).map(function(n){var s=sM[n];
+      return{name:n,biz:s.biz,loc:s.loc,rgn:s.rgn,mo:s.mo,sales:s.sales,cust:s.cust,
+        rate:s.cust>0?s.sales/s.cust*100:0,menus:s.menus,youbi:{}};}).sort(function(a,b){return b.rate-a.rate;});
+    fs=cumStores; ml=aggMenu(fs,smC); ts=0;tc=0;fs.forEach(function(s){ts+=s.sales;tc+=s.cust;});
+  } else {
+    var sw=sWkSummary(d);fs=sw.fs;ml=sw.ml;ts=sw.ts;tc=sw.tc;
+    if(prevD){var ps=sWkSummary(prevD);prevTs=ps.ts;prevOvr=ps.ovr;}
+  }
+  var rateSeries=[],salesSeries=[];
+  S_ALL_WK.forEach(function(wd,i){
+    var ws=sWkSummary(wd);
+    rateSeries.push({lbl:(i+1)+'W',val:ws.ovr});
+    salesSeries.push({lbl:(i+1)+'W',val:ws.ts});
+  });
+  var trendRows=S_ALL_WK.map(function(wd,i){
+    var ws=sWkSummary(wd),ok=ws.ovr>=S_KPI;
+    return '<tr><td class="left">'+(i+1)+'W</td><td class="tiny">'+wd.wl+'</td>'+
+      '<td class="'+(ok?'t-ok':'t-ng')+'">'+ws.ovr.toFixed(2)+'%</td>'+
+      '<td>'+ws.ts.toLocaleString()+'食</td><td>'+ws.tc.toLocaleString()+'名</td>'+
+      '<td><span class="'+(ok?'badge-ok':'badge-ng')+'">'+(ok?'達成':'未達')+'</span></td></tr>';
+  }).join('');
+  var fl=sFilterLabel();
+  var infoHtml=isCum?'<div class="info-bar">&#x1F4C8; 累積表示（全'+S_ALL_WK.length+'週）</div>':'';
+  document.getElementById('stab-sweek').innerHTML=
+    infoHtml+
+    sHtmlAlert(fs,ml,prevD?sApplyFilter(prevD.stores):null)+
+    (fl?'<div class="filter-tag on">&#x1F50D; '+fl+'<span class="filter-clr" id="s-btn-clr">クリア</span></div>':'')+
+    sHtmlKPI(fs,ts,tc,prevTs,prevOvr)+
+    '<div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px;">'+
+      '<div class="card"><div class="chart-wrap"><div class="chart-title">&#x1F4C8; 注文率 週次推移（赤破線＝KPI '+S_KPI+'%）</div>'+makeLineChart(rateSeries,'rate',S_KPI)+'</div></div>'+
+      '<div class="card"><div class="chart-wrap"><div class="chart-title">&#x1F333; 販売数 週次推移</div>'+makeLineChart(salesSeries,'sales',null)+'</div></div>'+
+    '</div>'+
+    '<div class="sec-label">店舗別 注文率ランキング</div>'+
+    sHtmlRankTable(fs,prevD?sApplyFilter(prevD.stores):null)+
+    '<div style="display:grid;grid-template-columns:1fr 300px;gap:12px;margin-bottom:12px;">'+
+      '<div><div class="sec-label">メニュー別 販売数（降順）</div>'+sHtmlMenuTable(ml,ts)+'</div>'+
+      '<div><div class="card bp">'+htmlSummaryBars(fs)+'</div></div>'+
+    '</div>'+
+    (S_ALL_WK.length>=2?
+      '<div class="sec-label">週次トレンド</div>'+
+      '<div class="card" style="margin-bottom:12px;overflow-x:auto">'+
+        '<table class="trend-table"><thead><tr><th class="left">週</th><th>期間</th><th>注文率</th><th>販売数</th><th>総客数</th><th>KPI</th></tr></thead>'+
+        '<tbody>'+trendRows+'</tbody></table></div>':'');
+  if(document.getElementById('s-btn-clr'))
+    document.getElementById('s-btn-clr').addEventListener('click',function(){
+      SF={biz:'all',mn:'all',rgn:'all',mo:'all'};
+      document.querySelectorAll('.sb-btn[data-f]').forEach(function(b){b.classList.toggle('on',b.getAttribute('data-v')==='all');});
+      renderSummerAll();
+    });
+  document.querySelectorAll('.store-name[data-ssi]').forEach(function(el){
+    el.addEventListener('click',function(){ sDrillStore(el.getAttribute('data-ssi'),fs); });
+  });
+}
+
+function sDrillStore(idxStr,fs){
+  var idx2=parseInt(idxStr), store=fs[idx2]?fs[idx2].name:null; if(!store)return;
+  var sm={},cu=0;
+  S_ALL_WK.forEach(function(wd){
+    var s=wd.stores.filter(function(x){return x.name===store;})[0]; if(!s)return;
+    cu+=s.cust;
+    Object.keys(s.menus).forEach(function(mn){sm[mn]=(sm[mn]||0)+s.menus[mn];});
+  });
+  var items=Object.keys(sm).map(function(mn){return{name:mn,sales:sm[mn],rate:cu>0?sm[mn]/cu*100:0};}).sort(function(a,b){return b.rate-a.rate;});
+  var mx=items.length?Math.max(items[0].rate,S_KPI*2):S_KPI*2;
+  var kp=S_KPI/mx*100;
+  var rows=items.map(function(it){
+    var ok=it.rate>=S_KPI,fc=ok?'var(--g1)':'var(--r1)';
+    var bw=Math.min(it.rate/mx*100,100);
+    return '<div class="modal-row" style="grid-template-columns:minmax(0,1fr) 130px 56px 44px">'+
+      '<div class="modal-nm">'+it.name+'</div>'+
+      '<div class="modal-bw"><div class="modal-bt"><div class="modal-bf" style="width:'+bw+'%;background:'+fc+'"></div></div><div class="modal-kl" style="left:'+kp+'%"></div></div>'+
+      '<div class="modal-rv" style="color:'+fc+'">'+it.rate.toFixed(2)+'%</div>'+
+      '<div class="modal-sv">'+it.sales+'食</div></div>';
+  }).join('');
+  document.getElementById('m-icon').textContent='🏪';
+  document.getElementById('m-title').textContent=store+' ─ メニュー別注文率（夏季・累積）';
+  document.getElementById('m-body').innerHTML='<div class="modal-info">総客数: '+cu.toLocaleString()+'名　KPI: '+S_KPI+'%</div>'+
+    '<div class="modal-table-hdr" style="grid-template-columns:minmax(0,1fr) 130px 56px 44px"><span>メニュー名</span><span>注文率</span><span>注文率</span><span>販売数</span></div>'+rows;
+  document.getElementById('modal').classList.add('on');
+}
+
+/* --- renderSummerMonth --- */
+function renderSummerMonth(){
+  var monSet={};
+  S_ALL_WK.forEach(function(wd){monSet[wd.mon]=1;});
+  var monList=Object.keys(monSet).map(Number).sort(function(a,b){return a-b;});
+  if(!monList.length){document.getElementById('stab-smonth').innerHTML='<div style="padding:40px;text-align:center;color:var(--n3)">データがありません</div>';return;}
+  if(!S_CUR_MON||monList.indexOf(S_CUR_MON)<0) S_CUR_MON=monList[monList.length-1];
+  var monTabs=monList.map(function(m){
+    return '<button class="mon-tab-btn'+(m===S_CUR_MON?' active':'')+'" data-smon="'+m+'">'+(m)+'月</button>';
+  }).join('');
+  function buildMonData(mon){
+    var wkList=[],sM={},mnM={},smC={};
+    S_ALL_WK.filter(function(wd){return wd.mon===mon;}).forEach(function(wd){
+      var fs=sApplyFilter(wd.stores);
+      var wts=0,wtc=0;
+      fs.forEach(function(s){
+        wts+=s.sales;wtc+=s.cust;
+        if(!sM[s.name])sM[s.name]={name:s.name,biz:s.biz,loc:s.loc,rgn:s.rgn,sales:0,cust:0};
+        sM[s.name].sales+=s.sales;sM[s.name].cust+=s.cust;
+        if(!smC[s.name])smC[s.name]={};
+        Object.keys(s.menus||{}).forEach(function(mn){
+          smC[s.name][mn]=(smC[s.name][mn]||0)+s.menus[mn];
+          mnM[mn]=(mnM[mn]||0)+s.menus[mn];
+        });
+      });
+      wkList.push({wl:wd.wl,ovr:wtc>0?wts/wtc*100:0,ts:wts,tc:wtc});
+    });
+    var stores=Object.values(sM).map(function(s){s.rate=s.cust>0?s.sales/s.cust*100:0;return s;});
+    var ts=stores.reduce(function(a,s){return a+s.sales;},0);
+    var tc=stores.reduce(function(a,s){return a+s.cust;},0);
+    var ml=Object.keys(mnM).map(function(m){return{name:m,sales:mnM[m]};}).sort(function(a,b){return b.sales-a.sales;});
+    return{wkList:wkList,stores:stores,ml:ml,ts:ts,tc:tc,ovr:tc>0?ts/tc*100:0};
+  }
+  function renderSMonContent(){
+    var d=buildMonData(S_CUR_MON);
+    var ovr=d.tc>0?d.ts/d.tc*100:0,ok=ovr>=S_KPI,okw=d.wkList.filter(function(w){return w.ovr>=S_KPI;}).length;
+    var sumHtml='<div class="month-kpis" style="margin-bottom:12px">'+
+      '<div class="month-kpi"><div class="month-kpi-label">注文率</div><div class="month-kpi-val" style="color:'+(ok?'var(--g1)':'var(--r1)')+'">'+ovr.toFixed(2)+'<span class="month-kpi-unit">%</span></div></div>'+
+      '<div class="month-kpi"><div class="month-kpi-label">販売数</div><div class="month-kpi-val" style="color:var(--c2)">'+d.ts.toLocaleString()+'<span class="month-kpi-unit">食</span></div></div>'+
+      '<div class="month-kpi"><div class="month-kpi-label">総客数</div><div class="month-kpi-val" style="color:var(--n2)">'+d.tc.toLocaleString()+'<span class="month-kpi-unit">名</span></div></div>'+
+      '<div class="month-kpi"><div class="month-kpi-label">KPI達成週</div><div class="month-kpi-val" style="color:'+(okw===d.wkList.length?'var(--g1)':'var(--r1)')+'">'+okw+'<span class="month-kpi-unit">/'+d.wkList.length+'W</span></div></div></div>';
+    var trRows=d.wkList.map(function(w,i){var ok2=w.ovr>=S_KPI;
+      return '<tr><td class="left">'+(i+1)+'W</td><td style="font-size:9px;color:var(--n2)">'+w.wl+'</td>'+
+        '<td class="'+(ok2?'t-ok':'t-ng')+'">'+w.ovr.toFixed(2)+'%</td>'+
+        '<td>'+w.ts.toLocaleString()+'食</td><td>'+w.tc.toLocaleString()+'名</td>'+
+        '<td><span class="'+(ok2?'badge-ok':'badge-ng')+'">'+(ok2?'達成':'未達')+'</span></td></tr>';
+    }).join('');
+    var mnHtml='';
+    if(d.ml.length&&d.tc>0){
+      var mxR=0; d.ml.forEach(function(m){var r=m.sales/d.tc*100;if(r>mxR)mxR=r;});
+      mxR=Math.max(mxR,S_KPI*2)||1; var kp2=S_KPI/mxR*100;
+      mnHtml='<div class="sec-label">メニュー別 注文率（対総客数）</div>'+
+        '<div class="card" style="margin-bottom:12px"><table class="rank-table">'+
+        '<thead><tr><th></th><th class="left">メニュー名</th><th>注文率グラフ</th><th style="text-align:right">注文率</th><th style="text-align:right">販売数</th></tr></thead><tbody>'+
+        d.ml.map(function(m,i){
+          var r=m.sales/d.tc*100,ok2=r>=S_KPI,fc=ok2?'var(--g1)':'var(--r1)';
+          var bw=Math.min(r/mxR*100,100);
+          var rnCls=i===0?'rn-1':i===1?'rn-2':i===2?'rn-3':'rn-n';
+          return '<tr><td><div class="rank-num '+rnCls+'">'+(i+1)+'</div></td>'+
+            '<td style="font-weight:700">'+m.name+'</td>'+
+            '<td class="bar-cell"><div class="bar-mini"><div class="bar-mini-fill" style="width:'+bw+'%;background:'+fc+'"></div><div class="bar-mini-kpi" style="left:'+kp2+'%"></div></div></td>'+
+            '<td style="text-align:right;font-weight:700;color:'+fc+'">'+r.toFixed(2)+'%</td>'+
+            '<td style="text-align:right">'+m.sales.toLocaleString()+'食</td></tr>';
+        }).join('')+'</tbody></table></div>';
+    }
+    document.getElementById('smon-content').innerHTML=
+      sumHtml+
+      '<div class="sec-label">週次トレンド</div>'+
+      '<div class="card" style="margin-bottom:12px;overflow-x:auto"><table class="trend-table"><thead><tr><th class="left">週</th><th>期間</th><th>注文率</th><th>販売数</th><th>総客数</th><th>KPI</th></tr></thead><tbody>'+trRows+'</tbody></table></div>'+
+      mnHtml+
+      '<div class="sec-label">店舗別 一覧</div>'+
+      htmlMonthStoreTable(d.stores,'smon-st-tbl','smon-st-tbody');
+    setTimeout(function(){bindMonthSort(d.stores,'smon-st-tbody','smon-st-tbl');},0);
+  }
+  document.getElementById('stab-smonth').innerHTML=
+    '<div style="display:flex;gap:6px;margin-bottom:14px;flex-wrap:wrap" id="smon-tab-bar">'+monTabs+'</div>'+
+    '<div id="smon-content"></div>';
+  document.getElementById('smon-tab-bar').addEventListener('click',function(e){
+    var b=e.target.closest('.mon-tab-btn');if(!b)return;
+    S_CUR_MON=parseInt(b.getAttribute('data-smon'));
+    document.querySelectorAll('.mon-tab-btn').forEach(function(x){x.classList.toggle('active',parseInt(x.getAttribute('data-smon'))===S_CUR_MON);});
+    renderSMonContent();
+  });
+  renderSMonContent();
+}
+
+/* --- renderSummerMO --- */
+function renderSummerMO(){
+  var moD={sales:0,cust:0,stores:{}},poD={sales:0,cust:0,stores:{}};
+  S_ALL_WK.forEach(function(wd){
+    sApplyFilter(wd.stores).forEach(function(s){
+      var tg=s.mo==='MO'?moD:poD;
+      tg.sales+=s.sales;tg.cust+=s.cust;
+      if(!tg.stores[s.name])tg.stores[s.name]={sales:0,cust:0};
+      tg.stores[s.name].sales+=s.sales;tg.stores[s.name].cust+=s.cust;
+    });
+  });
+  function moCard(data,label,isMo){
+    var ovr=data.cust>0?data.sales/data.cust*100:0,ok=ovr>=S_KPI;
+    var sl=Object.keys(data.stores).map(function(n){var s=data.stores[n];return{name:n,sales:s.sales,rate:s.cust>0?s.sales/s.cust*100:0};}).sort(function(a,b){return b.rate-a.rate;});
+    var rows=sl.map(function(s){
+      var ok2=s.rate>=S_KPI,fc=ok2?'var(--g1)':'var(--r1)';
+      var bp=Math.min(s.rate/10*100,100),kp=S_KPI/10*100;
+      return '<tr><td style="font-size:10px;font-weight:700">'+s.name+'</td>'+
+        '<td class="bar-cell"><div class="bar-mini"><div class="bar-mini-fill" style="width:'+bp+'%;background:'+fc+'"></div><div class="bar-mini-kpi" style="left:'+kp+'%"></div></div></td>'+
+        '<td class="rate-val '+(ok2?'rate-ok':'rate-ng')+'">'+s.rate.toFixed(2)+'%</td></tr>';
+    }).join('');
+    return '<div class="card mo-card"><div class="mo-card" style="padding:12px">'+
+      '<div class="mo-title '+(isMo?'mob':'pop')+'">'+label+'（'+sl.length+'店）</div>'+
+      '<div style="display:flex;gap:16px;margin-bottom:12px">'+
+        '<div><div style="font-size:9px;color:var(--n2);font-weight:700">注文率</div><div style="font-size:28px;font-weight:900;color:'+(ok?'var(--g1)':'var(--r1)')+'">'+ovr.toFixed(2)+'<span style="font-size:12px;color:var(--n2)">%</span></div></div>'+
+        '<div><div style="font-size:9px;color:var(--n2);font-weight:700">販売数</div><div style="font-size:28px;font-weight:900;color:var(--c2)">'+data.sales.toLocaleString()+'<span style="font-size:11px;color:var(--n2)">食</span></div></div>'+
+        '<div><div style="font-size:9px;color:var(--n2);font-weight:700">KPI</div><div style="font-size:22px;font-weight:900;color:'+(ok?'var(--g1)':'var(--r1)')+'">'+(ok?'達成':'未達')+'</div></div>'+
+      '</div><table class="rank-table"><thead><tr><th class="left">店舗名</th><th>注文率</th><th>注文率</th></tr></thead><tbody>'+rows+'</tbody></table></div></div>';
+  }
+  var comp='';
+  if(moD.cust>0&&poD.cust>0){
+    var rm=moD.sales/moD.cust*100,rp=poD.sales/poD.cust*100,df=rm-rp,up=df>=0;
+    comp='<div class="info-bar">&#x1F4CA; MobileOrder '+rm.toFixed(2)+'% vs 季節メニューPOP '+rp.toFixed(2)+'%　差: '+(up?'&#x25B2;':'&#x25BC;')+Math.abs(df).toFixed(2)+'pt</div>';
+  }
+  document.getElementById('stab-smo').innerHTML=comp+'<div class="mo-grid">'+moCard(moD,'&#x1F4F1; MobileOrder',true)+moCard(poD,'&#x1F4CB; 季節メニューPOP',false)+'</div>';
+}
+
+/* --- renderSummerAll --- */
+function renderSummerAll(){
+  if(!S_ALL_WK.length){
+    document.getElementById('db-summer').innerHTML='<div class="nodata-box" style="margin:40px auto;max-width:480px;text-align:center;padding:30px">'+
+      '<h2 style="margin-bottom:10px">&#x1F333; 夏季メニューのデータがありません</h2>'+
+      '<p style="font-size:12px;color:var(--n2)">data/summer/ フォルダにCSVを追加し、<br>data/summer/index.json を更新してください。</p>'+
+      '<div class="nodata-code" style="margin-top:12px">{"sales":["20260511.csv"],<br>"customers":["20260511c.csv"]}</div></div>';
+    return;
+  }
+  if(!S_CW) S_CW=S_ALL_WK[S_ALL_WK.length-1].wk;
+  sSbWeeks(); sSbMenus();
+  var activeTab=document.querySelector('[data-stab].on');
+  var t=activeTab?activeTab.getAttribute('data-stab'):'sweek';
+  if(t==='sweek') renderSummerWeek();
+  else if(t==='smonth') renderSummerMonth();
+  else renderSummerMO();
+}
+
+function sSbWeeks(){
+  var h='';
+  S_ALL_WK.forEach(function(w,i){
+    h+='<button class="sb-btn'+(w.wk===S_CW?' on-navy':'')+(S_CW==='__cum'&&w.wk===S_CW?' on-blue':'')+'" data-swk="'+w.wk+'">'+(i+1)+'W<span class="sb-wk-sub">'+w.wl+'</span></button>';
+  });
+  document.getElementById('sb-weeks').innerHTML=h;
+  document.getElementById('btn-cum').className='sb-btn'+(S_CW==='__cum'?' on-blue':'');
+}
+function sSbMenus(){
+  var allMenus={};
+  S_ALL_WK.forEach(function(wd){wd.ml.forEach(function(m){allMenus[m.name]=1;});});
+  var h='<button class="sb-btn'+(SF.mn==='all'?' on':'')+'" data-sf="mn" data-sv="all">すべて</button>';
+  Object.keys(allMenus).forEach(function(mn){
+    h+='<button class="sb-btn'+(SF.mn===mn?' on':'')+'" data-sf="mn" data-sv="'+mn.replace(/"/g,'&quot;')+'">'+mn+'</button>';
+  });
+  document.getElementById('sb-menus').innerHTML=h;
+}
 /* ===== htmlMonthStoreTable ===== */
 function htmlMonthStoreTable(stores, tableId, tbodyId){
   var tid = tableId || 'month-store-table';
@@ -1376,6 +2005,105 @@ function updateSbMenus(){
 
   // Load data
   document.getElementById('ld').style.display='flex';
+
+  /* ===== シーズン切り替え ===== */
+  var CUR_SEASON='spring';
+  document.querySelector('.season-bar').addEventListener('click',function(e){
+    var t=e.target.closest('.season-tab');
+    if(t){
+      CUR_SEASON=t.getAttribute('data-season');
+      document.querySelectorAll('.season-tab').forEach(function(x){x.classList.toggle('on',x.getAttribute('data-season')===CUR_SEASON);});
+      document.getElementById('db-spring').style.display=CUR_SEASON==='spring'?'block':'none';
+      document.getElementById('db-summer').style.display=CUR_SEASON==='summer'?'block':'none';
+      if(CUR_SEASON==='summer'&&S_ALL_WK.length===0) loadSummerData();
+      else if(CUR_SEASON==='summer') renderSummerAll();
+      return;
+    }
+  });
+
+  /* ===== 夏季サブタブ ===== */
+  document.getElementById('db-summer').addEventListener('click',function(e){
+    var t=e.target.getAttribute('data-stab'); if(!t)return;
+    document.querySelectorAll('[data-stab]').forEach(function(x){x.classList.toggle('on',x.getAttribute('data-stab')===t);});
+    ['sweek','smonth','smo'].forEach(function(x){
+      document.getElementById('stab-'+x).style.display=x===t?'block':'none';
+    });
+    if(t==='sweek') renderSummerWeek();
+    else if(t==='smonth') renderSummerMonth();
+    else renderSummerMO();
+  });
+
+  /* ===== 夏季サイドバー週選択 ===== */
+  document.querySelector('.sidebar').addEventListener('click',function(e){
+    if(CUR_SEASON!=='summer') return;
+    var b=e.target.closest('button'); if(!b)return;
+    var swk=b.getAttribute('data-swk');
+    var sf=b.getAttribute('data-sf'),sv=b.getAttribute('data-sv');
+    if(swk!==null){S_CW=swk;renderSummerAll();return;}
+    if(sf&&sv){
+      SF[sf]=sv;
+      document.querySelectorAll('.sb-btn[data-sf="'+sf+'"]').forEach(function(x){x.classList.toggle('on',x.getAttribute('data-sv')===sv);});
+      renderSummerAll();return;
+    }
+  });
+
+  /* ===== データ更新モーダル ===== */
+  document.getElementById('upd-btn').addEventListener('click',function(){
+    document.getElementById('upd-ov').classList.add('on');
+    document.getElementById('upd-pw-screen').style.display='flex';
+    document.getElementById('upd-guide').style.display='none';
+    document.getElementById('upd-pw-input').value='';
+    document.getElementById('upd-pw-err').style.display='none';
+  });
+  document.getElementById('upd-x').addEventListener('click',function(){document.getElementById('upd-ov').classList.remove('on');});
+  document.getElementById('upd-ov').addEventListener('click',function(e){if(e.target===this)this.classList.remove('on');});
+  document.getElementById('upd-pw-ok').addEventListener('click',function(){
+    var pw=document.getElementById('upd-pw-input').value;
+    if(pw==='1209'){
+      document.getElementById('upd-pw-screen').style.display='none';
+      document.getElementById('upd-guide').style.display='block';
+    } else {
+      document.getElementById('upd-pw-err').style.display='block';
+    }
+  });
+  document.getElementById('upd-pw-input').addEventListener('keydown',function(e){
+    if(e.key==='Enter') document.getElementById('upd-pw-ok').click();
+  });
+
+  /* ===== 夏季データ読み込み ===== */
+  function loadSummerData(){
+    fetch('data/summer/index.json')
+      .then(function(r){if(!r.ok)throw new Error('summer/index.json missing');return r.json();})
+      .then(function(idx){
+        var salesFiles=idx.sales||[],custFiles=idx.customers||[];
+        return Promise.all([
+          Promise.all(salesFiles.map(function(f){return fetchText('data/summer/sales/'+f);})),
+          Promise.all(custFiles.map(function(f){return fetchText('data/summer/customers/'+f);}))
+        ]);
+      })
+      .then(function(res){
+        var custMap={};
+        res[1].forEach(function(t){var m=sParseCust(t);Object.assign(custMap,m);});
+        var salesMap={};
+        res[0].forEach(function(t){
+          var m=sParseSales(t);
+          Object.keys(m).forEach(function(k){
+            if(!salesMap[k]){salesMap[k]=m[k];return;}
+            Object.keys(m[k].menus).forEach(function(mn){salesMap[k].menus[mn]=(salesMap[k].menus[mn]||0)+m[k].menus[mn];});
+          });
+        });
+        S_ALL_WK=sBuildWeeks(salesMap,custMap);
+        S_ALL_WK.sort(function(a,b){return a.wk<b.wk?-1:a.wk>b.wk?1:0;});
+        if(S_ALL_WK.length){S_CW=S_ALL_WK[S_ALL_WK.length-1].wk;}
+        renderSummerAll();
+      })
+      .catch(function(err){
+        console.warn('summer load error:',err.message);
+        renderSummerAll();
+      });
+  }
+
+  /* ===== 春メニュー読み込み（既存） ===== */
   fetch('data/index.json')
     .then(function(r){ if(!r.ok) throw new Error('index.json missing'); return r.json(); })
     .then(function(idx){
