@@ -13,7 +13,7 @@
   --g1:#059669;--g2:#d1fae5;--g3:#6ee7b7;
   --r1:#dc2626;--r2:#fee2e2;--r3:#fca5a5;
   --b2:#dbeafe;--n1:#e2e8f0;--n2:#64748b;--n3:#94a3b8;
-  --sb:210px;--hh:52px;--shh:38px;
+  --sb:0px;--hh:52px;--shh:38px;--fh:44px;
 }
 html{font-size:13px;-webkit-text-size-adjust:100%;}
 body{font-family:'Meiryo UI','メイリオ',sans-serif;background:var(--c3);color:var(--c1);min-height:100vh;}
@@ -32,8 +32,8 @@ body{font-family:'Meiryo UI','メイリオ',sans-serif;background:var(--c3);colo
 .season-tab.on{color:#fff;border-bottom-color:#fff;}
 
 /* LAYOUT */
-.layout{display:flex;min-height:calc(100vh - var(--hh) - var(--shh));}
-.sidebar{width:var(--sb);background:#fff;border-right:1px solid var(--n1);padding:10px 8px;position:sticky;top:calc(var(--hh) + var(--shh));height:calc(100vh - var(--hh) - var(--shh));overflow-y:auto;flex-shrink:0;}
+.layout{display:flex;min-height:calc(100vh - var(--hh) - var(--shh) - var(--fh));}
+.sidebar{display:none;}
 .main{flex:1;padding:12px 14px;min-width:0;}
 
 /* SIDEBAR */
@@ -223,6 +223,31 @@ body{font-family:'Meiryo UI','メイリオ',sans-serif;background:var(--c3);colo
 .upd-pw-btn{background:var(--c1);color:#fff;border:none;padding:10px 28px;border-radius:6px;font-family:inherit;font-size:13px;font-weight:700;cursor:pointer;}
 .upd-pw-err{color:var(--r1);font-size:11px;font-weight:700;}
 
+
+/* FILTER BAR */
+.filter-bar{height:var(--fh);background:#fff;border-bottom:1px solid var(--n1);display:flex;align-items:center;padding:0 14px;gap:8px;position:sticky;top:calc(var(--hh) + var(--shh));z-index:280;flex-wrap:nowrap;overflow-x:auto;}
+.wk-bar-wrap{display:flex;align-items:center;gap:4px;flex-shrink:0;}
+.wk-bar-label{font-size:9px;font-weight:700;color:var(--n2);white-space:nowrap;}
+.wk-scroll{display:flex;gap:3px;overflow-x:auto;max-width:340px;}
+.wk-scroll::-webkit-scrollbar{height:3px;}
+.wk-scroll::-webkit-scrollbar-thumb{background:var(--n1);border-radius:2px;}
+.wk-btn{font-size:9px;font-weight:700;padding:3px 8px;border-radius:3px;border:1px solid var(--n1);background:#fff;color:var(--n2);cursor:pointer;white-space:nowrap;flex-shrink:0;transition:.1s;}
+.wk-btn:hover{border-color:var(--c2);color:var(--c2);}
+.wk-btn.on{background:var(--c1);color:#fff;border-color:var(--c1);}
+.wk-btn.on-cum{background:#7c3aed;color:#fff;border-color:#7c3aed;}
+.filter-sep{width:1px;height:24px;background:var(--n1);flex-shrink:0;}
+.dd-wrap{position:relative;flex-shrink:0;}
+.dd-btn{display:flex;align-items:center;gap:5px;padding:4px 10px;border:1px solid var(--n1);border-radius:4px;background:#fff;font-family:inherit;font-size:10px;font-weight:700;color:var(--c1);cursor:pointer;white-space:nowrap;transition:.1s;}
+.dd-btn:hover{border-color:var(--c2);}
+.dd-btn.active{border-color:var(--c2);background:var(--b2);color:var(--c2);}
+.dd-btn .arrow{font-size:8px;color:var(--n3);}
+.dd-menu{display:none;position:absolute;top:calc(100% + 4px);left:0;background:#fff;border:1px solid var(--n1);border-radius:6px;box-shadow:0 4px 16px rgba(0,0,0,.12);z-index:400;min-width:140px;padding:4px 0;}
+.dd-menu.on{display:block;}
+.dd-item{display:block;width:100%;text-align:left;padding:6px 12px;border:none;background:none;font-family:inherit;font-size:11px;font-weight:600;color:var(--n2);cursor:pointer;transition:.1s;}
+.dd-item:hover{background:var(--b2);color:var(--c2);}
+.dd-item.on{color:var(--c2);font-weight:700;}
+.filter-clr-btn{font-size:10px;font-weight:700;color:var(--r1);background:var(--r2);border:1px solid var(--r3);border-radius:4px;padding:3px 10px;cursor:pointer;white-space:nowrap;flex-shrink:0;}
+
 /* RESPONSIVE */
 @media(max-width:900px){
   .kpi-grid{grid-template-columns:repeat(2,1fr);}
@@ -251,6 +276,46 @@ body{font-family:'Meiryo UI','メイリオ',sans-serif;background:var(--c3);colo
 <!-- SEASON BAR -->
 <div class="season-bar" id="season-bar">
   <!-- seasons.json から動的生成 -->
+</div>
+
+<!-- FILTER BAR -->
+<div class="filter-bar" id="filter-bar">
+  <!-- 週選択 -->
+  <div class="wk-bar-wrap">
+    <span class="wk-bar-label">📋 週</span>
+    <div class="wk-scroll" id="fb-weeks"></div>
+    <button class="wk-btn" id="fb-cum">累積</button>
+  </div>
+  <div class="filter-sep"></div>
+  <!-- 所属ドロップダウン -->
+  <div class="dd-wrap" id="dd-area-wrap">
+    <button class="dd-btn" id="dd-area-btn">🏢 所属 <span class="arrow">▼</span></button>
+    <div class="dd-menu" id="dd-area-menu">
+      <button class="dd-item on" data-f="area" data-v="all">すべて</button>
+      <button class="dd-item" data-f="area" data-v="第1エリア">第1エリア</button>
+      <button class="dd-item" data-f="area" data-v="第2エリア">第2エリア</button>
+      <button class="dd-item" data-f="area" data-v="第3エリア">第3エリア</button>
+      <button class="dd-item" data-f="area" data-v="第4エリア">第4エリア</button>
+      <button class="dd-item" data-f="area" data-v="FC">FC</button>
+    </div>
+  </div>
+  <!-- 導線ドロップダウン -->
+  <div class="dd-wrap" id="dd-mo-wrap">
+    <button class="dd-btn" id="dd-mo-btn">📱 導線 <span class="arrow">▼</span></button>
+    <div class="dd-menu" id="dd-mo-menu">
+      <button class="dd-item on" data-f="mo" data-v="all">すべて</button>
+      <button class="dd-item" data-f="mo" data-v="MO">MobileOrder</button>
+      <button class="dd-item" data-f="mo" data-v="POP">季節メニューPOP</button>
+    </div>
+  </div>
+  <!-- メニュードロップダウン -->
+  <div class="dd-wrap" id="dd-mn-wrap">
+    <button class="dd-btn" id="dd-mn-btn">🍽 メニュー <span class="arrow">▼</span></button>
+    <div class="dd-menu" id="dd-mn-menu">
+      <button class="dd-item on" data-f="mn" data-v="all">すべて</button>
+    </div>
+  </div>
+  <button class="filter-clr-btn" id="fb-clr" style="display:none">✕ クリア</button>
 </div>
 
 <!-- DRILL MODAL -->
@@ -311,32 +376,6 @@ body{font-family:'Meiryo UI','メイリオ',sans-serif;background:var(--c3);colo
 
 <!-- LAYOUT -->
 <div class="layout">
-<div class="sidebar">
-  <div class="sb-sec">
-    <span class="sb-lbl">📋 表示週</span>
-    <div id="sb-weeks"></div>
-    <button class="sb-btn" id="btn-cum" data-wk="__cum">📈 累積</button>
-  </div>
-  <div class="sb-sec">
-    <span class="sb-lbl">🏢 所属</span>
-    <button class="sb-btn on" data-f="area" data-v="all">すべて</button>
-    <button class="sb-btn" data-f="area" data-v="第1エリア">第1エリア</button>
-    <button class="sb-btn" data-f="area" data-v="第2エリア">第2エリア</button>
-    <button class="sb-btn" data-f="area" data-v="第3エリア">第3エリア</button>
-    <button class="sb-btn" data-f="area" data-v="第4エリア">第4エリア</button>
-    <button class="sb-btn" data-f="area" data-v="FC">FC</button>
-  </div>
-  <div class="sb-sec">
-    <span class="sb-lbl">📱 導線</span>
-    <button class="sb-btn on" data-f="mo" data-v="all">すべて</button>
-    <button class="sb-btn" data-f="mo" data-v="MO">MobileOrder</button>
-    <button class="sb-btn" data-f="mo" data-v="POP">季節メニューPOP</button>
-  </div>
-  <div class="sb-sec">
-    <span class="sb-lbl">🍽 メニュー</span>
-    <div id="sb-menus"></div>
-  </div>
-</div>
 <div class="main">
   <div id="ld"><div class="spin"></div><div class="ld-txt">データを読み込み中...</div></div>
   <div id="nodata" style="display:none"><div class="nodata-box"><div style="font-size:32px;margin-bottom:10px">📊</div><h2>データがありません</h2><p>GitHubの <b>data/sales/</b> と <b>data/customers/</b> にCSVをアップロードしてください。<br>自動的に読み込まれます。</p></div></div>
@@ -422,11 +461,15 @@ function fetchText(url){
 ================================================================ */
 function listRepoFiles(path){
   var url='https://api.github.com/repos/'+REPO+'/contents/'+path;
-  return fetch(url, {headers:{'Accept':'application/vnd.github.v3+json'}})
-    .then(function(r){ if(!r.ok) throw new Error(path+' API error'); return r.json(); })
+  return fetch(url, {headers:{'Accept':'application/vnd.github.v3+json','User-Agent':'Mozilla/5.0'}})
+    .then(function(r){ if(!r.ok) throw new Error(path+' API error '+r.status); return r.json(); })
     .then(function(items){
+      if(!Array.isArray(items)) throw new Error('API response not array');
       return items.filter(function(f){ return f.type==='file' && f.name.endsWith('.csv'); })
-                  .map(function(f){ return f.name; });
+                  .map(function(f){
+                    // download_urlが使えればそれを使う（日本語ファイル名に対応済み）
+                    return {name:f.name, url:f.download_url};
+                  });
     });
 }
 
@@ -862,6 +905,21 @@ function drillMenu(idx){
 /* ================================================================
    RENDER WEEK TAB
 ================================================================ */
+function updateFilterLabels(){
+  var fl=filterLabel();
+  var clr=document.getElementById('fb-clr');
+  if(clr) clr.style.display=fl?'block':'none';
+  // ボタンラベル更新
+  var areaMap={'all':'所属','第1エリア':'第1エリア','第2エリア':'第2エリア','第3エリア':'第3エリア','第4エリア':'第4エリア','FC':'FC'};
+  var moMap={'all':'導線','MO':'MO','POP':'POP'};
+  var ab=document.getElementById('dd-area-btn');
+  var mb=document.getElementById('dd-mo-btn');
+  var nb=document.getElementById('dd-mn-btn');
+  if(ab){ ab.innerHTML='🏢 '+(areaMap[F.area]||F.area)+' <span class="arrow">▼</span>'; ab.classList.toggle('active',F.area!=='all'); }
+  if(mb){ mb.innerHTML='📱 '+(moMap[F.mo]||F.mo)+' <span class="arrow">▼</span>'; mb.classList.toggle('active',F.mo!=='all'); }
+  if(nb){ nb.innerHTML='🍽 '+(F.mn==='all'?'メニュー':F.mn)+' <span class="arrow">▼</span>'; nb.classList.toggle('active',F.mn!=='all'); }
+}
+
 function renderWeek(){
   var KPI=kpi();
   var isCum=CW==='__cum';
@@ -927,12 +985,7 @@ function renderWeek(){
       htmlTrendTable(wkSeries,KPI):'');
 
   // events
-  if(document.getElementById('btn-clr'))
-    document.getElementById('btn-clr').addEventListener('click',function(){
-      F={area:'all',mo:'all',mn:'all'};
-      document.querySelectorAll('.sb-btn[data-f]').forEach(function(b){b.classList.toggle('on',b.getAttribute('data-v')==='all');});
-      renderAll();
-    });
+
   bindTableEvents('tab-week');
 }
 
@@ -1117,19 +1170,23 @@ function renderSeason(){
 function updateSbWeeks(){
   var h='';
   ALL_WK.forEach(function(w,i){
-    h+='<button class="sb-btn'+(w.wk===CW?' on-dark':'')+(CW==='__cum'&&w.wk===CW?' on-cum':'')+'" data-wk="'+w.wk+'">'+(i+1)+'W<span class="sb-wk-sub">'+w.wl+'</span></button>';
+    h+='<button class="wk-btn'+(w.wk===CW?' on':'')+(CW==='__cum'?' on-cum':'')+'" data-wk="'+w.wk+'">'+(i+1)+'W</button>';
   });
-  document.getElementById('sb-weeks').innerHTML=h;
-  document.getElementById('btn-cum').className='sb-btn'+(CW==='__cum'?' on-cum':'');
+  var fbw=document.getElementById('fb-weeks');
+  if(fbw) fbw.innerHTML=h;
+  var cum=document.getElementById('fb-cum');
+  if(cum) cum.className='wk-btn'+(CW==='__cum'?' on-cum':'');
 }
 function updateSbMenus(){
   var mm={};
   ALL_WK.forEach(function(wd){wd.ml.forEach(function(m){mm[m.name]=1;});});
-  var h='<button class="sb-btn'+(F.mn==='all'?' on':'')+'" data-f="mn" data-v="all">すべて</button>';
+  var h='<button class="dd-item'+(F.mn==='all'?' on':'')+'" data-f="mn" data-v="all">すべて</button>';
   Object.keys(mm).forEach(function(mn){
-    h+='<button class="sb-btn'+(F.mn===mn?' on':'')+'" data-f="mn" data-v="'+mn.replace(/"/g,'&quot;')+'">'+mn+'</button>';
+    h+='<button class="dd-item'+(F.mn===mn?' on':'')+'" data-f="mn" data-v="'+mn.replace(/"/g,'&quot;')+'">'+mn+'</button>';
   });
-  document.getElementById('sb-menus').innerHTML=h;
+  var mnMenu=document.getElementById('dd-mn-menu');
+  if(mnMenu) mnMenu.innerHTML=h;
+  updateFilterLabels();
 }
 
 /* ================================================================
@@ -1146,7 +1203,7 @@ function renderAll(){
   document.getElementById('ld').style.display='none';
   document.getElementById('nodata').style.display='none';
   document.getElementById('db').style.display='block';
-  updateSbWeeks(); updateSbMenus();
+  updateSbWeeks(); updateSbMenus(); updateFilterLabels();
   var activeTab=document.querySelector('.tab.on');
   var t=activeTab?activeTab.getAttribute('data-tab'):'week';
   if(t==='week') renderWeek();
@@ -1168,8 +1225,8 @@ function loadSeasonData(season){
   ]).then(function(res){
     var salesFiles=res[0], custFiles=res[1];
     return Promise.all([
-      Promise.all(salesFiles.map(function(f){return fetchText('data/sales/'+f);})),
-      Promise.all(custFiles.map(function(f){return fetchText('data/customers/'+f);}))
+      Promise.all(salesFiles.map(function(f){return fetchText(f.url||('data/sales/'+encodeURIComponent(f.name||f)));})),
+      Promise.all(custFiles.map(function(f){return fetchText(f.url||('data/customers/'+encodeURIComponent(f.name||f)));}))
     ]);
   }).then(function(res){
     var custMap={};
@@ -1197,16 +1254,42 @@ function loadSeasonData(season){
    INIT
 ================================================================ */
 (function(){
-  // Sidebar
-  document.querySelector('.sidebar').addEventListener('click',function(e){
+  // Filter Bar: ドロップダウン開閉
+  ['area','mo','mn'].forEach(function(key){
+    var btn=document.getElementById('dd-'+key+'-btn');
+    var menu=document.getElementById('dd-'+key+'-menu');
+    if(!btn||!menu)return;
+    btn.addEventListener('click',function(e){
+      e.stopPropagation();
+      ['area','mo','mn'].forEach(function(k){
+        if(k!==key) document.getElementById('dd-'+k+'-menu').classList.remove('on');
+      });
+      menu.classList.toggle('on');
+    });
+  });
+  document.addEventListener('click',function(){
+    ['area','mo','mn'].forEach(function(k){
+      var m=document.getElementById('dd-'+k+'-menu');
+      if(m) m.classList.remove('on');
+    });
+  });
+  // Filter Bar: フィルター選択
+  document.getElementById('filter-bar').addEventListener('click',function(e){
     var b=e.target.closest('button'); if(!b)return;
     var f=b.getAttribute('data-f'),v=b.getAttribute('data-v'),wk=b.getAttribute('data-wk');
     if(f&&v){
       F[f]=v;
-      document.querySelectorAll('.sb-btn[data-f="'+f+'"]').forEach(function(x){x.classList.toggle('on',x.getAttribute('data-v')===v);});
-      renderAll(); return;
+      document.querySelectorAll('.dd-item[data-f="'+f+'"]').forEach(function(x){x.classList.toggle('on',x.getAttribute('data-v')===v);});
+      ['area','mo','mn'].forEach(function(k){document.getElementById('dd-'+k+'-menu').classList.remove('on');});
+      updateFilterLabels(); renderAll(); return;
     }
     if(wk!==null){CW=wk;updateSbWeeks();renderAll();return;}
+    if(b.id==='fb-cum'){CW='__cum';updateSbWeeks();renderAll();return;}
+    if(b.id==='fb-clr'){
+      F={area:'all',mo:'all',mn:'all'};
+      document.querySelectorAll('.dd-item[data-f]').forEach(function(x){x.classList.toggle('on',x.getAttribute('data-v')==='all');});
+      updateFilterLabels(); renderAll(); return;
+    }
   });
   // Tabs
   document.querySelector('.tab-bar').addEventListener('click',function(e){
