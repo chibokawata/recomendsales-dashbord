@@ -482,7 +482,7 @@ function renderWeek(){
     var cumSt=Object.keys(sM).map(function(n){var s=sM[n];s.name=n;s.rate=s.cust>0?s.sales/s.cust*100:0;return s;}).sort(function(a,b){return b.rate-a.rate;});
     fs=cumSt;ml=aggMenu(fs,smC);ts=0;tc=0;fs.forEach(function(s){ts+=s.sales;tc+=s.cust;});
   }else{var sw=wkSum(d);fs=sw.fs;ml=sw.ml;ts=sw.ts;tc=sw.tc;if(prevD){var ps=wkSum(prevD);prevTs=ps.ts;prevOvr=ps.ovr;}}
-  var wkSeries=ALL_WK.map(function(wd,i){var ws=wkSum(wd);return{lbl:(i+1)+'W',val:ws.ovr,ts:ws.ts,tc:ws.tc,wl:wd.wl};});
+  var wkSeries=ALL_WK.map(function(wd,i){var ws=wkSum(wd);return{lbl:(i+1)+'W',val:ws.ovr,ovr:ws.ovr,ts:ws.ts,tc:ws.tc,wl:wd.wl};});
   var sSeries=ALL_WK.map(function(wd,i){var ws=wkSum(wd);return{lbl:(i+1)+'W',val:ws.ts};});
   var KPI=kpiOf(sea);
   var infoHtml=isCum?'<div class="info-bar">累積表示（全'+ALL_WK.length+'週）</div>':'';
@@ -520,7 +520,7 @@ function renderMonth(){
   }
   function renderMonContent(){
     var d=buildMon(CUR_MON),sea=d.sea,KPI=kpiOf(sea),ovr=d.ovr,ok=ovr>=KPI,okw=d.wkList.filter(function(w){return w.ovr>=KPI;}).length;
-    var mSeries=d.wkList.map(function(w,i){return{lbl:(i+1)+'W',val:w.ovr,ts:w.ts,tc:w.tc,wl:w.wl};});
+    var mSeries=d.wkList.map(function(w,i){return{lbl:(i+1)+'W',val:w.ovr,ovr:w.ovr,ts:w.ts,tc:w.tc,wl:w.wl};});
     var sSeries=d.wkList.map(function(w,i){return{lbl:(i+1)+'W',val:w.ts};});
     document.getElementById('mon-content').innerHTML=
       '<div class="mon-kpis">'+
@@ -559,7 +559,7 @@ function renderSeason(){
     seaWks.forEach(function(wd){applyF(wd.stores).forEach(function(s){ts2+=s.sales;tc2+=s.cust;if(!sM[s.name])sM[s.name]={area:s.area,mo:s.mo,sales:0,cust:0};sM[s.name].sales+=s.sales;sM[s.name].cust+=s.cust;if(!smC[s.name])smC[s.name]={};Object.keys(s.menus||{}).forEach(function(mn){smC[s.name][mn]=(smC[s.name][mn]||0)+s.menus[mn];});});});
     var stores=Object.keys(sM).map(function(n){var s=sM[n];s.name=n;s.rate=s.cust>0?s.sales/s.cust*100:0;return s;}).sort(function(a,b){return b.rate-a.rate;});
     var ml=aggMenu(stores,smC),ovr=tc2>0?ts2/tc2*100:0,ok=ovr>=KPI;
-    var wkSeries=seaWks.map(function(wd,i){var fs=applyF(wd.stores),wts=0,wtc=0;fs.forEach(function(s){wts+=s.sales;wtc+=s.cust;});return{lbl:(i+1)+'W',val:wtc>0?wts/wtc*100:0,ts:wts,tc:wtc,wl:wd.wl};});
+    var wkSeries=seaWks.map(function(wd,i){var fs=applyF(wd.stores),wts=0,wtc=0;fs.forEach(function(s){wts+=s.sales;wtc+=s.cust;});var ov=wtc>0?wts/wtc*100:0;return{lbl:(i+1)+'W',val:ov,ovr:ov,ts:wts,tc:wtc,wl:wd.wl};});
     var sSeries=seaWks.map(function(wd,i){var fs=applyF(wd.stores),wts=0;fs.forEach(function(s){wts+=s.sales;});return{lbl:(i+1)+'W',val:wts};});
     document.getElementById('sea-content').innerHTML=
       '<div class="info-bar">'+sea.emoji+' '+sea.name+'　'+sea.period[0]+' 〜 '+sea.period[1]+'　KPI: '+KPI+'%</div>'+
@@ -628,7 +628,12 @@ function loadAllSeasons(){
     ALL_WK.sort(function(a,b){return a.wk<b.wk?-1:a.wk>b.wk?1:0;});
     if(ALL_WK.length)CW=ALL_WK[ALL_WK.length-1].wk;
     renderAll();
-  }).catch(function(err){console.warn('load error:',err);document.getElementById('ld').style.display='none';document.getElementById('nodata').style.display='block';});
+  }).catch(function(err){
+    console.warn('load error:',err.message||err);
+    console.warn('stack:',err.stack||'');
+    document.getElementById('ld').style.display='none';
+    document.getElementById('nodata').style.display='block';
+  });
 }
 
 (function(){
