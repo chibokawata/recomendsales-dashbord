@@ -4,70 +4,49 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0">
 <title>季節メニューおすすめ販売数速報｜千房グループ</title>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-XPZJL7GN67"></script>
-<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-XPZJL7GN67');</script>
 <style>
 *{box-sizing:border-box;margin:0;padding:0;}
-:root{
-  --c1:#1e2d45;--c2:#2563eb;--c3:#f8fafc;--c4:#e2e8f0;--c5:#f1f5f9;
-  --g1:#059669;--g2:#d1fae5;--g3:#6ee7b7;
-  --r1:#dc2626;--r2:#fee2e2;--r3:#fca5a5;
-  --b2:#dbeafe;--n1:#e2e8f0;--n2:#64748b;--n3:#94a3b8;
-  --sb:0px;--hh:52px;--shh:38px;--fh:44px;
-}
+:root{--c1:#1e2d45;--c2:#2563eb;--c3:#f8fafc;--g1:#059669;--g2:#d1fae5;--g3:#6ee7b7;--r1:#dc2626;--r2:#fee2e2;--r3:#fca5a5;--b2:#dbeafe;--n1:#e2e8f0;--n2:#64748b;--n3:#94a3b8;--hh:52px;--fh:46px;}
 html{font-size:13px;-webkit-text-size-adjust:100%;}
 body{font-family:'Meiryo UI','メイリオ',sans-serif;background:var(--c3);color:var(--c1);min-height:100vh;}
-
-/* HEADER */
-.hdr{height:var(--hh);background:var(--c1);display:flex;align-items:center;padding:0 16px;gap:10px;position:sticky;top:0;z-index:300;box-shadow:0 2px 8px rgba(0,0,0,.25);}
-.hdr-title{font-size:14px;font-weight:700;color:#fff;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;flex:1;}
+.hdr{height:var(--hh);background:var(--c1);display:flex;align-items:center;padding:0 16px;gap:10px;position:sticky;top:0;z-index:300;box-shadow:0 2px 8px rgba(0,0,0,.2);}
+.hdr-info{flex:1;min-width:0;}
+.hdr-title{font-size:14px;font-weight:700;color:#fff;}
 .hdr-sub{font-size:9px;color:var(--n3);}
-.upd-btn{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);color:#fff;font-family:inherit;font-size:10px;font-weight:700;padding:4px 12px;border-radius:4px;cursor:pointer;white-space:nowrap;flex-shrink:0;}
+.upd-btn{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);color:#fff;font-family:inherit;font-size:10px;font-weight:700;padding:5px 12px;border-radius:4px;cursor:pointer;flex-shrink:0;}
 .upd-btn:hover{background:rgba(255,255,255,.22);}
-
-/* SEASON BAR */
-.season-bar{height:var(--shh);background:#162032;display:flex;align-items:center;padding:0 12px;gap:4px;position:sticky;top:var(--hh);z-index:290;border-bottom:1px solid rgba(255,255,255,.08);overflow-x:auto;}
-.season-tab{font-size:11px;font-weight:700;padding:5px 14px;cursor:pointer;color:rgba(255,255,255,.45);border-bottom:3px solid transparent;white-space:nowrap;transition:.12s;flex-shrink:0;}
-.season-tab:hover{color:rgba(255,255,255,.8);}
-.season-tab.on{color:#fff;border-bottom-color:#fff;}
-
-/* LAYOUT */
-.layout{display:flex;min-height:calc(100vh - var(--hh) - var(--shh) - var(--fh));}
-.sidebar{display:none;}
-.main{flex:1;padding:12px 14px;min-width:0;}
-
-/* SIDEBAR */
-.sb-sec{margin-bottom:13px;}
-.sb-lbl{font-size:9px;font-weight:700;color:var(--n2);letter-spacing:.08em;text-transform:uppercase;padding:2px 4px 4px;border-bottom:1px solid var(--n1);margin-bottom:4px;display:block;}
-.sb-btn{display:block;width:100%;text-align:left;padding:4px 7px;margin-bottom:2px;border-radius:4px;border:1px solid var(--n1);background:#fff;font-family:inherit;font-size:10px;font-weight:600;color:var(--n2);cursor:pointer;transition:.12s;line-height:1.3;}
-.sb-btn:hover{border-color:var(--c2);color:var(--c2);}
-.sb-btn.on{background:var(--c2);color:#fff;border-color:var(--c2);}
-.sb-btn.on-dark{background:var(--c1);color:#fff;border-color:var(--c1);}
-.sb-btn.on-cum{background:#7c3aed;color:#fff;border-color:#7c3aed;}
-.sb-wk-sub{font-size:8px;font-weight:400;opacity:.8;display:block;}
-
-/* STATES */
+.fbar{height:var(--fh);background:#fff;border-bottom:1px solid var(--n1);display:flex;align-items:center;padding:0 14px;gap:6px;position:sticky;top:var(--hh);z-index:280;overflow-x:auto;}
+.fbar::-webkit-scrollbar{height:0;}
+.fsep{width:1px;height:22px;background:var(--n1);flex-shrink:0;}
+.dd{position:relative;flex-shrink:0;}
+.ddbtn{display:flex;align-items:center;gap:5px;padding:5px 11px;border:1.5px solid var(--n1);border-radius:5px;background:#fff;font-family:inherit;font-size:11px;font-weight:700;color:var(--c1);cursor:pointer;white-space:nowrap;transition:.12s;}
+.ddbtn:hover{border-color:var(--c2);}
+.ddbtn.act{border-color:var(--c2);background:var(--b2);color:var(--c2);}
+.ddarrow{font-size:8px;color:var(--n3);}
+.ddmenu{display:none;position:absolute;top:calc(100% + 4px);left:0;background:#fff;border:1px solid var(--n1);border-radius:7px;box-shadow:0 6px 20px rgba(0,0,0,.12);z-index:500;min-width:150px;padding:4px 0;max-height:320px;overflow-y:auto;}
+.ddmenu.on{display:block;}
+.ddmenu.wide{min-width:220px;}
+.dditem{display:block;width:100%;text-align:left;padding:7px 13px;border:none;background:none;font-family:inherit;font-size:11px;font-weight:600;color:var(--n2);cursor:pointer;transition:.1s;white-space:nowrap;}
+.dditem:hover{background:var(--b2);color:var(--c2);}
+.dditem.on{color:var(--c2);font-weight:700;background:var(--b2);}
+.dddiv{height:1px;background:var(--n1);margin:3px 0;}
+.fclr{font-size:10px;font-weight:700;color:var(--r1);background:var(--r2);border:1px solid var(--r3);border-radius:4px;padding:4px 10px;cursor:pointer;flex-shrink:0;display:none;}
+.fclr.on{display:block;}
+.main{padding:14px 16px;min-height:calc(100vh - var(--hh) - var(--fh));}
+.tab-bar{display:flex;border-bottom:2px solid var(--n1);margin-bottom:14px;gap:2px;}
+.tab{font-size:12px;font-weight:700;padding:8px 16px;cursor:pointer;border-bottom:3px solid transparent;margin-bottom:-2px;color:var(--n2);white-space:nowrap;transition:.12s;}
+.tab:hover{color:var(--c1);}
+.tab.on{color:var(--c2);border-bottom-color:var(--c2);}
 #ld{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:50vh;gap:14px;}
 .spin{width:36px;height:36px;border:3px solid var(--n1);border-top-color:var(--c2);border-radius:50%;animation:rot .8s linear infinite;}
 @keyframes rot{to{transform:rotate(360deg);}}
 .ld-txt{font-size:12px;color:var(--n2);}
-.nodata-box{border:2px dashed var(--n1);border-radius:8px;background:#fff;padding:32px 24px;text-align:center;max-width:480px;margin:40px auto;}
+.nodata-box{border:2px dashed var(--n1);border-radius:8px;background:#fff;padding:36px;text-align:center;max-width:480px;margin:40px auto;}
 .nodata-box h2{font-size:15px;margin-bottom:8px;}
-.nodata-box p{font-size:12px;color:var(--n2);line-height:1.8;}
-
-/* TABS */
-.tab-bar{display:flex;border-bottom:2px solid var(--n1);margin-bottom:12px;gap:2px;}
-.tab{font-size:11px;font-weight:700;padding:7px 12px;cursor:pointer;border-bottom:3px solid transparent;margin-bottom:-2px;color:var(--n2);white-space:nowrap;transition:.12s;}
-.tab:hover{color:var(--c1);}
-.tab.on{color:var(--c2);border-bottom-color:var(--c2);}
-
-/* KPI */
-.kpi-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:12px;}
-.kc{background:#fff;border:1px solid var(--n1);border-radius:8px;padding:12px 14px;display:flex;flex-direction:column;gap:3px;box-shadow:0 1px 6px rgba(0,0,0,.06);}
-.kc.main{border-top:4px solid var(--c2);}
-.kc.green{border-top:4px solid var(--g1);}
-.kc.blue{border-top:4px solid #7c3aed;}
-.kc.gray{border-top:4px solid var(--n2);}
+.nodata-box p{font-size:12px;color:var(--n2);line-height:1.9;}
+.kpi-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:14px;}
+.kc{background:#fff;border:1px solid var(--n1);border-radius:8px;padding:13px 14px;display:flex;flex-direction:column;gap:3px;box-shadow:0 1px 5px rgba(0,0,0,.05);}
+.kc.main{border-top:4px solid var(--c2);}.kc.green{border-top:4px solid var(--g1);}.kc.blue{border-top:4px solid #7c3aed;}.kc.gray{border-top:4px solid var(--n2);}
 .kl{font-size:9px;font-weight:700;color:var(--n2);}
 .kv{font-size:32px;font-weight:900;line-height:1;color:var(--c2);}
 .kv .ku{font-size:13px;font-weight:400;color:var(--n2);}
@@ -80,34 +59,20 @@ body{font-family:'Meiryo UI','メイリオ',sans-serif;background:var(--c3);colo
 .tag-up{background:var(--g2);border-color:var(--g3);color:var(--g1);}
 .tag-dn{background:var(--r2);border-color:var(--r3);color:var(--r1);}
 .tag-inf{background:var(--b2);border-color:#93c5fd;color:var(--c2);}
-.kachieve{display:grid;grid-template-columns:1fr 1fr;gap:4px;margin-top:3px;}
+.kach{display:grid;grid-template-columns:1fr 1fr;gap:4px;margin-top:3px;}
 .ach{border-radius:5px;padding:5px;text-align:center;}
 .ach-ok{background:var(--g2);border:1px solid var(--g3);}
 .ach-ng{background:var(--r2);border:1px solid var(--r3);}
 .ach-n{font-size:24px;font-weight:900;line-height:1;}
-.ach-ok .ach-n{color:var(--g1);}
-.ach-ng .ach-n{color:var(--r1);}
+.ach-ok .ach-n{color:var(--g1);}.ach-ng .ach-n{color:var(--r1);}
 .ach-l{font-size:9px;font-weight:700;}
-.ach-ok .ach-l{color:var(--g1);}
-.ach-ng .ach-l{color:var(--r1);}
-
-/* ALERT/TOPIC */
-.topic-bar{background:#eff6ff;border:1px solid #bfdbfe;border-left:4px solid var(--c2);border-radius:5px;padding:7px 12px;margin-bottom:10px;display:none;align-items:center;gap:8px;}
-.topic-bar.on{display:flex;}
-.topic-icon{font-size:15px;flex-shrink:0;}
-.topic-txt{font-size:10px;font-weight:700;color:#1e40af;line-height:1.6;}
-
-/* FILTER TAG */
-.filter-tag{background:var(--b2);border:1px solid #bfdbfe;border-radius:4px;padding:4px 10px;font-size:10px;font-weight:700;color:var(--c2);display:none;align-items:center;gap:6px;margin-bottom:8px;}
-.filter-tag.on{display:flex;}
-.filter-clr{cursor:pointer;text-decoration:underline;margin-left:auto;font-size:9px;}
-
-/* CARD */
-.card{background:#fff;border:1px solid var(--n1);border-radius:8px;box-shadow:0 1px 6px rgba(0,0,0,.06);overflow:hidden;margin-bottom:10px;}
+.ach-ok .ach-l{color:var(--g1);}.ach-ng .ach-l{color:var(--r1);}
+.topic{background:#eff6ff;border:1px solid #bfdbfe;border-left:4px solid var(--c2);border-radius:5px;padding:7px 12px;margin-bottom:12px;display:flex;align-items:center;gap:8px;}
+.topic-txt{font-size:10px;font-weight:700;color:#1e40af;line-height:1.7;}
+.card{background:#fff;border:1px solid var(--n1);border-radius:8px;box-shadow:0 1px 5px rgba(0,0,0,.05);overflow:hidden;margin-bottom:12px;}
 .card-hint{font-size:9px;color:var(--c2);padding:4px 10px;background:var(--b2);border-bottom:1px solid #bfdbfe;}
-.sec-label{font-size:9px;font-weight:700;color:var(--n2);letter-spacing:.08em;text-transform:uppercase;margin-bottom:6px;}
-
-/* RANK TABLE */
+.sec{font-size:9px;font-weight:700;color:var(--n2);letter-spacing:.08em;margin-bottom:7px;}
+.info-bar{background:var(--b2);border:1px solid #bfdbfe;border-radius:5px;padding:5px 12px;font-size:10px;font-weight:700;color:var(--c2);margin-bottom:12px;}
 .rtbl{width:100%;border-collapse:collapse;}
 .rtbl th{background:var(--c1);color:#fff;padding:5px 8px;font-size:9px;font-weight:700;white-space:nowrap;}
 .rtbl th.l{text-align:left;}
@@ -115,270 +80,170 @@ body{font-family:'Meiryo UI','メイリオ',sans-serif;background:var(--c3);colo
 .rtbl tr:last-child td{border-bottom:none;}
 .rtbl tr:nth-child(even) td{background:#fafbfc;}
 .rtbl tr:hover td{background:#f0f6ff;cursor:pointer;}
-.rn{width:16px;height:16px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:8px;font-weight:700;}
+.rn{width:17px;height:17px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:8px;font-weight:700;}
 .rn1{background:#d4a017;color:#fff;}.rn2{background:#a8a9ad;color:#fff;}.rn3{background:#c87941;color:#fff;}.rnn{background:#eef0f4;color:var(--n2);}
-.sname{font-size:10px;font-weight:700;color:var(--c2);text-decoration:underline;cursor:pointer;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:130px;}
-.bar-mini{height:7px;background:#eef0f4;border-radius:2px;position:relative;min-width:60px;}
-.bar-fill{height:7px;border-radius:2px;}
-.bar-kpi{position:absolute;top:-2px;bottom:-2px;border-left:1.5px dashed var(--r1);}
+.sname{font-size:10px;font-weight:700;color:var(--c2);text-decoration:underline;cursor:pointer;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:140px;}
+.bm{height:7px;background:#eef0f4;border-radius:2px;position:relative;min-width:60px;}
+.bf{height:7px;border-radius:2px;}
+.bk{position:absolute;top:-2px;bottom:-2px;border-left:1.5px dashed var(--r1);}
 .rv{font-size:10px;font-weight:700;text-align:right;white-space:nowrap;}
 .rok{color:var(--g1);}.rng{color:var(--r1);}
-.chg-up{color:var(--g1);font-size:9px;font-weight:700;}
-.chg-dn{color:var(--r1);font-size:9px;font-weight:700;}
-.chg-eq{color:var(--n2);font-size:9px;}
+.cup{color:var(--g1);font-size:9px;font-weight:700;}.cdn{color:var(--r1);font-size:9px;font-weight:700;}.ceq{color:var(--n2);font-size:9px;}
 .bdg{display:inline-block;font-size:8px;font-weight:700;padding:1px 5px;border-radius:3px;border:1px solid transparent;}
-.bdg-ok{background:var(--g2);border-color:var(--g3);color:var(--g1);}
-.bdg-warn{background:#fff3cd;border-color:#ffc107;color:#856404;}
-.bdg-ng{background:var(--r2);border-color:var(--r3);color:var(--r1);}
-
-/* MENU TABLE */
+.bok{background:var(--g2);border-color:var(--g3);color:var(--g1);}
+.bwn{background:#fff3cd;border-color:#ffc107;color:#856404;}
+.bng{background:var(--r2);border-color:var(--r3);color:var(--r1);}
 .mtbl{width:100%;border-collapse:collapse;}
 .mtbl th{background:var(--c1);color:#fff;padding:5px 8px;font-size:9px;font-weight:700;}
 .mtbl th.l{text-align:left;}
 .mtbl td{padding:5px 8px;border-bottom:1px solid #f0f2f5;font-size:10px;}
 .mtbl tr:last-child td{border-bottom:none;}
 .mtbl tr:nth-child(even) td{background:#fafbfc;}
-.menu-bar{display:flex;align-items:center;gap:6px;}
-.menu-bar-bg{flex:1;height:6px;background:#eef0f4;border-radius:3px;}
-.menu-bar-fill{height:6px;border-radius:3px;}
-.menu-pct{font-size:9px;font-weight:700;min-width:34px;text-align:right;}
-
-/* SUMMARY */
-.sum-wrap{padding:10px 12px;}
-.sum-title{font-size:10px;font-weight:700;color:var(--c1);margin-bottom:7px;padding-bottom:4px;border-bottom:2px solid var(--c3);}
-.sum-title.mt{margin-top:10px;padding-top:8px;border-top:1px solid var(--n1);}
-.sum-row{margin-bottom:7px;}
-.sum-top{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:2px;}
-.sum-name{font-size:10px;font-weight:700;}
-.sum-rate{font-size:12px;font-weight:900;}
-.sum-bar-bg{height:5px;background:#eef0f4;border-radius:3px;position:relative;}
-.sum-bar-fill{height:5px;border-radius:3px;}
-.sum-bar-kpi{position:absolute;top:-3px;bottom:-3px;border-left:1.5px dashed var(--r1);}
-.sum-sub{font-size:8px;color:var(--n3);margin-top:2px;}
-
-/* CHART SVG */
-.chart-wrap{padding:12px 14px 10px;}
-.chart-title{font-size:10px;font-weight:700;color:var(--c1);margin-bottom:8px;}
-.chart-note{font-size:8px;color:var(--n3);text-align:right;margin-top:4px;}
-
-/* TREND TABLE */
+.mbar{display:flex;align-items:center;gap:6px;}
+.mbar-bg{flex:1;height:6px;background:#eef0f4;border-radius:3px;}
+.mbar-f{height:6px;border-radius:3px;}
+.mpct{font-size:9px;font-weight:700;min-width:34px;text-align:right;}
+.sw{padding:10px 12px;}
+.st{font-size:10px;font-weight:700;color:var(--c1);margin-bottom:7px;padding-bottom:4px;border-bottom:2px solid var(--c3);}
+.sr{margin-bottom:7px;}
+.stop{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:2px;}
+.sn{font-size:10px;font-weight:700;}
+.sv{font-size:12px;font-weight:900;}
+.sbb{height:5px;background:#eef0f4;border-radius:3px;position:relative;}
+.sbf{height:5px;border-radius:3px;}
+.sbk{position:absolute;top:-3px;bottom:-3px;border-left:1.5px dashed var(--r1);}
+.ssb{font-size:8px;color:var(--n3);margin-top:2px;}
 .ttbl{width:100%;border-collapse:collapse;}
 .ttbl th{background:var(--c1);color:#fff;padding:5px 8px;font-size:9px;font-weight:700;text-align:center;}
 .ttbl td{padding:5px 8px;border-bottom:1px solid var(--n1);text-align:center;font-size:11px;}
 .ttbl tr:last-child td{border-bottom:none;}
 .ttbl tr:nth-child(even) td{background:#fafbfc;}
 .ttbl td.l{text-align:left;font-weight:700;}
-.ttbl td.sm{font-size:9px;color:var(--n2);font-weight:400;}
+.ttbl td.sm{font-size:9px;color:var(--n2);}
 .tok{color:var(--g1);font-weight:700;}.tng{color:var(--r1);font-weight:700;}
-
-/* MONTH/SEASON SELECTOR */
-.sel-bar{display:flex;gap:6px;margin-bottom:12px;flex-wrap:wrap;}
-.sel-btn{font-size:11px;font-weight:700;padding:5px 16px;border-radius:20px;border:2px solid var(--n1);background:#fff;color:var(--n2);cursor:pointer;transition:.12s;}
-.sel-btn:hover{border-color:var(--c2);color:var(--c2);}
-.sel-btn.on{background:var(--c1);color:#fff;border-color:var(--c1);}
-.mon-kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-bottom:10px;}
-.mon-kpi{background:var(--c3);border:1px solid var(--n1);border-radius:5px;padding:6px;text-align:center;}
-.mon-kpi-l{font-size:8px;color:var(--n2);font-weight:700;margin-bottom:2px;}
-.mon-kpi-v{font-size:16px;font-weight:900;}
-.mon-kpi-u{font-size:8px;color:var(--n2);}
-
-/* INFO BAR */
-.info-bar{background:var(--b2);border:1px solid #bfdbfe;border-radius:5px;padding:5px 12px;font-size:10px;font-weight:700;color:var(--c2);margin-bottom:10px;}
-
-/* MODAL */
-.modal-ov{display:none;position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:1000;align-items:center;justify-content:center;}
-.modal-ov.on{display:flex;}
+.ssel{display:flex;gap:6px;margin-bottom:14px;flex-wrap:wrap;align-items:center;}
+.ssel-label{font-size:10px;font-weight:700;color:var(--n2);margin-right:2px;}
+.ssbtn{font-size:11px;font-weight:700;padding:5px 16px;border-radius:20px;border:2px solid var(--n1);background:#fff;color:var(--n2);cursor:pointer;transition:.12s;}
+.ssbtn:hover{border-color:var(--c2);color:var(--c2);}
+.ssbtn.on{background:var(--c1);color:#fff;border-color:var(--c1);}
+.mon-kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-bottom:12px;}
+.mkpi{background:var(--c3);border:1px solid var(--n1);border-radius:5px;padding:7px;text-align:center;}
+.mkpi-l{font-size:8px;color:var(--n2);font-weight:700;margin-bottom:2px;}
+.mkpi-v{font-size:16px;font-weight:900;}
+.mkpi-u{font-size:8px;color:var(--n2);}
+.ov{display:none;position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:1000;align-items:center;justify-content:center;}
+.ov.on{display:flex;}
 .modal{background:#fff;border-radius:10px;width:92%;max-width:720px;max-height:88vh;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 8px 32px rgba(0,0,0,.25);}
-.modal-hdr{background:var(--c1);color:#fff;padding:12px 16px;display:flex;align-items:center;gap:10px;flex-shrink:0;}
-.modal-icon{font-size:16px;}
-.modal-title{font-size:13px;font-weight:700;flex:1;}
-.modal-x{background:none;border:none;color:#fff;font-size:22px;cursor:pointer;}
-.modal-body{padding:14px;overflow-y:auto;}
-.modal-info{font-size:10px;color:var(--n2);margin-bottom:10px;}
-.m-th{display:grid;align-items:center;background:var(--c1);padding:5px 8px;border-radius:4px 4px 0 0;gap:4px;}
-.m-th span{font-size:9px;font-weight:700;color:#fff;}
-.m-row{display:grid;align-items:center;gap:4px;padding:4px 0;border-bottom:1px solid #f0f2f5;}
-.m-row:last-child{border-bottom:none;}
-.m-row:nth-child(even){background:#fafbfc;}
-.m-nm{font-size:10px;font-weight:700;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
-.m-bw{position:relative;}
-.m-bt{height:8px;background:#eef0f4;border-radius:2px;}
-.m-bf{height:8px;border-radius:2px;}
-.m-kl{position:absolute;top:0;bottom:0;border-left:1.5px dashed var(--r1);}
-.m-rv{font-size:10px;font-weight:700;text-align:right;}
-.m-sv{font-size:8px;color:var(--n3);text-align:right;}
-
-/* UPDATE MODAL */
+.mhdr{background:var(--c1);color:#fff;padding:12px 16px;display:flex;align-items:center;gap:10px;flex-shrink:0;}
+.micon{font-size:16px;}.mtitle{font-size:13px;font-weight:700;flex:1;}
+.mx{background:none;border:none;color:#fff;font-size:22px;cursor:pointer;}
+.mbody{padding:14px;overflow-y:auto;}
+.minfo{font-size:10px;color:var(--n2);margin-bottom:10px;}
+.mth{display:grid;align-items:center;background:var(--c1);padding:5px 8px;border-radius:4px 4px 0 0;gap:4px;}
+.mth span{font-size:9px;font-weight:700;color:#fff;}
+.mrow{display:grid;align-items:center;gap:4px;padding:4px 0;border-bottom:1px solid #f0f2f5;}
+.mrow:last-child{border-bottom:none;}
+.mrow:nth-child(even){background:#fafbfc;}
+.mnm{font-size:10px;font-weight:700;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.mbw{position:relative;}
+.mbt{height:8px;background:#eef0f4;border-radius:2px;}
+.mbf{height:8px;border-radius:2px;}
+.mkl{position:absolute;top:0;bottom:0;border-left:1.5px dashed var(--r1);}
+.mrv{font-size:10px;font-weight:700;text-align:right;}
+.msv{font-size:8px;color:var(--n3);text-align:right;}
 .upd-step{margin-bottom:16px;}
-.upd-step-title{font-size:11px;font-weight:700;color:var(--c1);background:var(--b2);border-left:4px solid var(--c2);padding:5px 10px;border-radius:0 4px 4px 0;margin-bottom:7px;}
-.upd-step-body{font-size:11px;line-height:1.9;color:#334155;padding-left:4px;}
-.upd-code{background:#f1f5f9;border-radius:4px;padding:8px 12px;font-family:monospace;font-size:11px;line-height:1.7;margin:6px 0;}
+.upd-st{font-size:11px;font-weight:700;color:var(--c1);background:var(--b2);border-left:4px solid var(--c2);padding:5px 10px;border-radius:0 4px 4px 0;margin-bottom:7px;}
+.upd-sb{font-size:11px;line-height:1.9;color:#334155;padding-left:4px;}
 .upd-links{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px;}
-.upd-link{display:inline-flex;align-items:center;gap:5px;background:var(--c1);color:#fff;border:none;padding:7px 14px;border-radius:6px;font-family:inherit;font-size:11px;font-weight:700;cursor:pointer;text-decoration:none;}
-.upd-link:hover{opacity:.85;}
-.upd-divider{border:none;border-top:1px solid var(--n1);margin:14px 0;}
-.upd-pw-wrap{display:flex;flex-direction:column;align-items:center;gap:12px;padding:28px 20px;}
-.upd-pw-wrap input{width:100%;max-width:220px;padding:10px;border:2px solid var(--n1);border-radius:6px;font-size:20px;text-align:center;letter-spacing:6px;font-family:inherit;}
-.upd-pw-wrap input:focus{outline:none;border-color:var(--c2);}
-.upd-pw-btn{background:var(--c1);color:#fff;border:none;padding:10px 28px;border-radius:6px;font-family:inherit;font-size:13px;font-weight:700;cursor:pointer;}
-.upd-pw-err{color:var(--r1);font-size:11px;font-weight:700;}
-
-
-/* FILTER BAR */
-.filter-bar{height:var(--fh);background:#fff;border-bottom:1px solid var(--n1);display:flex;align-items:center;padding:0 14px;gap:8px;position:sticky;top:calc(var(--hh) + var(--shh));z-index:280;flex-wrap:nowrap;overflow-x:auto;}
-.wk-bar-wrap{display:flex;align-items:center;gap:4px;flex-shrink:0;}
-.wk-bar-label{font-size:9px;font-weight:700;color:var(--n2);white-space:nowrap;}
-.wk-scroll{display:flex;gap:3px;overflow-x:auto;max-width:340px;}
-.wk-scroll::-webkit-scrollbar{height:3px;}
-.wk-scroll::-webkit-scrollbar-thumb{background:var(--n1);border-radius:2px;}
-.wk-btn{font-size:9px;font-weight:700;padding:3px 8px;border-radius:3px;border:1px solid var(--n1);background:#fff;color:var(--n2);cursor:pointer;white-space:nowrap;flex-shrink:0;transition:.1s;}
-.wk-btn:hover{border-color:var(--c2);color:var(--c2);}
-.wk-btn.on{background:var(--c1);color:#fff;border-color:var(--c1);}
-.wk-btn.on-cum{background:#7c3aed;color:#fff;border-color:#7c3aed;}
-.filter-sep{width:1px;height:24px;background:var(--n1);flex-shrink:0;}
-.dd-wrap{position:relative;flex-shrink:0;}
-.dd-btn{display:flex;align-items:center;gap:5px;padding:4px 10px;border:1px solid var(--n1);border-radius:4px;background:#fff;font-family:inherit;font-size:10px;font-weight:700;color:var(--c1);cursor:pointer;white-space:nowrap;transition:.1s;}
-.dd-btn:hover{border-color:var(--c2);}
-.dd-btn.active{border-color:var(--c2);background:var(--b2);color:var(--c2);}
-.dd-btn .arrow{font-size:8px;color:var(--n3);}
-.dd-menu{display:none;position:absolute;top:calc(100% + 4px);left:0;background:#fff;border:1px solid var(--n1);border-radius:6px;box-shadow:0 4px 16px rgba(0,0,0,.12);z-index:400;min-width:140px;padding:4px 0;}
-.dd-menu.on{display:block;}
-.dd-item{display:block;width:100%;text-align:left;padding:6px 12px;border:none;background:none;font-family:inherit;font-size:11px;font-weight:600;color:var(--n2);cursor:pointer;transition:.1s;}
-.dd-item:hover{background:var(--b2);color:var(--c2);}
-.dd-item.on{color:var(--c2);font-weight:700;}
-.filter-clr-btn{font-size:10px;font-weight:700;color:var(--r1);background:var(--r2);border:1px solid var(--r3);border-radius:4px;padding:3px 10px;cursor:pointer;white-space:nowrap;flex-shrink:0;}
-
-/* RESPONSIVE */
-@media(max-width:900px){
-  .kpi-grid{grid-template-columns:repeat(2,1fr);}
-  .kc.main{grid-column:1/-1;}
-}
-@media(max-width:680px){
-  :root{--sb:0px;}
-  .sidebar{display:none;}
-  .main{padding:10px;}
-  .kpi-grid{grid-template-columns:1fr 1fr;}
-  .chart-2col{grid-template-columns:1fr!important;}
-}
+.upd-a{display:inline-flex;align-items:center;gap:5px;background:var(--c1);color:#fff;border:none;padding:7px 14px;border-radius:6px;font-family:inherit;font-size:11px;font-weight:700;cursor:pointer;text-decoration:none;}
+.upd-div{border:none;border-top:1px solid var(--n1);margin:14px 0;}
+.pw-wrap{display:flex;flex-direction:column;align-items:center;gap:12px;padding:28px 20px;}
+.pw-wrap input{width:100%;max-width:220px;padding:10px;border:2px solid var(--n1);border-radius:6px;font-size:20px;text-align:center;letter-spacing:6px;font-family:inherit;}
+.pw-wrap input:focus{outline:none;border-color:var(--c2);}
+.pw-btn{background:var(--c1);color:#fff;border:none;padding:10px 28px;border-radius:6px;font-family:inherit;font-size:13px;font-weight:700;cursor:pointer;}
+.pw-err{color:var(--r1);font-size:11px;font-weight:700;}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px;}
+.g-main{display:grid;grid-template-columns:1fr 240px;gap:12px;margin-bottom:12px;}
+@media(max-width:900px){.kpi-grid{grid-template-columns:1fr 1fr;}.kc.main{grid-column:1/-1;}.g2{grid-template-columns:1fr;}.g-main{grid-template-columns:1fr;}}
+@media(max-width:640px){.main{padding:10px;}.kpi-grid{grid-template-columns:1fr 1fr;}.g2,.g-main{grid-template-columns:1fr;}.mon-kpis{grid-template-columns:1fr 1fr;}}
 </style>
 </head>
 <body>
-
-<!-- HEADER -->
 <div class="hdr">
-  <div style="flex:1;min-width:0">
+  <div class="hdr-info">
     <div class="hdr-title">季節メニューおすすめ販売数速報</div>
     <div class="hdr-sub">千房グループ　季節メニュー管理本部</div>
   </div>
   <button class="upd-btn" id="upd-btn">📝 データ更新</button>
 </div>
-
-<!-- SEASON BAR -->
-<div class="season-bar" id="season-bar">
-  <!-- seasons.json から動的生成 -->
+<div class="fbar" id="fbar">
+  <div class="dd" id="dd-wk">
+    <button class="ddbtn" id="dd-wk-btn">📋 週 <span class="ddarrow">▼</span></button>
+    <div class="ddmenu wide" id="dd-wk-menu"></div>
+  </div>
+  <div class="fsep"></div>
+  <div class="dd" id="dd-area">
+    <button class="ddbtn" id="dd-area-btn">🏢 所属 <span class="ddarrow">▼</span></button>
+    <div class="ddmenu" id="dd-area-menu">
+      <button class="dditem on" data-f="area" data-v="all">すべて</button>
+      <button class="dditem" data-f="area" data-v="第1エリア">第1エリア</button>
+      <button class="dditem" data-f="area" data-v="第2エリア">第2エリア</button>
+      <button class="dditem" data-f="area" data-v="第3エリア">第3エリア</button>
+      <button class="dditem" data-f="area" data-v="第4エリア">第4エリア</button>
+      <button class="dditem" data-f="area" data-v="FC">FC</button>
+    </div>
+  </div>
+  <div class="dd" id="dd-mo">
+    <button class="ddbtn" id="dd-mo-btn">📱 導線 <span class="ddarrow">▼</span></button>
+    <div class="ddmenu" id="dd-mo-menu">
+      <button class="dditem on" data-f="mo" data-v="all">すべて</button>
+      <button class="dditem" data-f="mo" data-v="MO">MobileOrder</button>
+      <button class="dditem" data-f="mo" data-v="POP">季節メニューPOP</button>
+    </div>
+  </div>
+  <button class="fclr" id="fclr">✕ クリア</button>
 </div>
-
-<!-- FILTER BAR -->
-<div class="filter-bar" id="filter-bar">
-  <!-- 週選択 -->
-  <div class="wk-bar-wrap">
-    <span class="wk-bar-label">📋 週</span>
-    <div class="wk-scroll" id="fb-weeks"></div>
-    <button class="wk-btn" id="fb-cum">累積</button>
-  </div>
-  <div class="filter-sep"></div>
-  <!-- 所属ドロップダウン -->
-  <div class="dd-wrap" id="dd-area-wrap">
-    <button class="dd-btn" id="dd-area-btn">🏢 所属 <span class="arrow">▼</span></button>
-    <div class="dd-menu" id="dd-area-menu">
-      <button class="dd-item on" data-f="area" data-v="all">すべて</button>
-      <button class="dd-item" data-f="area" data-v="第1エリア">第1エリア</button>
-      <button class="dd-item" data-f="area" data-v="第2エリア">第2エリア</button>
-      <button class="dd-item" data-f="area" data-v="第3エリア">第3エリア</button>
-      <button class="dd-item" data-f="area" data-v="第4エリア">第4エリア</button>
-      <button class="dd-item" data-f="area" data-v="FC">FC</button>
-    </div>
-  </div>
-  <!-- 導線ドロップダウン -->
-  <div class="dd-wrap" id="dd-mo-wrap">
-    <button class="dd-btn" id="dd-mo-btn">📱 導線 <span class="arrow">▼</span></button>
-    <div class="dd-menu" id="dd-mo-menu">
-      <button class="dd-item on" data-f="mo" data-v="all">すべて</button>
-      <button class="dd-item" data-f="mo" data-v="MO">MobileOrder</button>
-      <button class="dd-item" data-f="mo" data-v="POP">季節メニューPOP</button>
-    </div>
-  </div>
-  <!-- メニュードロップダウン -->
-  <div class="dd-wrap" id="dd-mn-wrap">
-    <button class="dd-btn" id="dd-mn-btn">🍽 メニュー <span class="arrow">▼</span></button>
-    <div class="dd-menu" id="dd-mn-menu">
-      <button class="dd-item on" data-f="mn" data-v="all">すべて</button>
-    </div>
-  </div>
-  <button class="filter-clr-btn" id="fb-clr" style="display:none">✕ クリア</button>
-</div>
-
-<!-- DRILL MODAL -->
-<div class="modal-ov" id="drill-ov">
+<div class="ov" id="drill-ov">
   <div class="modal">
-    <div class="modal-hdr">
-      <span class="modal-icon" id="drill-icon"></span>
-      <span class="modal-title" id="drill-title"></span>
-      <button class="modal-x" id="drill-x">&#x2715;</button>
-    </div>
-    <div class="modal-body" id="drill-body"></div>
+    <div class="mhdr"><span class="micon" id="d-icon"></span><span class="mtitle" id="d-title"></span><button class="mx" id="d-x">&#x2715;</button></div>
+    <div class="mbody" id="d-body"></div>
   </div>
 </div>
-
-<!-- UPDATE MODAL -->
-<div class="modal-ov" id="upd-ov">
+<div class="ov" id="upd-ov">
   <div class="modal">
-    <div class="modal-hdr">
-      <span class="modal-icon">📝</span>
-      <span class="modal-title">データ更新手順</span>
-      <button class="modal-x" id="upd-x">&#x2715;</button>
-    </div>
-    <div class="modal-body">
-      <div id="upd-pw-screen" class="upd-pw-wrap">
+    <div class="mhdr"><span class="micon">📝</span><span class="mtitle">データ更新手順</span><button class="mx" id="upd-x">&#x2715;</button></div>
+    <div class="mbody">
+      <div id="pw-screen" class="pw-wrap">
         <div style="font-size:13px;font-weight:700;color:var(--c1)">🔒 パスワードを入力してください</div>
-        <input type="password" id="upd-pw" maxlength="10" placeholder="····">
-        <button class="upd-pw-btn" id="upd-pw-ok">ログイン</button>
-        <div class="upd-pw-err" id="upd-pw-err" style="display:none">パスワードが違います</div>
+        <input type="password" id="pw-input" maxlength="10" placeholder="····">
+        <button class="pw-btn" id="pw-ok">ログイン</button>
+        <div class="pw-err" id="pw-err" style="display:none">パスワードが違います</div>
       </div>
       <div id="upd-guide" style="display:none">
         <div class="upd-step">
-          <div class="upd-step-title">STEP 1｜CSVをアップロード（リネーム不要・そのままでOK）</div>
-          <div class="upd-step-body">
-            <b>data/sales/</b> に日別販売実績表CSVをアップロード<br>
-            <b>data/customers/</b> に日別売上実績表CSVをアップロード<br>
-            ※ファイル名はそのままでOKです。自動で認識されます。
-          </div>
+          <div class="upd-st">STEP 1｜CSVをアップロード（リネーム不要）</div>
+          <div class="upd-sb"><b>data/sales/</b> に日別販売実績表CSV<br><b>data/customers/</b> に日別売上実績表CSV<br>※ファイル名はそのままでOK</div>
           <div class="upd-links">
-            <a class="upd-link" href="https://github.com/Chibo-MarketingDepartment/recomendsales-dashbord/tree/main/data/sales" target="_blank">📂 data/sales/ を開く</a>
-            <a class="upd-link" href="https://github.com/Chibo-MarketingDepartment/recomendsales-dashbord/tree/main/data/customers" target="_blank">📂 data/customers/ を開く</a>
+            <a class="upd-a" href="https://github.com/Chibo-MarketingDepartment/recomendsales-dashbord/tree/main/data/sales" target="_blank">📂 data/sales/</a>
+            <a class="upd-a" href="https://github.com/Chibo-MarketingDepartment/recomendsales-dashbord/tree/main/data/customers" target="_blank">📂 data/customers/</a>
           </div>
         </div>
         <div class="upd-step">
-          <div class="upd-step-title">STEP 2｜季節メニューの設定変更（期間・KPI・メニュー追加時のみ）</div>
-          <div class="upd-step-body">
-            通常は不要です。新しい季節メニュー開始時のみ <b>seasons.json</b> を編集してください。
-          </div>
+          <div class="upd-st">STEP 2｜季節設定（新シーズン開始時のみ）</div>
+          <div class="upd-sb">通常不要。新季節開始時のみ <b>seasons.json</b> を編集。</div>
           <div class="upd-links">
-            <a class="upd-link" href="https://github.com/Chibo-MarketingDepartment/recomendsales-dashbord/blob/main/seasons.json" target="_blank">✏ seasons.json を編集</a>
+            <a class="upd-a" href="https://github.com/Chibo-MarketingDepartment/recomendsales-dashbord/blob/main/seasons.json" target="_blank">✏ seasons.json</a>
           </div>
         </div>
-        <hr class="upd-divider">
-        <div style="font-size:10px;color:var(--n2);text-align:center">アップロード後、1〜2分でダッシュボードに反映されます。</div>
+        <div class="upd-div"></div>
+        <div style="font-size:10px;color:var(--n2);text-align:center">アップロード後1〜2分で反映されます</div>
       </div>
     </div>
   </div>
 </div>
-
-<!-- LAYOUT -->
-<div class="layout">
 <div class="main">
   <div id="ld"><div class="spin"></div><div class="ld-txt">データを読み込み中...</div></div>
-  <div id="nodata" style="display:none"><div class="nodata-box"><div style="font-size:32px;margin-bottom:10px">📊</div><h2>データがありません</h2><p>GitHubの <b>data/sales/</b> と <b>data/customers/</b> にCSVをアップロードしてください。<br>自動的に読み込まれます。</p></div></div>
+  <div id="nodata" style="display:none"><div class="nodata-box"><div style="font-size:32px;margin-bottom:10px">📊</div><h2>データがありません</h2><p><b>data/sales/</b> と <b>data/customers/</b> にCSVをアップロードしてください。</p></div></div>
   <div id="db" style="display:none">
     <div class="tab-bar">
       <div class="tab on" data-tab="week">📅 週次</div>
@@ -390,961 +255,413 @@ body{font-family:'Meiryo UI','メイリオ',sans-serif;background:var(--c3);colo
     <div id="tab-season" style="display:none"></div>
   </div>
 </div>
-</div>
-
 <script>
-/* ================================================================
-   CONSTANTS & CONFIG
-================================================================ */
-var REPO = 'Chibo-MarketingDepartment/recomendsales-dashbord';
-var MOS = {"有楽町ビックカメラ支店":1,"舞 イクスピアリ店":1,"名代JO-TERRACE OSAKA店":1,"曽根崎支店":1};
-var SEASONS = []; // seasons.jsonから読み込む
-var CUR_SEASON = null; // 現在の季節
-var ALL_WK = []; // 現在季節の週データ
-var CW = null; // 現在選択週
-var F = {area:'all', mo:'all', mn:'all'};
-var CUR_MON = null;
-var CUR_SEA_ID = null; // 季節タブで選択中の季節ID
-var DST = [], DMN = []; // drill-down用
+var REPO='Chibo-MarketingDepartment/recomendsales-dashbord';
+var MOS={"有楽町ビックカメラ支店":1,"舞 イクスピアリ店":1,"名代JO-TERRACE OSAKA店":1,"曽根崎支店":1};
+var SEASONS=[],ALL_WK=[],CW=null,F={area:'all',mo:'all'};
+var CUR_MON=null,CUR_SEA=null,DST=[],DMN=[];
 
-/* ================================================================
-   AREA & MO HELPERS
-================================================================ */
-function getArea(areaName){
-  if(!areaName) return 'その他';
-  if(areaName.indexOf('FC')>=0) return 'FC';
-  if(areaName.indexOf('第1')>=0) return '第1エリア';
-  if(areaName.indexOf('第2')>=0) return '第2エリア';
-  if(areaName.indexOf('第3')>=0) return '第3エリア';
-  if(areaName.indexOf('第4')>=0) return '第4エリア';
-  return 'その他';
-}
-function getMO(store){ return MOS[store] ? 'MO' : 'POP'; }
-function isTarget(areaName){
-  // IZAKAYA・ODENを除外
-  if(areaName.indexOf('IZAKAYA')>=0 || areaName.indexOf('ODEN')>=0) return false;
-  return true;
-}
+function getArea(n){if(!n)return 'その他';if(n.indexOf('FC')>=0)return 'FC';if(n.indexOf('第1')>=0)return '第1エリア';if(n.indexOf('第2')>=0)return '第2エリア';if(n.indexOf('第3')>=0)return '第3エリア';if(n.indexOf('第4')>=0)return '第4エリア';return 'その他';}
+function getMO(s){return MOS[s]?'MO':'POP';}
+function isTarget(n){return n.indexOf('IZAKAYA')<0&&n.indexOf('ODEN')<0;}
+function kpiOf(sea){return sea?sea.kpi:3.5;}
+function curSea(){if(!CW||CW==='__cum')return SEASONS[SEASONS.length-1]||null;var w=ALL_WK.filter(function(x){return x.wk===CW;})[0];return w?w.season:SEASONS[SEASONS.length-1]||null;}
 
-/* ================================================================
-   CSV PARSER
-================================================================ */
 function parseCSV(text){
-  if(text.charCodeAt(0)===0xFEFF) text=text.slice(1);
-  var clean='';
-  for(var i=0;i<text.length;i++){ if(text[i]!=='\r') clean+=text[i]; }
+  if(text.charCodeAt(0)===0xFEFF)text=text.slice(1);
+  var clean='';for(var i=0;i<text.length;i++){if(text[i]!=='\r')clean+=text[i];}
   return clean.split('\n').filter(function(l){return l.length>1;}).map(function(l){
     var cols=[],cur='',inQ=false;
-    for(var j=0;j<l.length;j++){
-      var ch=l[j];
-      if(ch==='"'){ if(inQ&&l[j+1]==='"'){cur+='"';j++;}else inQ=!inQ; }
-      else if(ch===','&&!inQ){ cols.push(cur); cur=''; }
-      else cur+=ch;
-    }
-    cols.push(cur);
-    return cols;
+    for(var j=0;j<l.length;j++){var ch=l[j];
+      if(ch==='"'){if(inQ&&l[j+1]==='"'){cur+='"';j++;}else inQ=!inQ;}
+      else if(ch===','&&!inQ){cols.push(cur);cur='';}else cur+=ch;}
+    cols.push(cur);return cols;
   });
 }
-
 function fetchText(url){
-  return fetch(url).then(function(r){
-    if(!r.ok) throw new Error(url+' 404');
-    return r.arrayBuffer();
-  }).then(function(buf){
-    try{ return new TextDecoder('shift-jis').decode(buf); }
-    catch(e){ return new TextDecoder('utf-8').decode(buf); }
-  });
+  return fetch(url).then(function(r){if(!r.ok)throw new Error(url+' 404');return r.arrayBuffer();})
+    .then(function(buf){try{return new TextDecoder('shift-jis').decode(buf);}catch(e){return new TextDecoder('utf-8').decode(buf);}});
 }
-
-/* ================================================================
-   GITHUB API: フォルダ内ファイル一覧を自動取得
-================================================================ */
-function listRepoFiles(path){
-  var url='https://api.github.com/repos/'+REPO+'/contents/'+path;
-  return fetch(url, {headers:{'Accept':'application/vnd.github.v3+json','User-Agent':'Mozilla/5.0'}})
-    .then(function(r){ if(!r.ok) throw new Error(path+' API error '+r.status); return r.json(); })
+function listFiles(path){
+  return fetch('https://api.github.com/repos/'+REPO+'/contents/'+path,
+    {headers:{'Accept':'application/vnd.github.v3+json','User-Agent':'Mozilla/5.0'}})
+    .then(function(r){if(!r.ok)throw new Error(r.status);return r.json();})
     .then(function(items){
-      if(!Array.isArray(items)) throw new Error('API response not array');
-      return items.filter(function(f){ return f.type==='file' && f.name.endsWith('.csv'); })
-                  .map(function(f){
-                    // download_urlが使えればそれを使う（日本語ファイル名に対応済み）
-                    return {name:f.name, url:f.download_url};
-                  });
+      if(!Array.isArray(items))throw new Error('not array');
+      return items.filter(function(f){return f.type==='file'&&f.name.endsWith('.csv');})
+                  .map(function(f){return{name:f.name,url:f.download_url};});
     });
 }
-
-/* ================================================================
-   SEASON: メニュー判定
-================================================================ */
-function isSeasonal(nm, season){
-  if(nm.indexOf('\uff0a')>=0 || nm.indexOf('\u203b')>=0) return false;
-  return season.menus.some(function(m){ return nm.indexOf(m.raw)>=0; });
-}
-function normMenu(nm, season){
-  nm = nm.trim();
-  var found = season.menus.filter(function(m){ return nm.indexOf(m.raw)>=0; });
-  return found.length ? found[0].disp : null;
-}
-
-/* ================================================================
-   PARSE SALES & CUSTOMERS
-================================================================ */
-function parseSales(text, season){
-  var rows=parseCSV(text), map={};
+function normMenu(nm,sea){nm=nm.trim();var f=sea.menus.filter(function(m){return nm.indexOf(m.raw)>=0;});return f.length?f[0].disp:null;}
+function parseSales(text,sea){
+  var rows=parseCSV(text),map={};
   for(var i=1;i<rows.length;i++){
-    var c=rows[i];
-    if(c.length<21||!c[0].trim()) continue;
-    var areaName = c[6].trim(); // G列: 営業部名
-    if(!isTarget(areaName)) continue;
-    var mn=c[17].trim();
-    var nm=normMenu(mn, season);
-    if(!nm) continue;
-    var date=c[0].trim(), store=c[10].trim(), youbi=c[2].trim();
-    var area=getArea(areaName);
-    var sales=parseFloat(c[20])||0;
+    var c=rows[i];if(c.length<21||!c[0].trim())continue;
+    var an=c[6].trim();if(!isTarget(an))continue;
+    var nm=normMenu(c[17].trim(),sea);if(!nm)continue;
+    var date=c[0].trim(),store=c[10].trim(),youbi=c[2].trim(),area=getArea(an),sales=parseFloat(c[20])||0;
     var key=store+'|'+date;
-    if(!map[key]) map[key]={store:store,area:area,mo:getMO(store),date:date,youbi:youbi,menus:{}};
+    if(!map[key])map[key]={store:store,area:area,mo:getMO(store),date:date,youbi:youbi,menus:{}};
     map[key].menus[nm]=(map[key].menus[nm]||0)+sales;
   }
   return map;
 }
-
 function parseCust(text){
-  var rows=parseCSV(text), map={};
+  var rows=parseCSV(text),map={};
   for(var i=1;i<rows.length;i++){
-    var c=rows[i];
-    if(c.length<21||!c[6].trim()) continue;
-    if(c[13].trim()!=='\u8a08') continue;
-    var areaName = c[3].trim(); // D列: 営業部名称
-    if(!isTarget(areaName)) continue;
+    var c=rows[i];if(c.length<21||!c[6].trim())continue;
+    if(c[13].trim()!=='計')continue;
+    if(!isTarget(c[3].trim()))continue;
     map[c[5].trim()+'|'+c[6].trim()]=parseInt(c[20])||0;
   }
   return map;
 }
-
-/* ================================================================
-   BUILD WEEKS
-================================================================ */
 function weekInfo(ds){
-  var p=ds.split('/');
-  var dt=new Date(+p[0],+p[1]-1,+p[2]);
-  var dow=dt.getDay();
-  var mon=new Date(dt); mon.setDate(dt.getDate()-(dow===0?6:dow-1));
-  var sun=new Date(mon); sun.setDate(mon.getDate()+6);
-  function fmt(d){ return d.getFullYear()+'/'+(d.getMonth()<9?'0':'')+(d.getMonth()+1)+'/'+(d.getDate()<10?'0':'')+d.getDate(); }
-  return {wk:fmt(mon), wl:fmt(mon)+'\u301c'+fmt(sun), mon:mon.getMonth()+1, year:mon.getFullYear()};
+  var p=ds.split('/'),dt=new Date(+p[0],+p[1]-1,+p[2]),dow=dt.getDay();
+  var mon=new Date(dt);mon.setDate(dt.getDate()-(dow===0?6:dow-1));
+  var sun=new Date(mon);sun.setDate(mon.getDate()+6);
+  function fmt(d){return d.getFullYear()+'/'+(d.getMonth()<9?'0':'')+(d.getMonth()+1)+'/'+(d.getDate()<10?'0':'')+d.getDate();}
+  return{wk:fmt(mon),wl:fmt(mon)+'〜'+fmt(sun),mon:mon.getMonth()+1,year:mon.getFullYear()};
 }
-
-function buildWeeks(salesMap, custMap, season){
-  // 季節の期間でフィルタ
-  var pStart = season.period[0].replace(/-/g,'/');
-  var pEnd   = season.period[1].replace(/-/g,'/');
+function buildWeeks(salesMap,custMap,season){
+  var ps=season.period[0].replace(/-/g,'/'),pe=season.period[1].replace(/-/g,'/');
   var wkMap={};
   Object.keys(salesMap).forEach(function(key){
-    var sd=salesMap[key];
-    if(sd.date < pStart.replace(/\//g,'/') || sd.date > pEnd.replace(/\//g,'/')) return;
+    var sd=salesMap[key];if(sd.date<ps||sd.date>pe)return;
     var wi=weekInfo(sd.date);
-    if(!wkMap[wi.wk]) wkMap[wi.wk]={wk:wi.wk,wl:wi.wl,mon:wi.mon,year:wi.year,storeMap:{}};
+    if(!wkMap[wi.wk])wkMap[wi.wk]={wk:wi.wk,wl:wi.wl,mon:wi.mon,year:wi.year,season:season,storeMap:{}};
     var wd=wkMap[wi.wk];
-    if(!wd.storeMap[sd.store])
-      wd.storeMap[sd.store]={area:sd.area,mo:sd.mo,sales:0,cust:0,menus:{},youbi:{}};
+    if(!wd.storeMap[sd.store])wd.storeMap[sd.store]={area:sd.area,mo:sd.mo,sales:0,cust:0,menus:{},youbi:{}};
     var st=wd.storeMap[sd.store];
-    Object.keys(sd.menus).forEach(function(mn){
-      st.sales+=sd.menus[mn];
-      st.menus[mn]=(st.menus[mn]||0)+sd.menus[mn];
-      st.youbi[sd.youbi]=(st.youbi[sd.youbi]||0)+sd.menus[mn];
-    });
+    Object.keys(sd.menus).forEach(function(mn){st.sales+=sd.menus[mn];st.menus[mn]=(st.menus[mn]||0)+sd.menus[mn];st.youbi[sd.youbi]=(st.youbi[sd.youbi]||0)+sd.menus[mn];});
   });
-  // 全日客数を付与
   Object.keys(wkMap).forEach(function(wk){
-    var wd=wkMap[wk];
-    var p=wk.split('/');
-    var monDt=new Date(+p[0],+p[1]-1,+p[2]);
+    var wd=wkMap[wk],p2=wk.split('/'),monDt=new Date(+p2[0],+p2[1]-1,+p2[2]);
     Object.keys(wd.storeMap).forEach(function(store){
       var total=0;
-      for(var d=0;d<7;d++){
-        var day=new Date(monDt); day.setDate(monDt.getDate()+d);
-        var ds=day.getFullYear()+'/'+(day.getMonth()<9?'0':'')+(day.getMonth()+1)+'/'+(day.getDate()<10?'0':'')+day.getDate();
-        total+=custMap[store+'|'+ds]||0;
-      }
+      for(var d=0;d<7;d++){var day=new Date(monDt);day.setDate(monDt.getDate()+d);var ds=day.getFullYear()+'/'+(day.getMonth()<9?'0':'')+(day.getMonth()+1)+'/'+(day.getDate()<10?'0':'')+day.getDate();total+=custMap[store+'|'+ds]||0;}
       wd.storeMap[store].cust=total;
     });
   });
   return Object.keys(wkMap).sort().map(function(wk){
     var wd=wkMap[wk];
-    var stores=Object.keys(wd.storeMap).map(function(sn){
-      var s=wd.storeMap[sn];
-      return{name:sn,area:s.area,mo:s.mo,sales:s.sales,cust:s.cust,
-        rate:s.cust>0?s.sales/s.cust*100:0,menus:s.menus,youbi:s.youbi};
-    }).sort(function(a,b){return b.rate-a.rate;});
-    var ts=0,tc=0,mn_total={};
-    stores.forEach(function(s){
-      ts+=s.sales; tc+=s.cust;
-      Object.keys(s.menus).forEach(function(m){mn_total[m]=(mn_total[m]||0)+s.menus[m];});
-    });
-    var ml=Object.keys(mn_total).map(function(m){return{name:m,sales:mn_total[m]};})
-             .sort(function(a,b){return b.sales-a.sales;});
-    var smMap={};
-    stores.forEach(function(s){smMap[s.name]=s.menus;});
-    return{wk:wk,wl:wd.wl,mon:wd.mon,year:wd.year,
-           stores:stores,ml:ml,ts:ts,tc:tc,
-           ovr:tc>0?ts/tc*100:0,smMap:smMap};
+    var stores=Object.keys(wd.storeMap).map(function(sn){var s=wd.storeMap[sn];return{name:sn,area:s.area,mo:s.mo,sales:s.sales,cust:s.cust,rate:s.cust>0?s.sales/s.cust*100:0,menus:s.menus,youbi:s.youbi};}).sort(function(a,b){return b.rate-a.rate;});
+    var ts=0,tc=0,mnt={};
+    stores.forEach(function(s){ts+=s.sales;tc+=s.cust;Object.keys(s.menus).forEach(function(m){mnt[m]=(mnt[m]||0)+s.menus[m];});});
+    var ml=Object.keys(mnt).map(function(m){return{name:m,sales:mnt[m]};}).sort(function(a,b){return b.sales-a.sales;});
+    var smMap={};stores.forEach(function(s){smMap[s.name]=s.menus;});
+    return{wk:wk,wl:wd.wl,mon:wd.mon,year:wd.year,season:season,stores:stores,ml:ml,ts:ts,tc:tc,ovr:tc>0?ts/tc*100:0,smMap:smMap};
   });
 }
+function applyF(stores){return stores.filter(function(s){if(F.area!=='all'&&s.area!==F.area)return false;if(F.mo!=='all'&&s.mo!==F.mo)return false;return true;});}
+function wkSum(wd){var fs=applyF(wd.stores),ml=aggMenu(fs,wd.smMap),ts=0,tc=0;fs.forEach(function(s){ts+=s.sales;tc+=s.cust;});return{fs:fs,ml:ml,ts:ts,tc:tc,ovr:tc>0?ts/tc*100:0};}
+function aggMenu(fs,smMap){var mm={};fs.forEach(function(s){var sm=smMap[s.name]||{};Object.keys(sm).forEach(function(mn){mm[mn]=(mm[mn]||0)+sm[mn];});});return Object.keys(mm).map(function(m){return{name:m,sales:mm[m]};}).sort(function(a,b){return b.sales-a.sales;});}
+function aggByKey(fs,key){var map={};fs.forEach(function(s){var k=s[key];if(!map[k])map[k]={name:k,sales:0,cust:0,cnt:0};map[k].sales+=s.sales;map[k].cust+=s.cust;map[k].cnt++;});return Object.values(map).map(function(d){d.rate=d.cust>0?d.sales/d.cust*100:0;return d;}).sort(function(a,b){return b.rate-a.rate;});}
 
-/* ================================================================
-   FILTER
-================================================================ */
-function applyFilter(stores){
-  return stores.filter(function(s){
-    if(F.area!=='all' && s.area!==F.area) return false;
-    if(F.mo  !=='all' && s.mo  !==F.mo ) return false;
-    return true;
-  });
-}
-function applyMenuFilter(ml){
-  if(F.mn==='all') return ml;
-  return ml.filter(function(m){return m.name===F.mn;});
-}
-function filterLabel(){
-  var p=[];
-  if(F.area!=='all') p.push('所属:'+F.area);
-  if(F.mn  !=='all') p.push('メニュー:'+F.mn);
-  if(F.mo  !=='all') p.push(F.mo==='MO'?'MO':'POP');
-  return p.join(' / ');
-}
-function wkSummary(wd){
-  var fs=applyFilter(wd.stores);
-  var ml=applyMenuFilter(aggMenu(fs,wd.smMap));
-  var ts=0,tc=0; fs.forEach(function(s){ts+=s.sales;tc+=s.cust;});
-  return{fs:fs,ml:ml,ts:ts,tc:tc,ovr:tc>0?ts/tc*100:0};
-}
-
-/* ================================================================
-   AGGREGATION
-================================================================ */
-function aggMenu(fs,smMap){
-  var mm={};
-  fs.forEach(function(s){
-    var sm=smMap[s.name]||{};
-    Object.keys(sm).forEach(function(mn){mm[mn]=(mm[mn]||0)+sm[mn];});
-  });
-  var ml=Object.keys(mm).map(function(m){return{name:m,sales:mm[m]};})
-           .sort(function(a,b){return b.sales-a.sales;});
-  if(F.mn!=='all') ml=ml.filter(function(m){return m.name===F.mn;});
-  return ml;
-}
-function aggByKey(fs,key){
-  var map={};
-  fs.forEach(function(s){
-    var k=s[key];
-    if(!map[k])map[k]={name:k,sales:0,cust:0,cnt:0};
-    map[k].sales+=s.sales;map[k].cust+=s.cust;map[k].cnt++;
-  });
-  return Object.values(map).map(function(d){
-    d.rate=d.cust>0?d.sales/d.cust*100:0;return d;
-  }).sort(function(a,b){return b.rate-a.rate;});
-}
-
-/* ================================================================
-   SVG LINE CHART
-================================================================ */
-function makeChart(series, metric, kpi){
-  if(!series||series.length<2)
-    return '<div style="text-align:center;padding:40px;color:var(--n3);font-size:12px">2週以上のデータで表示されます</div>';
-  var vals=series.map(function(w){return w.val;});
-  var maxV=Math.max.apply(null,vals), minV=Math.min.apply(null,vals);
-  var yMax,yMin;
-  if(kpi){
-    var dMax=Math.max(maxV,kpi), dMin=Math.min(minV,kpi);
-    var pad=(dMax-dMin)*0.25||dMax*0.1||0.5;
-    yMin=Math.max(0,dMin-pad); yMax=dMax+pad;
-  } else {
-    var pad=(maxV-minV)*0.3||maxV*0.1||1;
-    yMin=Math.max(0,minV-pad); yMax=maxV+pad;
-  }
-  var range=yMax-yMin||0.01;
-  var VW=400,VH=180,pL=44,pR=16,pT=28,pB=32;
-  var cW=VW-pL-pR, cH=VH-pT-pB, n=series.length;
+function makeChart(series,metric,kpi){
+  if(!series||series.length<2)return '<div style="text-align:center;padding:40px;color:var(--n3);font-size:12px">2データ以上で表示</div>';
+  var vals=series.map(function(w){return w.val;}),maxV=Math.max.apply(null,vals),minV=Math.min.apply(null,vals);
+  var yMax,yMin,pad;
+  if(kpi){var dMax=Math.max(maxV,kpi),dMin=Math.min(minV,kpi);pad=(dMax-dMin)*0.25||dMax*0.1||0.5;yMin=Math.max(0,dMin-pad);yMax=dMax+pad;}
+  else{pad=(maxV-minV)*0.3||maxV*0.1||1;yMin=Math.max(0,minV-pad);yMax=maxV+pad;}
+  var range=yMax-yMin||0.01,VW=400,VH=180,pL=44,pR=16,pT=28,pB=32,cW=VW-pL-pR,cH=VH-pT-pB,n=series.length;
   function xp(i){return pL+(n===1?cW/2:i/(n-1)*cW);}
   function yp(v){return pT+cH-(v-yMin)/range*cH;}
   var pts=series.map(function(w,i){return{x:xp(i),y:yp(w.val),val:w.val,lbl:w.lbl};});
   var pathD=pts.map(function(p,i){return(i===0?'M':'L')+p.x.toFixed(1)+','+p.y.toFixed(1);}).join(' ');
   var areaD=pathD+' L'+pts[pts.length-1].x.toFixed(1)+','+(pT+cH)+' L'+pts[0].x.toFixed(1)+','+(pT+cH)+' Z';
-  var grids=[0.25,0.5,0.75].map(function(r){
-    var gy=(pT+cH-r*cH).toFixed(1);
-    var gv=yMin+r*range;
-    var gl=metric==='rate'?gv.toFixed(1)+'%':Math.round(gv).toLocaleString();
-    return '<line x1="'+pL+'" y1="'+gy+'" x2="'+(pL+cW)+'" y2="'+gy+'" stroke="#e2e8f0" stroke-width="1"/>'+
-           '<text x="'+(pL-3)+'" y="'+(parseFloat(gy)+3.5)+'" text-anchor="end" font-size="8" fill="#94a3b8">'+gl+'</text>';
-  }).join('');
-  var kpiSvg='';
-  if(kpi){
-    var ky=yp(kpi).toFixed(1);
-    kpiSvg='<line x1="'+pL+'" y1="'+ky+'" x2="'+(pL+cW)+'" y2="'+ky+'" stroke="#dc2626" stroke-width="1.5" stroke-dasharray="5,4"/>'+
-            '<text x="'+(pL+cW+2)+'" y="'+(parseFloat(ky)+3.5)+'" font-size="8" fill="#dc2626">KPI</text>';
-  }
-  var axesSvg='<line x1="'+pL+'" y1="'+pT+'" x2="'+pL+'" y2="'+(pT+cH)+'" stroke="#e2e8f0" stroke-width="1"/>'+
-              '<line x1="'+pL+'" y1="'+(pT+cH)+'" x2="'+(pL+cW)+'" y2="'+(pT+cH)+'" stroke="#e2e8f0" stroke-width="1"/>';
-  var dotsSvg=pts.map(function(p,i){
-    var ok=kpi?p.val>=kpi:true;
-    var col=ok?'#059669':'#dc2626';
-    var valStr=metric==='rate'?p.val.toFixed(2)+'%':p.val.toLocaleString();
-    var anchor=i===0?'start':i===n-1?'end':'middle';
-    return '<circle cx="'+p.x.toFixed(1)+'" cy="'+p.y.toFixed(1)+'" r="5" fill="'+col+'" stroke="#fff" stroke-width="2"/>'+
-           '<text x="'+p.x.toFixed(1)+'" y="'+(p.y-9).toFixed(1)+'" text-anchor="'+anchor+'" font-size="10" font-weight="700" fill="'+col+'">'+valStr+'</text>'+
-           '<text x="'+p.x.toFixed(1)+'" y="'+(pT+cH+14)+'" text-anchor="middle" font-size="9" fill="#64748b">'+p.lbl+'</text>';
-  }).join('');
-  return '<svg viewBox="0 0 '+VW+' '+VH+'" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;display:block">'+
-    grids+axesSvg+kpiSvg+
-    '<path d="'+areaD+'" fill="rgba(37,99,235,.08)"/>'+
-    '<path d="'+pathD+'" fill="none" stroke="#2563eb" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>'+
-    dotsSvg+'</svg>';
+  var grids=[0.25,0.5,0.75].map(function(r){var gy=(pT+cH-r*cH).toFixed(1),gv=yMin+r*range,gl=metric==='rate'?gv.toFixed(1)+'%':Math.round(gv).toLocaleString();return '<line x1="'+pL+'" y1="'+gy+'" x2="'+(pL+cW)+'" y2="'+gy+'" stroke="#e2e8f0" stroke-width="1"/><text x="'+(pL-3)+'" y="'+(parseFloat(gy)+3.5)+'" text-anchor="end" font-size="8" fill="#94a3b8">'+gl+'</text>';}).join('');
+  var kpiSvg='';if(kpi){var ky=yp(kpi).toFixed(1);kpiSvg='<line x1="'+pL+'" y1="'+ky+'" x2="'+(pL+cW)+'" y2="'+ky+'" stroke="#dc2626" stroke-width="1.5" stroke-dasharray="5,4"/><text x="'+(pL+cW+2)+'" y="'+(parseFloat(ky)+3.5)+'" font-size="8" fill="#dc2626">KPI</text>';}
+  var axes='<line x1="'+pL+'" y1="'+pT+'" x2="'+pL+'" y2="'+(pT+cH)+'" stroke="#e2e8f0" stroke-width="1"/><line x1="'+pL+'" y1="'+(pT+cH)+'" x2="'+(pL+cW)+'" y2="'+(pT+cH)+'" stroke="#e2e8f0" stroke-width="1"/>';
+  var dots=pts.map(function(p,i){var ok=kpi?p.val>=kpi:true,col=ok?'#059669':'#dc2626',vs=metric==='rate'?p.val.toFixed(2)+'%':p.val.toLocaleString(),anchor=i===0?'start':i===n-1?'end':'middle';return '<circle cx="'+p.x.toFixed(1)+'" cy="'+p.y.toFixed(1)+'" r="5" fill="'+col+'" stroke="#fff" stroke-width="2"/><text x="'+p.x.toFixed(1)+'" y="'+(p.y-9).toFixed(1)+'" text-anchor="'+anchor+'" font-size="10" font-weight="700" fill="'+col+'">'+vs+'</text><text x="'+p.x.toFixed(1)+'" y="'+(pT+cH+14)+'" text-anchor="middle" font-size="9" fill="#64748b">'+p.lbl+'</text>';}).join('');
+  return '<svg viewBox="0 0 '+VW+' '+VH+'" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;display:block">'+grids+axes+kpiSvg+'<path d="'+areaD+'" fill="rgba(37,99,235,.08)"/><path d="'+pathD+'" fill="none" stroke="#2563eb" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>'+dots+'</svg>';
 }
 
-/* ================================================================
-   HTML COMPONENTS
-================================================================ */
-function kpi(){return CUR_SEASON?CUR_SEASON.kpi:3.5;}
-
-function htmlKPI(fs,ts,tc,prevTs,prevOvr){
-  var KPI=kpi();
-  var ovr=tc>0?ts/tc*100:0, ok=ovr>=KPI;
-  var n=fs.length, okN=0; fs.forEach(function(s){if(s.rate>=KPI)okN++;});
+function htmlKPI(fs,ts,tc,sea,prevTs,prevOvr){
+  var KPI=kpiOf(sea),ovr=tc>0?ts/tc*100:0,ok=ovr>=KPI,n=fs.length,okN=0;fs.forEach(function(s){if(s.rate>=KPI)okN++;});
   var avg=n>0?ts/n:0;
-  var salesChg=(prevTs!==null&&prevTs>0)?(ts-prevTs)/prevTs*100:null;
-  var rateChg=(prevOvr!==null)?(ovr-prevOvr):null;
-  function chgTag(v,isRate){
-    if(v===null)return '';
-    var up=v>0,cls=up?'tag-up':'tag-dn',arrow=up?'▲ +':'▼ ';
-    var str=isRate?Math.abs(v).toFixed(2)+'pt':Math.abs(v).toFixed(1)+'%';
-    return '<span class="tag '+cls+'">'+arrow+str+' 前週比</span>';
-  }
+  function chg(v,isRate){if(v===null)return '';var up=v>0,cls=up?'tag-up':'tag-dn',arrow=up?'▲ +':'▼ ';return '<span class="tag '+cls+'">'+arrow+(isRate?Math.abs(v).toFixed(2)+'pt':Math.abs(v).toFixed(1)+'%')+' 前週比</span>';}
+  var salesChg=(prevTs!==null&&prevTs>0)?(ts-prevTs)/prevTs*100:null,rateChg=(prevOvr!==null)?(ovr-prevOvr):null;
   return '<div class="kpi-grid">'+
-    '<div class="kc main"><div class="kl">注文率</div>'+
-    '<div class="kv">'+ovr.toFixed(2)+'<span class="ku"> %</span></div>'+
-    '<div class="ktags"><span class="tag '+(ok?'tag-ok':'tag-ng')+'">'+(ok?'▲ KPI達成':'▼ KPI未達')+'</span><span class="tag tag-inf">KPI '+KPI+'%</span>'+chgTag(rateChg,true)+'</div></div>'+
-    '<div class="kc green"><div class="kl">販売数</div>'+
-    '<div class="kv2" style="color:var(--g1)">'+ts.toLocaleString()+'<span style="font-size:13px;color:var(--n2)"> 食</span></div>'+
-    '<div class="ksub">総客数: '+tc.toLocaleString()+'名</div>'+
-    '<div class="ktags">'+chgTag(salesChg,false)+'</div></div>'+
+    '<div class="kc main"><div class="kl">注文率</div><div class="kv">'+ovr.toFixed(2)+'<span class="ku"> %</span></div>'+
+    '<div class="ktags"><span class="tag '+(ok?'tag-ok':'tag-ng')+'">'+(ok?'▲ KPI達成':'▼ KPI未達')+'</span><span class="tag tag-inf">KPI '+KPI+'%</span>'+chg(rateChg,true)+'</div></div>'+
+    '<div class="kc green"><div class="kl">販売数</div><div class="kv2" style="color:var(--g1)">'+ts.toLocaleString()+'<span style="font-size:13px;color:var(--n2)"> 食</span></div>'+
+    '<div class="ksub">総客数: '+tc.toLocaleString()+'名</div><div class="ktags">'+chg(salesChg,false)+'</div></div>'+
     '<div class="kc blue"><div class="kl">達成店舗数 ('+n+'店)</div>'+
-    '<div class="kachieve"><div class="ach ach-ok"><div class="ach-n">'+okN+'</div><div class="ach-l">店 達成</div></div>'+
+    '<div class="kach"><div class="ach ach-ok"><div class="ach-n">'+okN+'</div><div class="ach-l">店 達成</div></div>'+
     '<div class="ach ach-ng"><div class="ach-n">'+(n-okN)+'</div><div class="ach-l">店 未達</div></div></div></div>'+
-    '<div class="kc gray"><div class="kl">平均販売数</div>'+
-    '<div class="kv2" style="color:var(--n2)">'+avg.toFixed(1)+'<span style="font-size:12px;color:var(--n3)"> 食</span></div>'+
-    '<div class="ksub">'+n+'店の平均</div></div>'+
-  '</div>';
+    '<div class="kc gray"><div class="kl">平均販売数</div><div class="kv2" style="color:var(--n2)">'+avg.toFixed(1)+'<span style="font-size:12px;color:var(--n3)"> 食</span></div>'+
+    '<div class="ksub">'+n+'店の平均</div></div></div>';
 }
-
-function htmlTopic(fs,ml,prevFs){
-  var KPI=kpi(), topics=[];
+function htmlTopic(fs,ml,prevFs,sea){
+  var KPI=kpiOf(sea),topics=[];
   var okS=fs.filter(function(s){return s.rate>=KPI;}).sort(function(a,b){return b.rate-a.rate;});
-  if(okS.length){
-    var top3=okS.slice(0,3).map(function(s){return s.name+'（'+s.rate.toFixed(2)+'%）';}).join('　');
-    topics.push('🏆 KPI達成 '+okS.length+'店: '+top3+(okS.length>3?' 他'+(okS.length-3)+'店':''));
-  }
-  if(prevFs&&prevFs.length){
-    var pm={};prevFs.forEach(function(s){pm[s.name]=s.rate;});
-    var g=fs.filter(function(s){return pm[s.name]!==undefined&&s.rate>pm[s.name];})
-             .map(function(s){return{name:s.name,diff:s.rate-pm[s.name]};})
-             .sort(function(a,b){return b.diff-a.diff;}).slice(0,3);
-    if(g.length) topics.push('📈 注文率UP: '+g.map(function(x){return x.name+'（+'+x.diff.toFixed(2)+'pt）';}).join('　'));
-  }
-  if(ml&&ml.length){
-    var t=ml[0],ts2=ml.reduce(function(a,m){return a+m.sales;},0);
-    topics.push('🍽 人気No.1: 「'+t.name+'」 全体の'+(ts2>0?Math.round(t.sales/ts2*100):0)+'% ('+t.sales.toLocaleString()+'食)');
-  }
+  if(okS.length)topics.push('KPI達成 '+okS.length+'店: '+okS.slice(0,3).map(function(s){return s.name+'（'+s.rate.toFixed(2)+'%）';}).join('　')+(okS.length>3?' 他'+(okS.length-3)+'店':''));
+  if(prevFs&&prevFs.length){var pm={};prevFs.forEach(function(s){pm[s.name]=s.rate;});var g=fs.filter(function(s){return pm[s.name]!==undefined&&s.rate>pm[s.name];}).map(function(s){return{name:s.name,diff:s.rate-pm[s.name]};}).sort(function(a,b){return b.diff-a.diff;}).slice(0,3);if(g.length)topics.push('注文率UP: '+g.map(function(x){return x.name+'（+'+x.diff.toFixed(2)+'pt）';}).join('　'));}
+  if(ml&&ml.length){var t=ml[0],ts2=ml.reduce(function(a,m){return a+m.sales;},0);topics.push('人気No.1:「'+t.name+'」'+(ts2>0?Math.round(t.sales/ts2*100):0)+'% ('+t.sales.toLocaleString()+'食)');}
   if(!topics.length)return '';
-  return '<div class="topic-bar on"><div class="topic-icon">📊</div><div class="topic-txt">'+topics.join('&nbsp;&nbsp;|&nbsp;&nbsp;')+'</div></div>';
+  return '<div class="topic"><div class="topic-txt">'+topics.join('&nbsp;&nbsp;|&nbsp;&nbsp;')+'</div></div>';
 }
-
-function htmlRankTable(fs,prevFs,KPI){
-  DST=[];
-  var pm={};if(prevFs)prevFs.forEach(function(s){pm[s.name]=s.sales;});
+function htmlRank(fs,prevFs,sea){
+  DST=[];var KPI=kpiOf(sea),pm={};if(prevFs)prevFs.forEach(function(s){pm[s.name]=s.sales;});
   var rows=fs.map(function(s,i){
-    var ok=s.rate>=KPI,fc=ok?'var(--g1)':'var(--r1)';
-    var bp=Math.min(s.rate/10*100,100),kp=KPI/10*100;
-    var rnCls=i===0?'rn1':i===1?'rn2':i===2?'rn3':'rnn';
-    var idx=DST.length;DST.push(s.name);
-    var prev=pm[s.name];
-    var chg='<span class="chg-eq">-</span>';
-    if(prev!==undefined){var d=s.sales-prev;chg='<span class="'+(d>0?'chg-up':d<0?'chg-dn':'chg-eq')+'">'+(d>0?'+':'')+d.toFixed(0)+'食</span>';}
-    var jdg=ok?'bdg-ok':s.rate>=KPI*0.8?'bdg-warn':'bdg-ng';
-    var jdgT=ok?'達成':s.rate>=KPI*0.8?'あと少し！':'未達';
-    return '<tr>'+
-      '<td><div class="rn '+rnCls+'">'+(i+1)+'</div></td>'+
+    var ok=s.rate>=KPI,fc=ok?'var(--g1)':'var(--r1)',bp=Math.min(s.rate/10*100,100),kp=KPI/10*100;
+    var rnC=i===0?'rn1':i===1?'rn2':i===2?'rn3':'rnn',idx=DST.length;DST.push(s.name);
+    var prev=pm[s.name],chg='<span class="ceq">-</span>';
+    if(prev!==undefined){var d=s.sales-prev;chg='<span class="'+(d>0?'cup':d<0?'cdn':'ceq')+'">'+(d>0?'+':'')+d.toFixed(0)+'食</span>';}
+    var jc=ok?'bok':s.rate>=KPI*0.8?'bwn':'bng',jt=ok?'達成':s.rate>=KPI*0.8?'あと少し！':'未達';
+    return '<tr><td><div class="rn '+rnC+'">'+(i+1)+'</div></td>'+
       '<td><div class="sname" data-si="'+idx+'">'+s.name+'</div></td>'+
       '<td style="text-align:center;font-size:9px;color:var(--n2)">'+s.area+'</td>'+
-      '<td style="min-width:70px"><div class="bar-mini"><div class="bar-fill" style="width:'+bp+'%;background:'+fc+'"></div><div class="bar-kpi" style="left:'+kp+'%"></div></div></td>'+
+      '<td style="min-width:60px"><div class="bm"><div class="bf" style="width:'+bp+'%;background:'+fc+'"></div><div class="bk" style="left:'+kp+'%"></div></div></td>'+
       '<td class="rv '+(ok?'rok':'rng')+'">'+s.rate.toFixed(2)+'%</td>'+
       '<td style="text-align:right;font-size:10px">'+s.sales.toFixed(0)+'食</td>'+
-      '<td>'+chg+'</td>'+
-      '<td><span class="bdg '+jdg+'">'+jdgT+'</span></td>'+
-    '</tr>';
+      '<td>'+chg+'</td><td><span class="bdg '+jc+'">'+jt+'</span></td></tr>';
   }).join('');
-  return '<div class="card"><div class="card-hint">📌 店舗名をクリック → メニュー別注文率</div>'+
-    '<div style="overflow-x:auto"><table class="rtbl"><thead><tr>'+
-    '<th></th><th class="l">店舗名</th><th>所属</th><th>注文率</th><th>注文率</th><th>販売数</th><th>前週比</th><th>判定</th>'+
-    '</tr></thead><tbody>'+rows+'</tbody></table></div></div>';
+  return '<div class="card"><div class="card-hint">店舗名をクリック → メニュー別注文率</div>'+
+    '<div style="overflow-x:auto"><table class="rtbl"><thead><tr><th></th><th class="l">店舗名</th><th>所属</th><th>注文率グラフ</th><th>注文率</th><th>販売数</th><th>前週比</th><th>判定</th></tr></thead><tbody>'+rows+'</tbody></table></div></div>';
 }
-
-function htmlMenuTable(ml,ts){
-  DMN=[];
-  var mx=ml.length?ml[0].sales:1;
+function htmlMenu(ml,ts){
+  DMN=[];var mx=ml.length?ml[0].sales:1;
   var rows=ml.map(function(m,i){
-    var pct=ts>0?m.sales/ts*100:0,mw=mx>0?m.sales/mx*100:0;
-    var bc=i===0?'var(--c2)':i===1?'#3b82f6':'var(--n2)';
-    var rnCls=i===0?'rn1':i===1?'rn2':i===2?'rn3':'rnn';
-    var idx=DMN.length;DMN.push(m.name);
-    return '<tr>'+
-      '<td><div class="rn '+rnCls+'">'+(i+1)+'</div></td>'+
+    var pct=ts>0?m.sales/ts*100:0,mw=mx>0?m.sales/mx*100:0,bc=i===0?'var(--c2)':i===1?'#3b82f6':'var(--n2)';
+    var rnC=i===0?'rn1':i===1?'rn2':i===2?'rn3':'rnn',idx=DMN.length;DMN.push(m.name);
+    return '<tr><td><div class="rn '+rnC+'">'+(i+1)+'</div></td>'+
       '<td style="font-weight:700;font-size:10px;cursor:pointer;color:var(--c2);text-decoration:underline" data-mi="'+idx+'">'+m.name+'</td>'+
       '<td style="text-align:right;font-weight:700">'+m.sales.toLocaleString()+'食</td>'+
-      '<td><div class="menu-bar"><div class="menu-bar-bg"><div class="menu-bar-fill" style="width:'+mw+'%;background:'+bc+'"></div></div>'+
-      '<div class="menu-pct" style="color:'+bc+'">'+pct.toFixed(1)+'%</div></div></td>'+
-    '</tr>';
+      '<td><div class="mbar"><div class="mbar-bg"><div class="mbar-f" style="width:'+mw+'%;background:'+bc+'"></div></div><div class="mpct" style="color:'+bc+'">'+pct.toFixed(1)+'%</div></div></td></tr>';
   }).join('');
-  return '<div class="card"><table class="mtbl"><thead><tr>'+
-    '<th></th><th class="l">メニュー名（販売数降順）</th><th>販売数</th><th>構成比</th>'+
-    '</tr></thead><tbody>'+rows+'</tbody></table></div>';
+  return '<div class="card"><table class="mtbl"><thead><tr><th></th><th class="l">メニュー名（販売数降順）</th><th>販売数</th><th>構成比</th></tr></thead><tbody>'+rows+'</tbody></table></div>';
+}
+function htmlSummary(fs,sea){
+  var KPI=kpiOf(sea),al=aggByKey(fs,'area');
+  var rows=al.map(function(b){var ok=b.rate>=KPI,fc=ok?'var(--g1)':'var(--r1)',bw=Math.min(b.rate/10*100,100),kw=KPI/10*100;return '<div class="sr"><div class="stop"><span class="sn">'+b.name+'</span><span class="sv" style="color:'+fc+'">'+b.rate.toFixed(2)+'%</span></div><div class="sbb"><div class="sbf" style="width:'+bw+'%;background:'+fc+'"></div><div class="sbk" style="left:'+kw+'%"></div></div><div class="ssb">'+b.sales.toLocaleString()+'食 / '+b.cnt+'店</div></div>';}).join('');
+  return '<div class="sw"><div class="st">所属別　注文率</div>'+rows+'</div>';
+}
+function htmlTrend(series,sea){
+  var KPI=kpiOf(sea);
+  var rows=series.map(function(w,i){var ok=w.ovr>=KPI;return '<tr><td class="l">'+(i+1)+'W</td><td class="sm">'+w.wl+'</td><td class="'+(ok?'tok':'tng')+'">'+w.ovr.toFixed(2)+'%</td><td>'+w.ts.toLocaleString()+'食</td><td>'+w.tc.toLocaleString()+'名</td><td><span class="bdg '+(ok?'bok':'bng')+'">'+(ok?'達成':'未達')+'</span></td></tr>';}).join('');
+  return '<div class="card" style="overflow-x:auto"><table class="ttbl"><thead><tr><th class="l">週</th><th>期間</th><th>注文率</th><th>販売数</th><th>総客数</th><th>KPI</th></tr></thead><tbody>'+rows+'</tbody></table></div>';
 }
 
-function htmlSummary(fs,KPI){
-  var al=aggByKey(fs,'area');
-  function rows(list){
-    return list.map(function(b){
-      var ok=b.rate>=KPI,fc=ok?'var(--g1)':'var(--r1)';
-      var bw=Math.min(b.rate/10*100,100),kw=KPI/10*100;
-      return '<div class="sum-row">'+
-        '<div class="sum-top"><span class="sum-name">'+b.name+'</span><span class="sum-rate" style="color:'+fc+'">'+b.rate.toFixed(2)+'%</span></div>'+
-        '<div class="sum-bar-bg"><div class="sum-bar-fill" style="width:'+bw+'%;background:'+fc+'"></div><div class="sum-bar-kpi" style="left:'+kw+'%"></div></div>'+
-        '<div class="sum-sub">'+b.sales.toLocaleString()+'食 / '+b.cnt+'店</div></div>';
-    }).join('');
-  }
-  return '<div class="sum-wrap"><div class="sum-title">所属別　注文率</div>'+rows(al)+'</div>';
-}
-
-function htmlTrendTable(wkSeries,KPI){
-  var rows=wkSeries.map(function(w,i){
-    var ok=w.ovr>=KPI;
-    return '<tr><td class="l">'+(i+1)+'W</td><td class="sm">'+w.wl+'</td>'+
-      '<td class="'+(ok?'tok':'tng')+'">'+w.ovr.toFixed(2)+'%</td>'+
-      '<td>'+w.ts.toLocaleString()+'食</td><td>'+w.tc.toLocaleString()+'名</td>'+
-      '<td><span class="bdg '+(ok?'bdg-ok':'bdg-ng')+'">'+(ok?'達成':'未達')+'</span></td></tr>';
-  }).join('');
-  return '<div class="card" style="overflow-x:auto"><table class="ttbl"><thead><tr>'+
-    '<th class="l">週</th><th>期間</th><th>注文率</th><th>販売数</th><th>総客数</th><th>KPI</th>'+
-    '</tr></thead><tbody>'+rows+'</tbody></table></div>';
-}
-
-/* ================================================================
-   DRILL DOWN
-================================================================ */
 function drillStore(idx){
-  var store=DST[idx]; if(!store)return;
-  var sm={},cu=0;
-  ALL_WK.forEach(function(wd){
-    var s=wd.stores.filter(function(x){return x.name===store;})[0];
-    if(!s)return;
-    cu+=s.cust;
-    Object.keys(s.menus).forEach(function(mn){sm[mn]=(sm[mn]||0)+s.menus[mn];});
-  });
-  var KPI=kpi();
-  var items=Object.keys(sm).map(function(mn){return{name:mn,sales:sm[mn],rate:cu>0?sm[mn]/cu*100:0};})
-              .sort(function(a,b){return b.rate-a.rate;});
-  var mx=items.length?Math.max(items[0].rate,KPI*2):KPI*2, kp=KPI/mx*100;
-  var rows=items.map(function(it){
-    var ok=it.rate>=KPI,fc=ok?'var(--g1)':'var(--r1)',bw=Math.min(it.rate/mx*100,100);
-    return '<div class="m-row" style="grid-template-columns:minmax(0,1fr) 130px 56px 44px">'+
-      '<div class="m-nm">'+it.name+'</div>'+
-      '<div class="m-bw"><div class="m-bt"><div class="m-bf" style="width:'+bw+'%;background:'+fc+'"></div></div><div class="m-kl" style="left:'+kp+'%"></div></div>'+
-      '<div class="m-rv" style="color:'+fc+'">'+it.rate.toFixed(2)+'%</div>'+
-      '<div class="m-sv">'+it.sales+'食</div></div>';
-  }).join('');
-  document.getElementById('drill-icon').textContent='🏪';
-  document.getElementById('drill-title').textContent=store+' ─ メニュー別注文率（累積）';
-  document.getElementById('drill-body').innerHTML=
-    '<div class="modal-info">総客数: '+cu.toLocaleString()+'名　KPI: '+KPI+'%</div>'+
-    '<div class="m-th" style="grid-template-columns:minmax(0,1fr) 130px 56px 44px">'+
-    '<span>メニュー名</span><span>注文率</span><span>注文率</span><span>販売数</span></div>'+rows;
+  var store=DST[idx];if(!store)return;
+  var sea=curSea(),KPI=kpiOf(sea),sm={},cu=0;
+  ALL_WK.forEach(function(wd){var s=wd.stores.filter(function(x){return x.name===store;})[0];if(!s)return;cu+=s.cust;Object.keys(s.menus).forEach(function(mn){sm[mn]=(sm[mn]||0)+s.menus[mn];});});
+  var items=Object.keys(sm).map(function(mn){return{name:mn,sales:sm[mn],rate:cu>0?sm[mn]/cu*100:0};}).sort(function(a,b){return b.rate-a.rate;});
+  var mx=items.length?Math.max(items[0].rate,KPI*2):KPI*2,kp=KPI/mx*100;
+  var rows=items.map(function(it){var ok=it.rate>=KPI,fc=ok?'var(--g1)':'var(--r1)',bw=Math.min(it.rate/mx*100,100);return '<div class="mrow" style="grid-template-columns:minmax(0,1fr) 130px 56px 44px"><div class="mnm">'+it.name+'</div><div class="mbw"><div class="mbt"><div class="mbf" style="width:'+bw+'%;background:'+fc+'"></div></div><div class="mkl" style="left:'+kp+'%"></div></div><div class="mrv" style="color:'+fc+'">'+it.rate.toFixed(2)+'%</div><div class="msv">'+it.sales+'食</div></div>';}).join('');
+  document.getElementById('d-icon').textContent='🏪';
+  document.getElementById('d-title').textContent=store+' — メニュー別注文率（累積）';
+  document.getElementById('d-body').innerHTML='<div class="minfo">総客数: '+cu.toLocaleString()+'名　KPI: '+KPI+'%</div><div class="mth" style="grid-template-columns:minmax(0,1fr) 130px 56px 44px"><span>メニュー名</span><span>注文率グラフ</span><span>注文率</span><span>販売数</span></div>'+rows;
   document.getElementById('drill-ov').classList.add('on');
 }
 function drillMenu(idx){
-  var mn=DMN[idx]; if(!mn)return;
-  var KPI=kpi();
-  var sm={};
-  ALL_WK.forEach(function(wd){
-    wd.stores.forEach(function(s){
-      if(!s.menus[mn])return;
-      if(!sm[s.name])sm[s.name]={sales:0,cust:0,area:s.area};
-      sm[s.name].sales+=s.menus[mn]; sm[s.name].cust+=s.cust;
-    });
-  });
-  var items=Object.keys(sm).map(function(sn){var d=sm[sn];return{name:sn,sales:d.sales,cust:d.cust,rate:d.cust>0?d.sales/d.cust*100:0,area:d.area};})
-              .sort(function(a,b){return b.rate-a.rate;});
-  var mx=items.length?Math.max(items[0].rate,KPI*2):KPI*2, kp=KPI/mx*100;
-  var rows=items.map(function(it){
-    var ok=it.rate>=KPI,fc=ok?'var(--g1)':'var(--r1)',bw=Math.min(it.rate/mx*100,100);
-    return '<div class="m-row" style="grid-template-columns:minmax(0,1fr) 50px 130px 56px 44px">'+
-      '<div class="m-nm">'+it.name+'</div>'+
-      '<div style="font-size:8px;text-align:center;color:var(--n2)">'+it.area+'</div>'+
-      '<div class="m-bw"><div class="m-bt"><div class="m-bf" style="width:'+bw+'%;background:'+fc+'"></div></div><div class="m-kl" style="left:'+kp+'%"></div></div>'+
-      '<div class="m-rv" style="color:'+fc+'">'+it.rate.toFixed(2)+'%</div>'+
-      '<div class="m-sv">'+it.sales+'食</div></div>';
-  }).join('');
-  document.getElementById('drill-icon').textContent='🍽';
-  document.getElementById('drill-title').textContent=mn+' ─ 店舗別注文率（累積）';
-  document.getElementById('drill-body').innerHTML=
-    '<div class="modal-info">全'+ALL_WK.length+'週累積　KPI: '+KPI+'%</div>'+
-    '<div class="m-th" style="grid-template-columns:minmax(0,1fr) 50px 130px 56px 44px">'+
-    '<span>店舗名</span><span>所属</span><span>注文率</span><span>注文率</span><span>販売数</span></div>'+rows;
+  var mn=DMN[idx];if(!mn)return;
+  var sea=curSea(),KPI=kpiOf(sea),sm={};
+  ALL_WK.forEach(function(wd){wd.stores.forEach(function(s){if(!s.menus[mn])return;if(!sm[s.name])sm[s.name]={sales:0,cust:0,area:s.area};sm[s.name].sales+=s.menus[mn];sm[s.name].cust+=s.cust;});});
+  var items=Object.keys(sm).map(function(sn){var d=sm[sn];return{name:sn,sales:d.sales,cust:d.cust,rate:d.cust>0?d.sales/d.cust*100:0,area:d.area};}).sort(function(a,b){return b.rate-a.rate;});
+  var mx=items.length?Math.max(items[0].rate,KPI*2):KPI*2,kp=KPI/mx*100;
+  var rows=items.map(function(it){var ok=it.rate>=KPI,fc=ok?'var(--g1)':'var(--r1)',bw=Math.min(it.rate/mx*100,100);return '<div class="mrow" style="grid-template-columns:minmax(0,1fr) 50px 130px 56px 44px"><div class="mnm">'+it.name+'</div><div style="font-size:8px;text-align:center;color:var(--n2)">'+it.area+'</div><div class="mbw"><div class="mbt"><div class="mbf" style="width:'+bw+'%;background:'+fc+'"></div></div><div class="mkl" style="left:'+kp+'%"></div></div><div class="mrv" style="color:'+fc+'">'+it.rate.toFixed(2)+'%</div><div class="msv">'+it.sales+'食</div></div>';}).join('');
+  document.getElementById('d-icon').textContent='🍽';
+  document.getElementById('d-title').textContent=mn+' — 店舗別注文率（累積）';
+  document.getElementById('d-body').innerHTML='<div class="minfo">全'+ALL_WK.length+'週累積　KPI: '+KPI+'%</div><div class="mth" style="grid-template-columns:minmax(0,1fr) 50px 130px 56px 44px"><span>店舗名</span><span>所属</span><span>注文率グラフ</span><span>注文率</span><span>販売数</span></div>'+rows;
   document.getElementById('drill-ov').classList.add('on');
 }
-
-/* ================================================================
-   RENDER WEEK TAB
-================================================================ */
-function updateFilterLabels(){
-  var fl=filterLabel();
-  var clr=document.getElementById('fb-clr');
-  if(clr) clr.style.display=fl?'block':'none';
-  // ボタンラベル更新
-  var areaMap={'all':'所属','第1エリア':'第1エリア','第2エリア':'第2エリア','第3エリア':'第3エリア','第4エリア':'第4エリア','FC':'FC'};
-  var moMap={'all':'導線','MO':'MO','POP':'POP'};
-  var ab=document.getElementById('dd-area-btn');
-  var mb=document.getElementById('dd-mo-btn');
-  var nb=document.getElementById('dd-mn-btn');
-  if(ab){ ab.innerHTML='🏢 '+(areaMap[F.area]||F.area)+' <span class="arrow">▼</span>'; ab.classList.toggle('active',F.area!=='all'); }
-  if(mb){ mb.innerHTML='📱 '+(moMap[F.mo]||F.mo)+' <span class="arrow">▼</span>'; mb.classList.toggle('active',F.mo!=='all'); }
-  if(nb){ nb.innerHTML='🍽 '+(F.mn==='all'?'メニュー':F.mn)+' <span class="arrow">▼</span>'; nb.classList.toggle('active',F.mn!=='all'); }
-}
+function bindDrill(pid){var p=document.getElementById(pid);if(!p)return;p.addEventListener('click',function(e){var si=e.target.getAttribute('data-si');if(si!==null){drillStore(parseInt(si));return;}var mi=e.target.getAttribute('data-mi');if(mi!==null){drillMenu(parseInt(mi));return;}});}
 
 function renderWeek(){
-  var KPI=kpi();
+  var sea=CW==='__cum'?SEASONS[SEASONS.length-1]:((ALL_WK.filter(function(w){return w.wk===CW;})[0]||ALL_WK[ALL_WK.length-1]||{}).season||SEASONS[SEASONS.length-1]);
   var isCum=CW==='__cum';
   var d=isCum?null:ALL_WK.filter(function(w){return w.wk===CW;})[0]||ALL_WK[ALL_WK.length-1];
   var prevD=d?(ALL_WK[ALL_WK.indexOf(d)-1]||null):null;
   var fs,ml,ts,tc,prevTs=null,prevOvr=null;
-
   if(isCum){
     var sM={},smC={};
-    ALL_WK.forEach(function(wd){
-      applyFilter(wd.stores).forEach(function(s){
-        if(!sM[s.name])sM[s.name]={area:s.area,mo:s.mo,sales:0,cust:0,menus:{}};
-        sM[s.name].sales+=s.sales;sM[s.name].cust+=s.cust;
-        Object.keys(s.menus).forEach(function(m){sM[s.name].menus[m]=(sM[s.name].menus[m]||0)+s.menus[m];});
-        if(!smC[s.name])smC[s.name]={};
-        Object.keys(s.menus).forEach(function(m){smC[s.name][m]=(smC[s.name][m]||0)+s.menus[m];});
-      });
-    });
-    var cumSt=Object.keys(sM).map(function(n){var s=sM[n];
-      return{name:n,area:s.area,mo:s.mo,sales:s.sales,cust:s.cust,
-        rate:s.cust>0?s.sales/s.cust*100:0,menus:s.menus};}).sort(function(a,b){return b.rate-a.rate;});
-    fs=cumSt; ml=aggMenu(fs,smC); ts=0;tc=0;fs.forEach(function(s){ts+=s.sales;tc+=s.cust;});
-  } else {
-    var sw=wkSummary(d); fs=sw.fs; ml=sw.ml; ts=sw.ts; tc=sw.tc;
-    if(prevD){var ps=wkSummary(prevD);prevTs=ps.ts;prevOvr=ps.ovr;}
-  }
-
-  var wkSeries=ALL_WK.map(function(wd,i){
-    var ws=wkSummary(wd);
-    return{lbl:(i+1)+'W',val:ws.ovr,ts:ws.ts,tc:ws.tc,wl:wd.wl};
-  });
-  var sSeries=ALL_WK.map(function(wd,i){
-    var ws=wkSummary(wd);
-    return{lbl:(i+1)+'W',val:ws.ts};
-  });
-
-  var fl=filterLabel();
-  var infoHtml=isCum?'<div class="info-bar">📈 累積表示（全'+ALL_WK.length+'週）</div>':'';
-
+    ALL_WK.forEach(function(wd){applyF(wd.stores).forEach(function(s){if(!sM[s.name])sM[s.name]={area:s.area,mo:s.mo,sales:0,cust:0,menus:{}};sM[s.name].sales+=s.sales;sM[s.name].cust+=s.cust;Object.keys(s.menus).forEach(function(m){sM[s.name].menus[m]=(sM[s.name].menus[m]||0)+s.menus[m];});if(!smC[s.name])smC[s.name]={};Object.keys(s.menus).forEach(function(m){smC[s.name][m]=(smC[s.name][m]||0)+s.menus[m];});});});
+    var cumSt=Object.keys(sM).map(function(n){var s=sM[n];s.name=n;s.rate=s.cust>0?s.sales/s.cust*100:0;return s;}).sort(function(a,b){return b.rate-a.rate;});
+    fs=cumSt;ml=aggMenu(fs,smC);ts=0;tc=0;fs.forEach(function(s){ts+=s.sales;tc+=s.cust;});
+  }else{var sw=wkSum(d);fs=sw.fs;ml=sw.ml;ts=sw.ts;tc=sw.tc;if(prevD){var ps=wkSum(prevD);prevTs=ps.ts;prevOvr=ps.ovr;}}
+  var wkSeries=ALL_WK.map(function(wd,i){var ws=wkSum(wd);return{lbl:(i+1)+'W',val:ws.ovr,ts:ws.ts,tc:ws.tc,wl:wd.wl};});
+  var sSeries=ALL_WK.map(function(wd,i){var ws=wkSum(wd);return{lbl:(i+1)+'W',val:ws.ts};});
+  var KPI=kpiOf(sea);
+  var infoHtml=isCum?'<div class="info-bar">累積表示（全'+ALL_WK.length+'週）</div>':'';
   document.getElementById('tab-week').innerHTML=
-    infoHtml+
-    htmlTopic(fs,ml,prevD?applyFilter(prevD.stores):null)+
-    (fl?'<div class="filter-tag on">🔍 '+fl+'<span class="filter-clr" id="btn-clr">クリア</span></div>':'')+
-    htmlKPI(fs,ts,tc,prevTs,prevOvr)+
-    '<div class="chart-2col" style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px;">'+
-      '<div class="card"><div class="chart-wrap"><div class="chart-title">📈 注文率 週次推移（赤破線＝KPI '+KPI+'%）</div>'+makeChart(wkSeries,'rate',KPI)+'<div class="chart-note">※ベースライン切り捨て表示</div></div></div>'+
-      '<div class="card"><div class="chart-wrap"><div class="chart-title">🌸 販売数 週次推移</div>'+makeChart(sSeries,'sales',null)+'<div class="chart-note">※ベースライン切り捨て表示</div></div></div>'+
+    infoHtml+htmlTopic(fs,ml,prevD?applyF(prevD.stores):null,sea)+
+    htmlKPI(fs,ts,tc,sea,prevTs,prevOvr)+
+    '<div class="g2">'+
+      '<div class="card"><div style="padding:12px 14px 10px"><div class="sec" style="margin-bottom:8px">注文率 週次推移（KPI '+KPI+'%）</div>'+makeChart(wkSeries,'rate',KPI)+'</div></div>'+
+      '<div class="card"><div style="padding:12px 14px 10px"><div class="sec" style="margin-bottom:8px">販売数 週次推移</div>'+makeChart(sSeries,'sales',null)+'</div></div>'+
     '</div>'+
-    '<div style="display:grid;grid-template-columns:1fr 240px;gap:10px;margin-bottom:10px;">'+
-      '<div>'+
-        '<div class="sec-label">店舗別 注文率ランキング</div>'+
-        htmlRankTable(fs,prevD?applyFilter(prevD.stores):null,KPI)+
-        '<div class="sec-label" style="margin-top:10px">メニュー別 販売数（降順）</div>'+
-        htmlMenuTable(ml,ts)+
-      '</div>'+
-      '<div>'+
-        '<div class="sec-label">所属別 集計</div>'+
-        '<div class="card">'+htmlSummary(fs,KPI)+'</div>'+
-      '</div>'+
+    '<div class="g-main">'+
+      '<div><div class="sec">店舗別 注文率ランキング</div>'+htmlRank(fs,prevD?applyF(prevD.stores):null,sea)+
+      '<div class="sec" style="margin-top:12px">メニュー別 販売数（降順）</div>'+htmlMenu(ml,ts)+'</div>'+
+      '<div><div class="sec">所属別 集計</div><div class="card">'+htmlSummary(fs,sea)+'</div></div>'+
     '</div>'+
-    (ALL_WK.length>=2?
-      '<div class="sec-label">週次トレンド</div>'+
-      htmlTrendTable(wkSeries,KPI):'');
-
-  // events
-
-  bindTableEvents('tab-week');
+    (ALL_WK.length>=2?'<div class="sec">週次トレンド</div>'+htmlTrend(wkSeries,sea):'');
+  bindDrill('tab-week');
 }
 
-function bindTableEvents(panelId){
-  var panel=document.getElementById(panelId);
-  if(!panel)return;
-  panel.addEventListener('click',function(e){
-    var si=e.target.getAttribute('data-si');if(si!==null){drillStore(parseInt(si));return;}
-    var mi=e.target.getAttribute('data-mi');if(mi!==null){drillMenu(parseInt(mi));return;}
-  });
-}
-
-/* ================================================================
-   RENDER MONTH TAB
-================================================================ */
 function renderMonth(){
-  var KPI=kpi();
-  var monSet={};
-  ALL_WK.forEach(function(wd){var k=wd.year+'-'+(wd.mon<10?'0':'')+wd.mon;monSet[k]={mon:wd.mon,year:wd.year,label:wd.year+'年'+wd.mon+'月'};});
+  var monSet={};ALL_WK.forEach(function(wd){var k=wd.year+'-'+(wd.mon<10?'0':'')+wd.mon;monSet[k]={mon:wd.mon,year:wd.year,label:wd.year+'年'+wd.mon+'月',sea:wd.season};});
   var monList=Object.keys(monSet).sort();
   if(!monList.length){document.getElementById('tab-month').innerHTML='<div style="padding:40px;text-align:center;color:var(--n3)">データがありません</div>';return;}
-  if(!CUR_MON||monList.indexOf(CUR_MON)<0) CUR_MON=monList[monList.length-1];
-
+  if(!CUR_MON||monList.indexOf(CUR_MON)<0)CUR_MON=monList[monList.length-1];
   function buildMon(mk){
-    var mm=monSet[mk];
-    var wkList=[], sM={}, smC={};
+    var mm=monSet[mk],wkList=[],sM={},smC={};
     ALL_WK.filter(function(wd){return wd.mon===mm.mon&&wd.year===mm.year;}).forEach(function(wd){
-      var fs=applyFilter(wd.stores),wts=0,wtc=0;
-      fs.forEach(function(s){
-        wts+=s.sales;wtc+=s.cust;
-        if(!sM[s.name])sM[s.name]={area:s.area,mo:s.mo,sales:0,cust:0};
-        sM[s.name].sales+=s.sales;sM[s.name].cust+=s.cust;
-        if(!smC[s.name])smC[s.name]={};
-        Object.keys(s.menus||{}).forEach(function(mn){smC[s.name][mn]=(smC[s.name][mn]||0)+s.menus[mn];});
-      });
+      var fs=applyF(wd.stores),wts=0,wtc=0;
+      fs.forEach(function(s){wts+=s.sales;wtc+=s.cust;if(!sM[s.name])sM[s.name]={area:s.area,mo:s.mo,sales:0,cust:0};sM[s.name].sales+=s.sales;sM[s.name].cust+=s.cust;if(!smC[s.name])smC[s.name]={};Object.keys(s.menus||{}).forEach(function(mn){smC[s.name][mn]=(smC[s.name][mn]||0)+s.menus[mn];});});
       wkList.push({wl:wd.wl,ovr:wtc>0?wts/wtc*100:0,ts:wts,tc:wtc});
     });
-    var stores=Object.keys(sM).map(function(n){var s=sM[n];
-      s.name=n;s.rate=s.cust>0?s.sales/s.cust*100:0;return s;});
-    var ts2=stores.reduce(function(a,s){return a+s.sales;},0);
-    var tc2=stores.reduce(function(a,s){return a+s.cust;},0);
-    var ml=aggMenu(stores,smC);
-    return{wkList:wkList,stores:stores,ml:ml,ts:ts2,tc:tc2,ovr:tc2>0?ts2/tc2*100:0};
+    var stores=Object.keys(sM).map(function(n){var s=sM[n];s.name=n;s.rate=s.cust>0?s.sales/s.cust*100:0;return s;});
+    var ts2=stores.reduce(function(a,s){return a+s.sales;},0),tc2=stores.reduce(function(a,s){return a+s.cust;},0);
+    return{wkList:wkList,stores:stores.sort(function(a,b){return b.rate-a.rate;}),ml:aggMenu(stores,smC),ts:ts2,tc:tc2,ovr:tc2>0?ts2/tc2*100:0,sea:mm.sea};
   }
-
   function renderMonContent(){
-    var d=buildMon(CUR_MON);
-    var ovr=d.ovr,ok=ovr>=KPI,okw=d.wkList.filter(function(w){return w.ovr>=KPI;}).length;
-    var monSeries=d.wkList.map(function(w,i){return{lbl:(i+1)+'W',val:w.ovr,ts:w.ts,tc:w.tc,wl:w.wl};});
-    var sSeries2=d.wkList.map(function(w,i){return{lbl:(i+1)+'W',val:w.ts};});
+    var d=buildMon(CUR_MON),sea=d.sea,KPI=kpiOf(sea),ovr=d.ovr,ok=ovr>=KPI,okw=d.wkList.filter(function(w){return w.ovr>=KPI;}).length;
+    var mSeries=d.wkList.map(function(w,i){return{lbl:(i+1)+'W',val:w.ovr,ts:w.ts,tc:w.tc,wl:w.wl};});
+    var sSeries=d.wkList.map(function(w,i){return{lbl:(i+1)+'W',val:w.ts};});
     document.getElementById('mon-content').innerHTML=
       '<div class="mon-kpis">'+
-        '<div class="mon-kpi"><div class="mon-kpi-l">注文率</div><div class="mon-kpi-v" style="color:'+(ok?'var(--g1)':'var(--r1)')+'">'+ovr.toFixed(2)+'<span class="mon-kpi-u">%</span></div></div>'+
-        '<div class="mon-kpi"><div class="mon-kpi-l">販売数</div><div class="mon-kpi-v" style="color:var(--c2)">'+d.ts.toLocaleString()+'<span class="mon-kpi-u">食</span></div></div>'+
-        '<div class="mon-kpi"><div class="mon-kpi-l">総客数</div><div class="mon-kpi-v" style="color:var(--n2)">'+d.tc.toLocaleString()+'<span class="mon-kpi-u">名</span></div></div>'+
-        '<div class="mon-kpi"><div class="mon-kpi-l">KPI達成週</div><div class="mon-kpi-v" style="color:'+(okw===d.wkList.length?'var(--g1)':'var(--r1)')+'">'+okw+'<span class="mon-kpi-u">/'+d.wkList.length+'W</span></div></div>'+
+        '<div class="mkpi"><div class="mkpi-l">注文率</div><div class="mkpi-v" style="color:'+(ok?'var(--g1)':'var(--r1)')+'">'+ovr.toFixed(2)+'<span class="mkpi-u">%</span></div></div>'+
+        '<div class="mkpi"><div class="mkpi-l">販売数</div><div class="mkpi-v" style="color:var(--c2)">'+d.ts.toLocaleString()+'<span class="mkpi-u">食</span></div></div>'+
+        '<div class="mkpi"><div class="mkpi-l">総客数</div><div class="mkpi-v" style="color:var(--n2)">'+d.tc.toLocaleString()+'<span class="mkpi-u">名</span></div></div>'+
+        '<div class="mkpi"><div class="mkpi-l">KPI達成週</div><div class="mkpi-v" style="color:'+(okw===d.wkList.length?'var(--g1)':'var(--r1)')+'">'+okw+'<span class="mkpi-u">/'+d.wkList.length+'W</span></div></div>'+
       '</div>'+
-      '<div class="chart-2col" style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px;">'+
-        '<div class="card"><div class="chart-wrap"><div class="chart-title">📈 注文率 月次推移</div>'+makeChart(monSeries,'rate',KPI)+'</div></div>'+
-        '<div class="card"><div class="chart-wrap"><div class="chart-title">🌸 販売数 月次推移</div>'+makeChart(sSeries2,'sales',null)+'</div></div>'+
+      '<div class="g2">'+
+        '<div class="card"><div style="padding:12px 14px 10px"><div class="sec" style="margin-bottom:8px">注文率 月次推移</div>'+makeChart(mSeries,'rate',KPI)+'</div></div>'+
+        '<div class="card"><div style="padding:12px 14px 10px"><div class="sec" style="margin-bottom:8px">販売数 月次推移</div>'+makeChart(sSeries,'sales',null)+'</div></div>'+
       '</div>'+
-      '<div class="sec-label">店舗別 注文率ランキング</div>'+
-      htmlRankTable(d.stores.sort(function(a,b){return b.rate-a.rate;}),null,KPI)+
-      '<div class="sec-label" style="margin-top:10px">メニュー別 販売数（降順）</div>'+
-      htmlMenuTable(d.ml,d.ts)+
-      '<div class="sec-label" style="margin-top:10px">週次トレンド</div>'+
-      htmlTrendTable(monSeries,KPI);
-    bindTableEvents('mon-content');
+      '<div class="g-main">'+
+        '<div><div class="sec">店舗別 注文率ランキング</div>'+htmlRank(d.stores,null,sea)+
+        '<div class="sec" style="margin-top:12px">メニュー別 販売数（降順）</div>'+htmlMenu(d.ml,d.ts)+'</div>'+
+        '<div><div class="sec">所属別 集計</div><div class="card">'+htmlSummary(d.stores,sea)+'</div></div>'+
+      '</div>'+
+      (d.wkList.length>=2?'<div class="sec">月次トレンド</div>'+htmlTrend(mSeries,sea):'');
+    bindDrill('mon-content');
   }
-
-  var monBtns=monList.map(function(mk){
-    return '<button class="sel-btn'+(mk===CUR_MON?' on':'')+'" data-mon="'+mk+'">'+monSet[mk].label+'</button>';
-  }).join('');
-  document.getElementById('tab-month').innerHTML=
-    '<div class="sel-bar" id="mon-sel-bar">'+monBtns+'</div>'+
-    '<div id="mon-content"></div>';
-  document.getElementById('mon-sel-bar').addEventListener('click',function(e){
-    var b=e.target.closest('.sel-btn');if(!b)return;
-    CUR_MON=b.getAttribute('data-mon');
-    document.querySelectorAll('.sel-btn[data-mon]').forEach(function(x){x.classList.toggle('on',x.getAttribute('data-mon')===CUR_MON);});
-    renderMonContent();
-  });
+  var btns=monList.map(function(mk){return '<button class="ssbtn'+(mk===CUR_MON?' on':'')+'" data-mon="'+mk+'">'+monSet[mk].label+'</button>';}).join('');
+  document.getElementById('tab-month').innerHTML='<div class="ssel" id="mon-sel"><span class="ssel-label">月を選択：</span>'+btns+'</div><div id="mon-content"></div>';
+  document.getElementById('mon-sel').addEventListener('click',function(e){var b=e.target.closest('.ssbtn');if(!b)return;CUR_MON=b.getAttribute('data-mon');document.querySelectorAll('.ssbtn[data-mon]').forEach(function(x){x.classList.toggle('on',x.getAttribute('data-mon')===CUR_MON);});renderMonContent();});
   renderMonContent();
 }
 
-/* ================================================================
-   RENDER SEASON TAB
-================================================================ */
 function renderSeason(){
-  var seaList=SEASONS;
-  if(!seaList.length){document.getElementById('tab-season').innerHTML='<div style="padding:40px;text-align:center;color:var(--n3)">seasons.jsonにデータがありません</div>';return;}
-  if(!CUR_SEA_ID) CUR_SEA_ID=seaList[seaList.length-1].id;
-
-  var seaBtns=seaList.map(function(s){
-    return '<button class="sel-btn'+(s.id===CUR_SEA_ID?' on':'')+'" data-sea="'+s.id+'">'+s.emoji+' '+s.name+'</button>';
-  }).join('');
-
+  if(!SEASONS.length){document.getElementById('tab-season').innerHTML='<div style="padding:40px;text-align:center;color:var(--n3)">seasons.jsonが読み込まれていません</div>';return;}
+  if(!CUR_SEA)CUR_SEA=SEASONS[SEASONS.length-1].id;
   function renderSeaContent(){
-    var sea=seaList.filter(function(s){return s.id===CUR_SEA_ID;})[0]; if(!sea)return;
-    // 全週データから選択季節に対応するデータを抽出
-    // (ALL_WK は現在表示中の季節のデータなので、全シーズンのデータを横断するには...)
-    // シンプルに: 季節タブは現在ロード済みの季節のみ表示
-    // → 季節比較は累積で見せる
-    var pStart=sea.period[0].replace(/-/g,'/');
-    var pEnd=sea.period[1].replace(/-/g,'/');
-
-    // 現在のALL_WKから該当季節の週を抽出
-    var seaWks=ALL_WK.filter(function(wd){return wd.wk>=pStart&&wd.wk<=pEnd;});
-    if(!seaWks.length){
-      document.getElementById('sea-content').innerHTML='<div style="padding:20px;text-align:center;color:var(--n3)">この季節のデータがありません</div>';
-      return;
-    }
-    var KPI=sea.kpi;
+    var sea=SEASONS.filter(function(s){return s.id===CUR_SEA;})[0];if(!sea)return;
+    var KPI=sea.kpi,ps=sea.period[0].replace(/-/g,'/'),pe=sea.period[1].replace(/-/g,'/');
+    var seaWks=ALL_WK.filter(function(wd){return wd.wk>=ps&&wd.wk<=pe&&wd.season.id===sea.id;});
+    if(!seaWks.length){document.getElementById('sea-content').innerHTML='<div style="padding:20px;text-align:center;color:var(--n3)">この季節のデータがありません</div>';return;}
     var ts2=0,tc2=0,sM={},smC={};
-    seaWks.forEach(function(wd){
-      applyFilter(wd.stores).forEach(function(s){
-        ts2+=s.sales;tc2+=s.cust;
-        if(!sM[s.name])sM[s.name]={area:s.area,mo:s.mo,sales:0,cust:0};
-        sM[s.name].sales+=s.sales;sM[s.name].cust+=s.cust;
-        if(!smC[s.name])smC[s.name]={};
-        Object.keys(s.menus||{}).forEach(function(mn){smC[s.name][mn]=(smC[s.name][mn]||0)+s.menus[mn];});
-      });
-    });
-    var stores=Object.keys(sM).map(function(n){var s=sM[n];
-      s.name=n;s.rate=s.cust>0?s.sales/s.cust*100:0;return s;}).sort(function(a,b){return b.rate-a.rate;});
-    var ml=aggMenu(stores,smC);
-    var ovr=tc2>0?ts2/tc2*100:0,ok=ovr>=KPI;
-    var wkSeries=seaWks.map(function(wd,i){
-      var fs=applyFilter(wd.stores),wts=0,wtc=0;
-      fs.forEach(function(s){wts+=s.sales;wtc+=s.cust;});
-      return{lbl:(i+1)+'W',val:wtc>0?wts/wtc*100:0,ts:wts,tc:wtc,wl:wd.wl};
-    });
-    var sSeries3=seaWks.map(function(wd,i){
-      var fs=applyFilter(wd.stores),wts=0;
-      fs.forEach(function(s){wts+=s.sales;});
-      return{lbl:(i+1)+'W',val:wts};
-    });
+    seaWks.forEach(function(wd){applyF(wd.stores).forEach(function(s){ts2+=s.sales;tc2+=s.cust;if(!sM[s.name])sM[s.name]={area:s.area,mo:s.mo,sales:0,cust:0};sM[s.name].sales+=s.sales;sM[s.name].cust+=s.cust;if(!smC[s.name])smC[s.name]={};Object.keys(s.menus||{}).forEach(function(mn){smC[s.name][mn]=(smC[s.name][mn]||0)+s.menus[mn];});});});
+    var stores=Object.keys(sM).map(function(n){var s=sM[n];s.name=n;s.rate=s.cust>0?s.sales/s.cust*100:0;return s;}).sort(function(a,b){return b.rate-a.rate;});
+    var ml=aggMenu(stores,smC),ovr=tc2>0?ts2/tc2*100:0,ok=ovr>=KPI;
+    var wkSeries=seaWks.map(function(wd,i){var fs=applyF(wd.stores),wts=0,wtc=0;fs.forEach(function(s){wts+=s.sales;wtc+=s.cust;});return{lbl:(i+1)+'W',val:wtc>0?wts/wtc*100:0,ts:wts,tc:wtc,wl:wd.wl};});
+    var sSeries=seaWks.map(function(wd,i){var fs=applyF(wd.stores),wts=0;fs.forEach(function(s){wts+=s.sales;});return{lbl:(i+1)+'W',val:wts};});
     document.getElementById('sea-content').innerHTML=
-      '<div class="info-bar">'+sea.emoji+' '+sea.name+'（'+sea.period[0]+' 〜 '+sea.period[1]+'）　KPI: '+KPI+'%</div>'+
+      '<div class="info-bar">'+sea.emoji+' '+sea.name+'　'+sea.period[0]+' 〜 '+sea.period[1]+'　KPI: '+KPI+'%</div>'+
       '<div class="kpi-grid">'+
-        '<div class="kc main"><div class="kl">注文率（期間累計）</div>'+
-        '<div class="kv">'+ovr.toFixed(2)+'<span class="ku"> %</span></div>'+
-        '<div class="ktags"><span class="tag '+(ok?'tag-ok':'tag-ng')+'">'+(ok?'▲ KPI達成':'▼ KPI未達')+'</span><span class="tag tag-inf">KPI '+KPI+'%</span></div></div>'+
-        '<div class="kc green"><div class="kl">期間累計 販売数</div>'+
-        '<div class="kv2" style="color:var(--g1)">'+ts2.toLocaleString()+'<span style="font-size:13px;color:var(--n2)"> 食</span></div>'+
-        '<div class="ksub">'+seaWks.length+'週分</div></div>'+
-        '<div class="kc blue"><div class="kl">達成店舗数</div>'+
-        '<div class="kachieve"><div class="ach ach-ok"><div class="ach-n">'+stores.filter(function(s){return s.rate>=KPI;}).length+'</div><div class="ach-l">店 達成</div></div>'+
-        '<div class="ach ach-ng"><div class="ach-n">'+stores.filter(function(s){return s.rate<KPI;}).length+'</div><div class="ach-l">店 未達</div></div></div></div>'+
-        '<div class="kc gray"><div class="kl">平均販売数</div>'+
-        '<div class="kv2" style="color:var(--n2)">'+(stores.length>0?(ts2/stores.length).toFixed(1):'-')+'<span style="font-size:12px;color:var(--n3)"> 食</span></div>'+
-        '<div class="ksub">'+stores.length+'店の平均</div></div>'+
+        '<div class="kc main"><div class="kl">注文率（期間累計）</div><div class="kv">'+ovr.toFixed(2)+'<span class="ku"> %</span></div><div class="ktags"><span class="tag '+(ok?'tag-ok':'tag-ng')+'">'+(ok?'▲ KPI達成':'▼ KPI未達')+'</span><span class="tag tag-inf">KPI '+KPI+'%</span></div></div>'+
+        '<div class="kc green"><div class="kl">期間累計 販売数</div><div class="kv2" style="color:var(--g1)">'+ts2.toLocaleString()+'<span style="font-size:13px;color:var(--n2)"> 食</span></div><div class="ksub">'+seaWks.length+'週分</div></div>'+
+        '<div class="kc blue"><div class="kl">達成店舗数</div><div class="kach"><div class="ach ach-ok"><div class="ach-n">'+stores.filter(function(s){return s.rate>=KPI;}).length+'</div><div class="ach-l">店 達成</div></div><div class="ach ach-ng"><div class="ach-n">'+stores.filter(function(s){return s.rate<KPI;}).length+'</div><div class="ach-l">店 未達</div></div></div></div>'+
+        '<div class="kc gray"><div class="kl">平均販売数</div><div class="kv2" style="color:var(--n2)">'+(stores.length>0?(ts2/stores.length).toFixed(1):'-')+'<span style="font-size:12px;color:var(--n3)"> 食</span></div><div class="ksub">'+stores.length+'店の平均</div></div>'+
       '</div>'+
-      '<div class="chart-2col" style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px;">'+
-        '<div class="card"><div class="chart-wrap"><div class="chart-title">📈 注文率 季節推移</div>'+makeChart(wkSeries,'rate',KPI)+'</div></div>'+
-        '<div class="card"><div class="chart-wrap"><div class="chart-title">🌸 販売数 季節推移</div>'+makeChart(sSeries3,'sales',null)+'</div></div>'+
+      '<div class="g2">'+
+        '<div class="card"><div style="padding:12px 14px 10px"><div class="sec" style="margin-bottom:8px">注文率 季節推移</div>'+makeChart(wkSeries,'rate',KPI)+'</div></div>'+
+        '<div class="card"><div style="padding:12px 14px 10px"><div class="sec" style="margin-bottom:8px">販売数 季節推移</div>'+makeChart(sSeries,'sales',null)+'</div></div>'+
       '</div>'+
-      '<div class="sec-label">店舗別 注文率ランキング（期間累計）</div>'+
-      htmlRankTable(stores,null,KPI)+
-      '<div class="sec-label" style="margin-top:10px">メニュー別 販売数（降順）</div>'+
-      htmlMenuTable(ml,ts2)+
-      '<div class="sec-label" style="margin-top:10px">週次トレンド</div>'+
-      htmlTrendTable(wkSeries,KPI);
-    bindTableEvents('sea-content');
+      '<div class="g-main">'+
+        '<div><div class="sec">店舗別 注文率ランキング（期間累計）</div>'+htmlRank(stores,null,sea)+
+        '<div class="sec" style="margin-top:12px">メニュー別 販売数（降順）</div>'+htmlMenu(ml,ts2)+'</div>'+
+        '<div><div class="sec">所属別 集計</div><div class="card">'+htmlSummary(stores,sea)+'</div></div>'+
+      '</div>'+
+      (seaWks.length>=2?'<div class="sec">週次トレンド</div>'+htmlTrend(wkSeries,sea):'');
+    bindDrill('sea-content');
   }
-
-  document.getElementById('tab-season').innerHTML=
-    '<div class="sel-bar" id="sea-sel-bar">'+seaBtns+'</div>'+
-    '<div id="sea-content"></div>';
-  document.getElementById('sea-sel-bar').addEventListener('click',function(e){
-    var b=e.target.closest('.sel-btn');if(!b)return;
-    CUR_SEA_ID=b.getAttribute('data-sea');
-    document.querySelectorAll('.sel-btn[data-sea]').forEach(function(x){x.classList.toggle('on',x.getAttribute('data-sea')===CUR_SEA_ID);});
-    renderSeaContent();
-  });
+  var btns=SEASONS.map(function(s){return '<button class="ssbtn'+(s.id===CUR_SEA?' on':'')+'" data-sea="'+s.id+'">'+s.emoji+' '+s.name+'</button>';}).join('');
+  document.getElementById('tab-season').innerHTML='<div class="ssel" id="sea-sel"><span class="ssel-label">季節を選択：</span>'+btns+'</div><div id="sea-content"></div>';
+  document.getElementById('sea-sel').addEventListener('click',function(e){var b=e.target.closest('.ssbtn');if(!b)return;CUR_SEA=b.getAttribute('data-sea');document.querySelectorAll('.ssbtn[data-sea]').forEach(function(x){x.classList.toggle('on',x.getAttribute('data-sea')===CUR_SEA);});renderSeaContent();});
   renderSeaContent();
 }
 
-/* ================================================================
-   SIDEBAR UPDATERS
-================================================================ */
-function updateSbWeeks(){
-  var h='';
-  ALL_WK.forEach(function(w,i){
-    h+='<button class="wk-btn'+(w.wk===CW?' on':'')+(CW==='__cum'?' on-cum':'')+'" data-wk="'+w.wk+'">'+(i+1)+'W</button>';
-  });
-  var fbw=document.getElementById('fb-weeks');
-  if(fbw) fbw.innerHTML=h;
-  var cum=document.getElementById('fb-cum');
-  if(cum) cum.className='wk-btn'+(CW==='__cum'?' on-cum':'');
+function updateWkDD(){
+  var h='<button class="dditem'+(CW==='__cum'?' on':'')+'" data-wk="__cum">累積</button><div class="dddiv"></div>';
+  ALL_WK.forEach(function(w,i){var sea=w.season;h+='<button class="dditem'+(w.wk===CW?' on':'')+'" data-wk="'+w.wk+'">'+(sea?sea.emoji+' ':'')+' '+(i+1)+'W　<span style="font-size:9px;color:var(--n3)">'+w.wl+'</span></button>';});
+  document.getElementById('dd-wk-menu').innerHTML=h;
+  var label='週 ';
+  if(CW==='__cum')label='累積';
+  else{var idx=ALL_WK.findIndex(function(w){return w.wk===CW;});if(idx>=0){var s=ALL_WK[idx].season;label=(s?s.emoji+' ':'')+' '+(idx+1)+'W';}}
+  document.getElementById('dd-wk-btn').innerHTML=label+' <span class="ddarrow">▼</span>';
 }
-function updateSbMenus(){
-  var mm={};
-  ALL_WK.forEach(function(wd){wd.ml.forEach(function(m){mm[m.name]=1;});});
-  var h='<button class="dd-item'+(F.mn==='all'?' on':'')+'" data-f="mn" data-v="all">すべて</button>';
-  Object.keys(mm).forEach(function(mn){
-    h+='<button class="dd-item'+(F.mn===mn?' on':'')+'" data-f="mn" data-v="'+mn.replace(/"/g,'&quot;')+'">'+mn+'</button>';
-  });
-  var mnMenu=document.getElementById('dd-mn-menu');
-  if(mnMenu) mnMenu.innerHTML=h;
-  updateFilterLabels();
+function updateFClr(){
+  var active=F.area!=='all'||F.mo!=='all';
+  document.getElementById('fclr').classList.toggle('on',active);
+  var ab=document.getElementById('dd-area-btn'),mb=document.getElementById('dd-mo-btn');
+  if(ab){ab.classList.toggle('act',F.area!=='all');ab.innerHTML='🏢 '+(F.area==='all'?'所属':F.area)+' <span class="ddarrow">▼</span>';}
+  if(mb){mb.classList.toggle('act',F.mo!=='all');mb.innerHTML='📱 '+(F.mo==='all'?'導線':F.mo)+' <span class="ddarrow">▼</span>';}
 }
-
-/* ================================================================
-   RENDER ALL
-================================================================ */
 function renderAll(){
-  if(!ALL_WK.length){
-    document.getElementById('ld').style.display='none';
-    document.getElementById('nodata').style.display='block';
-    document.getElementById('db').style.display='none';
-    return;
-  }
-  if(!CW) CW=ALL_WK[ALL_WK.length-1].wk;
-  document.getElementById('ld').style.display='none';
-  document.getElementById('nodata').style.display='none';
-  document.getElementById('db').style.display='block';
-  updateSbWeeks(); updateSbMenus(); updateFilterLabels();
-  var activeTab=document.querySelector('.tab.on');
-  var t=activeTab?activeTab.getAttribute('data-tab'):'week';
-  if(t==='week') renderWeek();
-  else if(t==='month') renderMonth();
-  else renderSeason();
+  if(!ALL_WK.length){document.getElementById('ld').style.display='none';document.getElementById('nodata').style.display='block';document.getElementById('db').style.display='none';return;}
+  if(!CW)CW=ALL_WK[ALL_WK.length-1].wk;
+  document.getElementById('ld').style.display='none';document.getElementById('nodata').style.display='none';document.getElementById('db').style.display='block';
+  updateWkDD();updateFClr();
+  var t=(document.querySelector('.tab.on')||{}).getAttribute?document.querySelector('.tab.on').getAttribute('data-tab'):'week';
+  if(t==='week')renderWeek();else if(t==='month')renderMonth();else renderSeason();
 }
 
-/* ================================================================
-   DATA LOADING（GitHub API でファイル一覧自動取得）
-================================================================ */
-function loadSeasonData(season){
+function loadAllSeasons(){
   document.getElementById('ld').style.display='flex';
-  document.getElementById('db').style.display='none';
-  CUR_SEASON=season; ALL_WK=[]; CW=null; CUR_MON=null;
-
-  Promise.all([
-    listRepoFiles('data/sales'),
-    listRepoFiles('data/customers')
-  ]).then(function(res){
-    var salesFiles=res[0], custFiles=res[1];
-    return Promise.all([
-      Promise.all(salesFiles.map(function(f){return fetchText(f.url||('data/sales/'+encodeURIComponent(f.name||f)));})),
-      Promise.all(custFiles.map(function(f){return fetchText(f.url||('data/customers/'+encodeURIComponent(f.name||f)));}))
-    ]);
-  }).then(function(res){
-    var custMap={};
-    res[1].forEach(function(t){var m=parseCust(t);Object.assign(custMap,m);});
-    var salesMap={};
-    res[0].forEach(function(t){
-      var m=parseSales(t,season);
-      Object.keys(m).forEach(function(k){
-        if(!salesMap[k]){salesMap[k]=m[k];return;}
-        Object.keys(m[k].menus).forEach(function(mn){salesMap[k].menus[mn]=(salesMap[k].menus[mn]||0)+m[k].menus[mn];});
-      });
+  Promise.all([listFiles('data/sales'),listFiles('data/customers')]).then(function(res){
+    var sFiles=res[0],cFiles=res[1];
+    return Promise.all([Promise.all(sFiles.map(function(f){return fetchText(f.url);})),Promise.all(cFiles.map(function(f){return fetchText(f.url);}))]);
+  }).then(function(r){
+    var custMap={};r[1].forEach(function(t){var m=parseCust(t);Object.assign(custMap,m);});
+    ALL_WK=[];
+    SEASONS.forEach(function(sea){
+      var salesMap={};
+      r[0].forEach(function(t){var m=parseSales(t,sea);Object.keys(m).forEach(function(k){if(!salesMap[k]){salesMap[k]=m[k];return;}Object.keys(m[k].menus).forEach(function(mn){salesMap[k].menus[mn]=(salesMap[k].menus[mn]||0)+m[k].menus[mn];});});});
+      buildWeeks(salesMap,custMap,sea).forEach(function(w){ALL_WK.push(w);});
     });
-    ALL_WK=buildWeeks(salesMap,custMap,season);
     ALL_WK.sort(function(a,b){return a.wk<b.wk?-1:a.wk>b.wk?1:0;});
-    if(ALL_WK.length){CW=ALL_WK[ALL_WK.length-1].wk;}
+    if(ALL_WK.length)CW=ALL_WK[ALL_WK.length-1].wk;
     renderAll();
-  }).catch(function(err){
-    console.warn('load error:',err.message);
-    document.getElementById('ld').style.display='none';
-    document.getElementById('nodata').style.display='block';
-  });
+  }).catch(function(err){console.warn('load error:',err);document.getElementById('ld').style.display='none';document.getElementById('nodata').style.display='block';});
 }
 
-/* ================================================================
-   INIT
-================================================================ */
 (function(){
-  // Filter Bar: ドロップダウン開閉
-  ['area','mo','mn'].forEach(function(key){
-    var btn=document.getElementById('dd-'+key+'-btn');
-    var menu=document.getElementById('dd-'+key+'-menu');
+  ['wk','area','mo'].forEach(function(key){
+    var btn=document.getElementById('dd-'+key+'-btn'),menu=document.getElementById('dd-'+key+'-menu');
     if(!btn||!menu)return;
-    btn.addEventListener('click',function(e){
-      e.stopPropagation();
-      ['area','mo','mn'].forEach(function(k){
-        if(k!==key) document.getElementById('dd-'+k+'-menu').classList.remove('on');
-      });
-      menu.classList.toggle('on');
-    });
+    btn.addEventListener('click',function(e){e.stopPropagation();['wk','area','mo'].forEach(function(k){if(k!==key)document.getElementById('dd-'+k+'-menu').classList.remove('on');});menu.classList.toggle('on');});
   });
-  document.addEventListener('click',function(){
-    ['area','mo','mn'].forEach(function(k){
-      var m=document.getElementById('dd-'+k+'-menu');
-      if(m) m.classList.remove('on');
-    });
-  });
-  // Filter Bar: フィルター選択
-  document.getElementById('filter-bar').addEventListener('click',function(e){
-    var b=e.target.closest('button'); if(!b)return;
+  document.addEventListener('click',function(){['wk','area','mo'].forEach(function(k){var m=document.getElementById('dd-'+k+'-menu');if(m)m.classList.remove('on');});});
+  document.getElementById('fbar').addEventListener('click',function(e){
+    var b=e.target.closest('button');if(!b)return;
     var f=b.getAttribute('data-f'),v=b.getAttribute('data-v'),wk=b.getAttribute('data-wk');
-    if(f&&v){
-      F[f]=v;
-      document.querySelectorAll('.dd-item[data-f="'+f+'"]').forEach(function(x){x.classList.toggle('on',x.getAttribute('data-v')===v);});
-      ['area','mo','mn'].forEach(function(k){document.getElementById('dd-'+k+'-menu').classList.remove('on');});
-      updateFilterLabels(); renderAll(); return;
-    }
-    if(wk!==null){CW=wk;updateSbWeeks();renderAll();return;}
-    if(b.id==='fb-cum'){CW='__cum';updateSbWeeks();renderAll();return;}
-    if(b.id==='fb-clr'){
-      F={area:'all',mo:'all',mn:'all'};
-      document.querySelectorAll('.dd-item[data-f]').forEach(function(x){x.classList.toggle('on',x.getAttribute('data-v')==='all');});
-      updateFilterLabels(); renderAll(); return;
-    }
+    if(wk!==null){CW=wk;['wk','area','mo'].forEach(function(k){document.getElementById('dd-'+k+'-menu').classList.remove('on');});updateWkDD();renderAll();return;}
+    if(f&&v){F[f]=v;document.querySelectorAll('.dditem[data-f="'+f+'"]').forEach(function(x){x.classList.toggle('on',x.getAttribute('data-v')===v);});['wk','area','mo'].forEach(function(k){document.getElementById('dd-'+k+'-menu').classList.remove('on');});updateFClr();renderAll();return;}
+    if(b.id==='fclr'){F={area:'all',mo:'all'};document.querySelectorAll('.dditem[data-f]').forEach(function(x){x.classList.toggle('on',x.getAttribute('data-v')==='all');});updateFClr();renderAll();}
   });
-  // Tabs
   document.querySelector('.tab-bar').addEventListener('click',function(e){
     var t=e.target.getAttribute('data-tab');if(!t)return;
     document.querySelectorAll('.tab').forEach(function(x){x.classList.toggle('on',x.getAttribute('data-tab')===t);});
     ['week','month','season'].forEach(function(x){document.getElementById('tab-'+x).style.display=x===t?'block':'none';});
-    if(t==='week') renderWeek();
-    else if(t==='month') renderMonth();
-    else renderSeason();
+    if(t==='week')renderWeek();else if(t==='month')renderMonth();else renderSeason();
   });
-  // Drill modals
   document.getElementById('drill-ov').addEventListener('click',function(e){if(e.target===this)this.classList.remove('on');});
-  document.getElementById('drill-x').addEventListener('click',function(){document.getElementById('drill-ov').classList.remove('on');});
-  // Update modal
-  document.getElementById('upd-btn').addEventListener('click',function(){
-    document.getElementById('upd-ov').classList.add('on');
-    document.getElementById('upd-pw-screen').style.display='flex';
-    document.getElementById('upd-guide').style.display='none';
-    document.getElementById('upd-pw').value='';
-    document.getElementById('upd-pw-err').style.display='none';
-  });
+  document.getElementById('d-x').addEventListener('click',function(){document.getElementById('drill-ov').classList.remove('on');});
+  document.getElementById('upd-btn').addEventListener('click',function(){document.getElementById('upd-ov').classList.add('on');document.getElementById('pw-screen').style.display='flex';document.getElementById('upd-guide').style.display='none';document.getElementById('pw-input').value='';document.getElementById('pw-err').style.display='none';});
   document.getElementById('upd-x').addEventListener('click',function(){document.getElementById('upd-ov').classList.remove('on');});
   document.getElementById('upd-ov').addEventListener('click',function(e){if(e.target===this)this.classList.remove('on');});
-  document.getElementById('upd-pw-ok').addEventListener('click',function(){
-    if(document.getElementById('upd-pw').value==='1209'){
-      document.getElementById('upd-pw-screen').style.display='none';
-      document.getElementById('upd-guide').style.display='block';
-    } else {
-      document.getElementById('upd-pw-err').style.display='block';
-    }
-  });
-  document.getElementById('upd-pw').addEventListener('keydown',function(e){if(e.key==='Enter')document.getElementById('upd-pw-ok').click();});
-
-  // seasons.json を読み込んでシーズンバーを生成
+  document.getElementById('pw-ok').addEventListener('click',function(){if(document.getElementById('pw-input').value==='1209'){document.getElementById('pw-screen').style.display='none';document.getElementById('upd-guide').style.display='block';}else document.getElementById('pw-err').style.display='block';});
+  document.getElementById('pw-input').addEventListener('keydown',function(e){if(e.key==='Enter')document.getElementById('pw-ok').click();});
   fetch('seasons.json').then(function(r){return r.json();}).then(function(seasons){
-    SEASONS=seasons;
-    var bar=document.getElementById('season-bar');
-    bar.innerHTML=seasons.map(function(s,i){
-      return '<div class="season-tab'+(i===seasons.length-1?' on':'')+'" data-sid="'+s.id+'">'+s.emoji+' '+s.name+'</div>';
-    }).join('');
-    bar.addEventListener('click',function(e){
-      var t=e.target.closest('.season-tab');if(!t)return;
-      var sid=t.getAttribute('data-sid');
-      document.querySelectorAll('.season-tab').forEach(function(x){x.classList.toggle('on',x.getAttribute('data-sid')===sid);});
-      var season=seasons.filter(function(s){return s.id===sid;})[0];
-      if(season) loadSeasonData(season);
-    });
-    // 最新季節を読み込む
-    var latest=seasons[seasons.length-1];
-    if(latest) loadSeasonData(latest);
-  }).catch(function(err){
-    console.warn('seasons.json error:',err);
-    document.getElementById('ld').style.display='none';
-    document.getElementById('nodata').style.display='block';
-  });
+    SEASONS=seasons;if(SEASONS.length){CUR_SEA=SEASONS[SEASONS.length-1].id;loadAllSeasons();}
+    else{document.getElementById('ld').style.display='none';document.getElementById('nodata').style.display='block';}
+  }).catch(function(err){console.warn('seasons.json:',err);document.getElementById('ld').style.display='none';document.getElementById('nodata').style.display='block';});
 })();
 </script>
 </body>
