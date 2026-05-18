@@ -4,11 +4,14 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0">
 <title>季節メニューおすすめ販売数速報｜千房グループ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=BIZ+UDPGothic:wght@400;700&display=swap" rel="stylesheet">
 <style>
 *{box-sizing:border-box;margin:0;padding:0;}
 :root{--c1:#1e2d45;--c2:#2563eb;--c3:#f8fafc;--g1:#059669;--g2:#d1fae5;--g3:#6ee7b7;--r1:#dc2626;--r2:#fee2e2;--r3:#fca5a5;--b2:#dbeafe;--n1:#e2e8f0;--n2:#64748b;--n3:#94a3b8;--hh:52px;--fh:46px;}
 html{font-size:13px;-webkit-text-size-adjust:100%;}
-body{font-family:'Meiryo UI','メイリオ',sans-serif;background:var(--c3);color:var(--c1);min-height:100vh;}
+body{font-family:'BIZ UDPGothic','Meiryo UI','メイリオ',sans-serif;background:var(--c3);color:var(--c1);min-height:100vh;}
 .hdr{height:var(--hh);background:var(--c1);display:flex;align-items:center;padding:0 16px;gap:10px;position:sticky;top:0;z-index:300;box-shadow:0 2px 8px rgba(0,0,0,.2);}
 .hdr-info{flex:1;min-width:0;}
 .hdr-title{font-size:14px;font-weight:700;color:#fff;}
@@ -45,27 +48,27 @@ body{font-family:'Meiryo UI','メイリオ',sans-serif;background:var(--c3);colo
 .nodata-box h2{font-size:15px;margin-bottom:8px;}
 .nodata-box p{font-size:12px;color:var(--n2);line-height:1.9;}
 .kpi-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:14px;}
-.kc{background:#fff;border:1px solid var(--n1);border-radius:8px;padding:13px 14px;display:flex;flex-direction:column;gap:3px;box-shadow:0 1px 5px rgba(0,0,0,.05);}
-.kc.main{border-top:4px solid var(--c2);}.kc.green{border-top:4px solid var(--g1);}.kc.blue{border-top:4px solid #7c3aed;}.kc.gray{border-top:4px solid var(--n2);}
-.kl{font-size:9px;font-weight:700;color:var(--n2);}
-.kv{font-size:32px;font-weight:900;line-height:1;color:var(--c2);}
-.kv .ku{font-size:13px;font-weight:400;color:var(--n2);}
-.kv2{font-size:22px;font-weight:900;line-height:1.1;}
-.ksub{font-size:9px;color:var(--n3);}
-.ktags{display:flex;gap:3px;flex-wrap:wrap;margin-top:2px;}
-.tag{font-size:9px;font-weight:700;padding:2px 6px;border-radius:10px;border:1px solid transparent;}
+.kc{background:#fff;border:1px solid var(--n1);border-radius:8px;padding:10px 12px;display:flex;flex-direction:column;gap:2px;box-shadow:0 1px 4px rgba(0,0,0,.05);}
+.kc.main{border-left:4px solid var(--c2);}.kc.green{border-left:4px solid var(--g1);}.kc.blue{border-left:4px solid #7c3aed;}.kc.gray{border-left:4px solid var(--n2);}
+.kl{font-size:9px;font-weight:700;color:var(--n2);letter-spacing:.04em;margin-bottom:1px;}
+.kv{font-size:28px;font-weight:900;line-height:1;color:var(--c2);}
+.kv .ku{font-size:12px;font-weight:400;color:var(--n2);}
+.kv2{font-size:22px;font-weight:900;line-height:1;}
+.ksub{font-size:8px;color:var(--n3);margin-top:1px;}
+.ktags{display:flex;gap:3px;flex-wrap:wrap;margin-top:3px;}
+.tag{font-size:8px;font-weight:700;padding:2px 5px;border-radius:3px;border:1px solid transparent;}
 .tag-ok{background:var(--g2);border-color:var(--g3);color:var(--g1);}
 .tag-ng{background:var(--r2);border-color:var(--r3);color:var(--r1);}
 .tag-up{background:var(--g2);border-color:var(--g3);color:var(--g1);}
 .tag-dn{background:var(--r2);border-color:var(--r3);color:var(--r1);}
 .tag-inf{background:var(--b2);border-color:#93c5fd;color:var(--c2);}
-.kach{display:grid;grid-template-columns:1fr 1fr;gap:4px;margin-top:3px;}
-.ach{border-radius:5px;padding:5px;text-align:center;}
+.kach{display:grid;grid-template-columns:1fr 1fr;gap:4px;margin-top:4px;}
+.ach{border-radius:5px;padding:5px 4px;text-align:center;}
 .ach-ok{background:var(--g2);border:1px solid var(--g3);}
 .ach-ng{background:var(--r2);border:1px solid var(--r3);}
-.ach-n{font-size:24px;font-weight:900;line-height:1;}
+.ach-n{font-size:22px;font-weight:900;line-height:1;}
 .ach-ok .ach-n{color:var(--g1);}.ach-ng .ach-n{color:var(--r1);}
-.ach-l{font-size:9px;font-weight:700;}
+.ach-l{font-size:8px;font-weight:700;margin-top:1px;}
 .ach-ok .ach-l{color:var(--g1);}.ach-ng .ach-l{color:var(--r1);}
 .topic{background:#eff6ff;border:1px solid #bfdbfe;border-left:4px solid var(--c2);border-radius:5px;padding:7px 12px;margin-bottom:12px;display:flex;align-items:center;gap:8px;}
 .topic-txt{font-size:10px;font-weight:700;color:#1e40af;line-height:1.7;}
@@ -178,11 +181,11 @@ body{font-family:'Meiryo UI','メイリオ',sans-serif;background:var(--c3);colo
 </div>
 <div class="fbar" id="fbar">
   <div class="dd" id="tab-dd">
-    <button class="ddbtn" id="tab-dd-btn" style="font-weight:800;color:var(--c1);border-color:var(--c2)">📅 週次 <span class="ddarrow">▼</span></button>
+    <button class="ddbtn" id="tab-dd-btn" style="font-weight:800;color:var(--c1);border-color:var(--c2)">週次 <span class="ddarrow">▼</span></button>
     <div class="ddmenu" id="tab-dd-menu">
-      <button class="dditem on" data-tab-sel="week">📅 週次</button>
-      <button class="dditem" data-tab-sel="month">🗓 月次</button>
-      <button class="dditem" data-tab-sel="season">🌸 季節</button>
+      <button class="dditem on" data-tab-sel="week">週次</button>
+      <button class="dditem" data-tab-sel="month">月次</button>
+      <button class="dditem" data-tab-sel="season">季節</button>
     </div>
   </div>
   <div class="fsep"></div>
@@ -255,9 +258,9 @@ body{font-family:'Meiryo UI','メイリオ',sans-serif;background:var(--c3);colo
   <div id="nodata" style="display:none"><div class="nodata-box"><div style="font-size:32px;margin-bottom:10px">📊</div><h2>データがありません</h2><p><b>data/sales/</b> と <b>data/customers/</b> にCSVをアップロードしてください。</p></div></div>
   <div id="db" style="display:none">
     <div class="tab-bar" style="display:none">
-      <div class="tab on" data-tab="week">📅 週次</div>
-      <div class="tab" data-tab="month">🗓 月次</div>
-      <div class="tab" data-tab="season">🌸 季節</div>
+      <div class="tab on" data-tab="week">週次</div>
+      <div class="tab" data-tab="month">月次</div>
+      <div class="tab" data-tab="season">季節</div>
     </div>
     <div id="tab-week"></div>
     <div id="tab-month" style="display:none"></div>
@@ -612,7 +615,7 @@ function renderSeason(){
     var wkSeries=seaWks.map(function(wd,i){var fs=applyF(wd.stores),wts=0,wtc=0;fs.forEach(function(s){wts+=s.sales;wtc+=s.cust;});var ov=wtc>0?wts/wtc*100:0;return{lbl:(i+1)+'W',val:ov,ovr:ov,ts:wts,tc:wtc,wl:wd.wl};});
     var sSeries=seaWks.map(function(wd,i){var fs=applyF(wd.stores),wts=0;fs.forEach(function(s){wts+=s.sales;});return{lbl:(i+1)+'W',val:wts};});
     document.getElementById('sea-content').innerHTML=
-      '<div class="info-bar">'+sea.emoji+' '+sea.name+'　'+sea.period[0]+' 〜 '+sea.period[1]+'　KPI: '+KPI+'%</div>'+
+      '<div class="info-bar">'+sea.name+'　'+sea.period[0]+' 〜 '+sea.period[1]+'　KPI: '+KPI+'%</div>'+
       '<div class="kpi-grid">'+
         '<div class="kc main"><div class="kl">注文率（期間累計）</div><div class="kv">'+ovr.toFixed(2)+'<span class="ku"> %</span></div><div class="ktags"><span class="tag '+(ok?'tag-ok':'tag-ng')+'">'+(ok?'▲ KPI達成':'▼ KPI未達')+'</span><span class="tag tag-inf">KPI '+KPI+'%</span></div></div>'+
         '<div class="kc green"><div class="kl">期間累計 販売数</div><div class="kv2" style="color:var(--g1)">'+ts2.toLocaleString()+'<span style="font-size:13px;color:var(--n2)"> 食</span></div><div class="ksub">'+seaWks.length+'週分</div></div>'+
@@ -631,7 +634,7 @@ function renderSeason(){
       (seaWks.length>=2?'<div class="sec">週次トレンド</div>'+htmlTrend(wkSeries,sea):'');
     bindDrill('sea-content');
   }
-  var btns=SEASONS.map(function(s){return '<button class="ssbtn'+(s.id===CUR_SEA?' on':'')+'" data-sea="'+s.id+'">'+s.emoji+' '+s.name+'</button>';}).join('');
+  var btns=SEASONS.map(function(s){return '<button class="ssbtn'+(s.id===CUR_SEA?' on':'')+'" data-sea="'+s.id+'">'+s.name+'</button>';}).join('');
   document.getElementById('tab-season').innerHTML='<div class="ssel" id="sea-sel"><span class="ssel-label">季節を選択：</span>'+btns+'</div><div id="sea-content"></div>';
   document.getElementById('sea-sel').addEventListener('click',function(e){var b=e.target.closest('.ssbtn');if(!b)return;CUR_SEA=b.getAttribute('data-sea');document.querySelectorAll('.ssbtn[data-sea]').forEach(function(x){x.classList.toggle('on',x.getAttribute('data-sea')===CUR_SEA);});renderSeaContent();});
   renderSeaContent();
@@ -639,11 +642,11 @@ function renderSeason(){
 
 function updateWkDD(){
   var h='<button class="dditem'+(CW==='__cum'?' on':'')+'" data-wk="__cum">累積</button><div class="dddiv"></div>';
-  ALL_WK.forEach(function(w,i){var sea=w.season;h+='<button class="dditem'+(w.wk===CW?' on':'')+'" data-wk="'+w.wk+'">'+(sea?sea.emoji+' ':'')+' '+(i+1)+'W　<span style="font-size:9px;color:var(--n3)">'+w.wl+'</span></button>';});
+  ALL_WK.forEach(function(w,i){h+='<button class="dditem'+(w.wk===CW?' on':'')+'" data-wk="'+w.wk+'">'+(i+1)+'W　<span style="font-size:9px;color:var(--n3)">'+w.wl+'</span></button>';});
   document.getElementById('dd-wk-menu').innerHTML=h;
   var label='週 ';
   if(CW==='__cum')label='累積';
-  else{var idx=ALL_WK.findIndex(function(w){return w.wk===CW;});if(idx>=0){var s=ALL_WK[idx].season;label=(s?s.emoji+' ':'')+' '+(idx+1)+'W';}}
+  else{var idx=ALL_WK.findIndex(function(w){return w.wk===CW;});if(idx>=0){label=(idx+1)+'W';}}
   document.getElementById('dd-wk-btn').innerHTML=label+' <span class="ddarrow">▼</span>';
 }
 function updateFClr(){
@@ -690,7 +693,7 @@ function loadAllSeasons(){
   var CUR_TAB='week';
   function switchTab(t){
     CUR_TAB=t;
-    var labels={'week':'📅 週次','month':'🗓 月次','season':'🌸 季節'};
+    var labels={'week':'週次','month':'月次','season':'季節'};
     document.getElementById('tab-dd-btn').innerHTML=labels[t]+' <span class="ddarrow">▼</span>';
     document.querySelectorAll('#tab-dd-menu .dditem').forEach(function(x){x.classList.toggle('on',x.getAttribute('data-tab-sel')===t);});
     document.getElementById('tab-dd-menu').classList.remove('on');
