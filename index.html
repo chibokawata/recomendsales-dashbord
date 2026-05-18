@@ -47,16 +47,16 @@ body{font-family:'BIZ UDPGothic','Meiryo UI','メイリオ',sans-serif;backgroun
 .nodata-box{border:2px dashed var(--n1);border-radius:8px;background:#fff;padding:36px;text-align:center;max-width:480px;margin:40px auto;}
 .nodata-box h2{font-size:15px;margin-bottom:8px;}
 .nodata-box p{font-size:12px;color:var(--n2);line-height:1.9;}
-.kpi-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:14px;align-items:start;}
-.kc{background:#fff;border:1px solid var(--n1);border-radius:8px;padding:10px 12px;display:flex;flex-direction:column;gap:2px;box-shadow:0 1px 4px rgba(0,0,0,.05);align-self:start;}
+.kpi-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:14px;}
+.kc{background:#fff;border:1px solid var(--n1);border-radius:8px;padding:10px 12px;display:flex;flex-direction:column;gap:2px;box-shadow:0 1px 4px rgba(0,0,0,.05);}
 .kc.main{border-left:4px solid var(--c2);}.kc.green{border-left:4px solid var(--g1);}.kc.blue{border-left:4px solid #7c3aed;}.kc.gray{border-left:4px solid var(--n2);}
 .kl{font-size:9px;font-weight:700;color:var(--n2);letter-spacing:.04em;margin-bottom:1px;}
 .kv{font-size:28px;font-weight:900;line-height:1;color:var(--c2);}
 .kv .ku{font-size:12px;font-weight:400;color:var(--n2);}
 .kv2{font-size:22px;font-weight:900;line-height:1;}
 .ksub{font-size:8px;color:var(--n3);margin-top:1px;}
-.ktags{display:flex;gap:3px;flex-wrap:wrap;margin-top:3px;}
-.tag{font-size:8px;font-weight:700;padding:2px 5px;border-radius:3px;border:1px solid transparent;}
+.ktags{display:flex;gap:3px;flex-wrap:nowrap;margin-top:3px;overflow:hidden;}
+.tag{font-size:8px;font-weight:700;padding:2px 5px;border-radius:3px;border:1px solid transparent;white-space:nowrap;flex-shrink:0;}
 .tag-ok{background:var(--g2);border-color:var(--g3);color:var(--g1);}
 .tag-ng{background:var(--r2);border-color:var(--r3);color:var(--r1);}
 .tag-up{background:var(--g2);border-color:var(--g3);color:var(--g1);}
@@ -396,7 +396,7 @@ function htmlKPI(fs,ts,tc,sea,prevTs,prevOvr){
   var salesChg=(prevTs!==null&&prevTs>0)?(ts-prevTs)/prevTs*100:null,rateChg=(prevOvr!==null)?(ovr-prevOvr):null;
   return '<div class="kpi-grid">'+
     '<div class="kc main"><div class="kl">注文率</div><div class="kv">'+ovr.toFixed(2)+'<span class="ku"> %</span></div>'+
-    '<div class="ktags"><span class="tag '+(ok?'tag-ok':'tag-ng')+'">'+(ok?'▲ KPI達成':'▼ KPI未達')+'</span><span class="tag tag-inf">KPI '+KPI+'%</span>'+chg(rateChg,true)+'</div></div>'+
+    '<div class="ktags"><span class="tag '+(ok?'tag-ok':'tag-ng')+'">'+(ok?'▲ KPI達成':'▼ KPI未達')+'</span><span class="tag tag-inf">KPI '+KPI+'%</span>'+(rateChg!==null?'<span class="tag '+(rateChg>0?'tag-up':'tag-dn')+'">'+(rateChg>0?'▲+':'▼')+Math.abs(rateChg).toFixed(2)+'pt</span>':'')+'</div></div>'+
     '<div class="kc green"><div class="kl">販売数</div><div class="kv2" style="color:var(--g1)">'+ts.toLocaleString()+'<span style="font-size:13px;color:var(--n2)"> 食</span></div>'+
     '<div class="ksub">総客数: '+tc.toLocaleString()+'名</div><div class="ktags">'+chg(salesChg,false)+'</div></div>'+
     '<div class="kc blue"><div class="kl">達成店舗数 ('+n+'店)</div>'+
